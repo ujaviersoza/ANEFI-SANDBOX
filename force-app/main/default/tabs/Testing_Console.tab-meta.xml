@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>testingConsole</auraComponent>
+    <description>Ficha para operar la consola de pruebas.</description>
+    <label>Consola de Pruebas</label>
+    <motif>Custom21: Computer</motif>
+</CustomTab>

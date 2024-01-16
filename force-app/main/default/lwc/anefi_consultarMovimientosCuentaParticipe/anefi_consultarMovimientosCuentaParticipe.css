@@ -1,0 +1,83 @@
+.button-buscar{
+    padding-top: 22px;    
+}
+
+.div-padre{
+    min-width: 25%;
+}
+
+.div-hijo{
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.div-padre-busqueda{
+    min-width: 25%;
+}
+
+.div-hijo-busqueda{
+    display: flex;
+    align-items: flex-end;
+    min-width: 100%;
+    justify-content: space-evenly;    
+}
+
+.div-mensaje-sin-movimientos{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-top: 30px; 
+}
+.icon-mensaje-sin-movimientos{
+    margin-right: 10px;
+}
+
+.consulta-aportes{
+    display: flex;
+    flex-direction: column;    
+}
+
+.btn-regresar{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.seccion-saldos{
+    border: solid 1px #e3e2e1;
+    margin: 10px;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.elementos-saldos{
+    display:flex;
+    justify-content: left;
+}
+
+.elemento-saldos{
+    padding-right:10px;
+    padding-left: 10px;  
+
+}
+
+.valor-saldos{
+    text-align: center;  
+}
+
+.span-titulo{    
+    margin-right: 5px;
+}
+
+.span-valor{
+    color: #1c5c4f;
+    
+}
+.btn-estado-cuenta{
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+}

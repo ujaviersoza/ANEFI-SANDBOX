@@ -1,0 +1,305 @@
+<apex:page renderAs="pdf" applyBodyTag="false" extensions="ANEFICondicionesFirmasController" standardController="Opportunity">
+
+    <head>
+        <style type="text/css" media="print">
+            * {
+                font-size: 9px;
+                font-family: Helvetica, sans-serif
+            }
+
+            @page {
+                @top-center {
+                    content: element(header);
+                    font-size: 9px;
+                    font-family: Helvetica, sans-serif;
+                }
+
+                @bottom-center {
+                    content: element(footer);
+
+                }
+            }
+
+
+            div.header {
+                padding: 0px;
+                position: running(header);
+            }
+
+            div {}
+
+            div.footer {
+                display: block;
+                padding: 0px;
+                position: running(footer);
+            }
+
+            .pagenumber:before {
+                content: counter(page);
+            }
+
+            .pagecount:before {
+                content: counter(pages);
+            }
+
+            .parContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 14px;
+
+            }
+
+            .cuentasContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                text-align: left;
+            }
+
+            .vline {
+                border-left: 2px solid black;
+                height: 60px;
+                margin: -80px 0 0 180px;
+            }
+        </style>
+    </head>
+    <div class="header">
+        <img style="width:160px;margin: 20px 0 0 0px;" src="{!$Resource.LogoAnefiPdf}" />
+        <!-- <hr  size="2px" color="black" /> -->
+        <div class="vline"></div>
+        <!-- <h4 style="text-align: center; margin: -60px 0 0 -215px;font-size: 24px; ">&nbsp;Formulario</h4>
+        <div style="text-align: center; margin: 5px 80px 0 0px;font-size: 22px; ">Origen Lícito de Recursos</div> -->
+
+        <!-- <h4 style="text-align: center; padding-right: 40px; margin: -50px 0 0 0px; font-size: 20px; "></h4> -->
+
+        <!-- <div class="cuentas" style=";padding: 880px 0px 0 100px">
+
+            <table style="border-collapse: collapse; width: 100%;" border="0">
+                <tbody>
+                    <tr>
+                        <td style="width: 80%; text-align: left;">
+                            <table style="border-collapse: collapse; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="cuentasContent">Checoslovaquia E10—195 y Av. Eloy Alfaro,</td>
+                                        <td class="cuentasContent">Av. Francisco de Orellana, Edificio World</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">Edificio Cuarzo, Sto piso, of. 503 </td>
+                                        <td class="cuentasContent">Trade Center torre B, piso 7 of. 70B</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">(+593) 2 3324-400</td>
+                                        <td class="cuentasContent">(+593) 4 390 6673</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Quito - Ecuador</b>
+                                        </td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Guayaquil -Ecuador</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">@AnefiEcuador</td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">www.anefi.com.ec</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div> -->
+
+    </div>
+
+    <div class="footer">
+        <!-- <apex:outputText value="Fecha de actualización {0,date,MMMM, YYYY}">
+            <apex:param value="{!TODAY()}" />
+        </apex:outputText> -->
+        <!-- <img style="width:820px;margin: -175px 0 0 -48px;" src="{!$Resource.PiePagina_Logo}" /> -->
+    </div>
+
+    <div class="content">
+        <!--  Primera pagina -->
+        <h4 style="text-align: center; margin: -300px 0 0 -60px;font-size: 24px; ">&nbsp;Condiciones de Firmas</h4>
+        <div style="width: 700px; padding: 60px 0 0 0px ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="parContent">
+                                Las personas antes registradas deberán firmar cualquier instrucción u orden de rescate:
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td  style="width: 10%">&nbsp;</td>
+                                        <td class="parContent" style="width: 70%;">
+                                            	<apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                    width="15px" height="15px" />&nbsp;Individualmente  </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10%">&nbsp;</td>
+                                        <td class="parContent" style="width: 70%;"><apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                    width="15px" height="15px" />Firmas conjuntas, cualquiera de las detalladas en este formulario</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10%">&nbsp;</td>
+                                        <td class="parContent" style="width: 70%;"><apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                    width="15px" height="15px" />Otros (detallar)  : _____________________________________________________________</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%">
+                            <p class="parContent">
+                                1.- Me comprometo a entregar a la ADMINISTRADORA toda la información y documentación de las personas que designe como firmas
+                                autorizadas.
+                                <br></br>
+                                2.- Conozco y acepto que la ADMINISTRADORA se reserva el derecho de no aceptar el registro de las referidas personas como
+                                mis firmas autorizadas, o de prohibir, en cualquier momento, que cualquiera de dichas personas
+                                pueda seguir actuando en tal calidad y por ende eliminarlas automáticamente del registro
+                                de firmas autorizadas.
+                                <br></br>
+                                3.- En cualquier caso, esta será una facultad privativa de la ADMINISTRADORA y no tendrá obligación de fundamentar su decisión
+                                ante mi o ante terceros.
+                                <br></br>
+                                4.- Me reservo el derecho para incorporar, sustituir o eliminar a las referidas personas autorizadas, siguiendo para dicho
+                                efecto el procedimiento y utilizando los formularios que la ADMINISTRADORA establezca y proporcione
+                                para tal fin.
+                                <br></br>
+                                5.- los pagos de los rescates se harán a mi nombre, en mi calidad de único titular y beneficiario de las unidades que posea
+                                en el FONDO y del efectivo rescate de las mismas.
+                                <br></br>
+                                6.- No obstante, las personas antes registradas como mis firmas autorizadas, al momento de ordenar un rescate, podrán solicitar
+                                que las transferencias o los cheques del producto de tal rescate sean realizados a nombre
+                                de terceras personas, siendo de mí cuenta y cargo los costos que al cumplimiento de esta
+                                instrucción demande.
+                                <br></br>
+                                7.- La delegación de atribuciones conferida por este instrumento no se entenderá como designación de beneficios post mortem,
+                                por lo cual en caso de fallecer el PARTÍCIPE o de liquidación del mismo, este mandato termina
+                                de pleno derecho, y sus sucesores en derecho deberán ejercer las acciones de la Ley les otorga
+                                para realizar el rescate de las unidades del PARTÍCIPE.
+                                <br></br>
+                                8.- En este caso, la ADMINISTRADORA no asume responsabilidad mientras los herederos o sucesores en derecho del PARTÍCIPE
+                                no le hayan notificado del fallecimiento o liquidación del titular por escrito, acompañado
+                                la correspondiente posesión efectiva, en su ausencia o ser aplicable, de los documentos que
+                                la ADMINISTRADORA considere necesarios.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%">
+                            <p class="parContent">
+                                Lugar y fecha: Quito, a los {!dataDate[0]} días del mes de {!dataDate[1]} del {!dataDate[2]}
+                                <br></br>
+                                <br></br>
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p style="text-align: center;">
+                                <b class="parContent">
+                                    ____________________________________________
+                                    <br></br>
+                                    Partícipe
+                                </b>
+                            </p>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="page-break-after: always" />
+
+        <!-- Segunda Pagina -->
+
+        <h4 style="text-align: center; margin: 0px 0 0 20px;font-size: 24px; ">&nbsp;Registro de firmas autorizadas</h4>
+        <div style="width: 700px; padding: 60px 60px 0 0px ">
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="parContent">
+                                &nbsp;Por medio del presente instrumento, expresamente delego a favor de las personas detalladas a continuación, la facultad
+                                de solicitar rescates totales o parciales de las unidades de participación que me corresponden
+                                en el FONDO DE INVERSION ADMINISTRADO  &nbsp;{!Opp[1]},&nbsp;  en los términos y condiciones establecidos
+                                en el reglamento y las limitaciones que constan detalladas a continuación.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="height:100%">
+                                <table style="border-collapse:collapse; width: 100%; height: 100%" border="1">
+                                    <tbody>
+                                        <tr>
+                                            <td style="height: 200px" class="parContent">&nbsp;</td>
+                                            <td style="height: 200px" class="parContent">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent" style=" width: 50%;" >&nbsp;NOMBRE: &nbsp;&nbsp;{!Acc[0]}
+                                                <br></br>&nbsp;CI:&nbsp;&nbsp;{!Acc[1]}</td>
+                                            <td class="parContent" style=" width: 50%;" >&nbsp;NOMBRE:
+                                                <br></br>&nbsp;CI:</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 200px" class="parContent">&nbsp;</td>
+                                            <td style="height: 200px" class="parContent">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent" style=" width: 50%;" >&nbsp;NOMBRE:
+                                                <br></br>&nbsp;CI:</td>
+                                            <td class="parContent" style=" width: 50%;" >&nbsp;NOMBRE:
+                                                <br></br>&nbsp;CI:</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 200px; width: 50%;" class="parContent" >&nbsp;</td>
+                                            <td style="height: 200px; width: 50%;" class="parContent" >&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent" style=" width: 50%;" >&nbsp;NOMBRE:
+                                                <br></br>&nbsp;CI:</td>
+                                            <td class="parContent" style=" width: 50%;" >&nbsp;NOMBRE:
+                                                <br></br>&nbsp;CI:</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</apex:page>

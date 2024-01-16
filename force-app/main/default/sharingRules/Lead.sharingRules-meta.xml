@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Candidatos_Guayaquil</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Candidatos Guayaquil</label>
+        <sharedTo>
+            <group>Vendedores_Guayaquil</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Ciudad__c</field>
+            <operation>equals</operation>
+            <value>GUAYAQUIL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Candidatos_Quito</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Candidatos Quito</label>
+        <sharedTo>
+            <group>Vendedores_Quito</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Ciudad__c</field>
+            <operation>equals</operation>
+            <value>QUITO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

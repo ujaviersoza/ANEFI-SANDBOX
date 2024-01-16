@@ -1,0 +1,605 @@
+<apex:page extensions="ANEFIContratoIncorpFCPCP1Controller" standardController="Opportunity" language="es-ES" renderAs="pdf"
+    applyBodyTag="false">
+
+    <head>
+        <style type="text/css" media="print">
+            * {
+                font-size: 9px;
+                font-family: Helvetica, sans-serif
+            }
+
+            @page {
+                @top-center {
+                    content: element(header);
+                    font-size: 9px;
+                    font-family: Helvetica, sans-serif;
+                }
+
+                @bottom-center {
+                    content: element(footer);
+
+                }
+            }
+
+
+            div.header {
+                padding: 0px;
+                position: running(header);
+            }
+
+            div {}
+
+            div.footer {
+                display: block;
+                padding: 0px;
+                position: running(footer);
+            }
+
+            .pagenumber:before {
+                content: counter(page);
+            }
+
+            .pagecount:before {
+                content: counter(pages);
+            }
+
+            .parContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 14px;
+
+            }
+
+            .cuentasContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                text-align: left;
+            }
+
+            .vline {
+                border-left: 2px solid black;
+                height: 60px;
+                margin: -80px 0 0 180px;
+            }
+        </style>
+    </head>
+    <div class="header">
+        <img style="width:160px;margin: 20px 0 0 0px;" src="{!$Resource.LogoAnefiPdf}" />
+        <!-- <hr  size="2px" color="black" /> -->
+        <div class="vline"></div>
+        <h4 style="text-align: center; padding-right: 40px; margin: -60px 0 0 0px;font-size: 24px; ">
+            <b style="font-size: 22px;">&nbsp;Contrato de Incorporación</b>
+
+
+        </h4>
+        <div style="text-align: center; padding-right: 40px; margin: 5px 0 0 0px;font-size: 24px; ">Fondo Corto Plazo CP-1</div>
+
+        <!-- <h4 style="text-align: center; padding-right: 40px; margin: -50px 0 0 0px; font-size: 20px; "></h4> -->
+
+        <div class="cuentas" style=";padding: 880px 0px 0 100px">
+
+            <table style="border-collapse: collapse; width: 100%;" border="0">
+                <tbody>
+                    <tr>
+                        <td style="width: 80%; text-align: left;">
+                            <table style="border-collapse: collapse; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="cuentasContent">Checoslovaquia E10—195 y Av. Eloy Alfaro,</td>
+                                        <td class="cuentasContent">Av. Francisco de Orellana, Edificio World</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">Edificio Cuarzo, Sto piso, of. 503 </td>
+                                        <td class="cuentasContent">Trade Center torre B, piso 7 of. 70B</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">(+593) 2 3324-400</td>
+                                        <td class="cuentasContent">(+593) 4 390 6673</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Quito - Ecuador</b>
+                                        </td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Guayaquil -Ecuador</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">@AnefiEcuador</td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">www.anefi.com.ec</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <!-- <img style="width:820px;margin: -175px 0 0 -48px;" src="{!$Resource.PiePagina_Logo}" /> -->
+    </div>
+
+    <div class="content">
+        <!--  Primera pagina -->
+
+        <div style="width: 700px; padding: 60px 0 0 0px ">
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <br></br>
+                            <br></br>
+                            <p class="parContent">
+                                &nbsp;En la ciudad de Quito, a los {!DataDate[0]} dias de {!DataDate[1]} del {!DataDate[2]}, intervienen a la celebración
+                                del presente contrato:
+                            </p>
+                            <h5 class="parContent">CLÁUSULA PRIMERA: COMPARECIENTES.-</h5>
+                            <p class="parContent">
+                                1.1.&nbsp;La compañía ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMISOS debidamente representanda por quien suscribe el presente contrato, a quien en 
+                                adelante se la conocerá como "ANEFI" y/o "ADMINISTRADORA"
+                            </p>
+                            <p class="parContent">
+                                1.2.&nbsp;El/la señor/a &nbsp;&nbsp;{!Acc[0]},&nbsp;&nbsp; a quien en adelante se la conocerá como “INVERSIONISTA
+                                APORTANTE” y/o PARTICIPE
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="parContent">CLÁUSULA SEGUNDA: ANTECEDENTES.-</h5>
+                            <p class="parContent">
+                                2.1&nbsp;ANEFI, es una compañía debidamente inscrita en el Catastro Público del Mercado de Valores, autorizada por la Super
+                                de Compañías, Valores y Seguros, para administrar Fondos de Inversión, como consta de la
+                                Resolución No. SCVS-IRQ-DRMV-SAR-2017-00022057, de fecha 25 de octubre de 2017.
+                            </p>
+                            <p class="parContent">
+                                2.2&nbsp;Mediante escritura pública de fecha 4 de diciembre de 2017, celebrada ante la Notaria Septuagésima Primera, la compañía
+                                ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMISOS constituyó el Fondo de Inversión denominado
+                                FONDO DE INVERSION ADMINISTRADO DE CORTO PLAZO CP GUION UNO (en adelante simplemente FONDO).
+                            </p>
+                            <p class="parContent">
+                                2.3&nbsp;Mediante escritura pública celebrada el 09 de noviembre de 2021, ante la Notaria Septuagésima Primera del Cantón Quito, Doctora Maria Elena Altamirano Palacios, se suscribió una reforma parcial al contrato de constitución del FONDO con la finalidad de reformar el reglamento interno del Fondo.
+                            </p>
+                            <p class="parContent">
+                                2.4&nbsp;Mediante escritura pública celebrada el 02 de diciembre de 2021, ante la Notaria Septuagésima Primera del Cantón Quito, Doctora Maria Elena Altamirano Palacios, se suscribió una segunda reforma parcial al contrato de constitución del FONDO con la finalidad de sustituir el contrato de incorporación al FONDO.
+                            </p>
+
+                            <p class="parContent">
+                                2.5&nbsp;El FONDO es un patrimonio común, integrado por aportes de varios inversionistas, sean estas personas naturales o
+                                jurídicas y las asociaciones de empleados legalmente reconocidas, con el objeto de que la
+                                ADMINISTRADORA por cuenta y orden del INVERSIONISTA gestione y administre los recursos entregados,
+                                de conformidad a lo establecido en la Ley y en el Reglamento interno del Fondo.
+                            </p>
+
+                            <p class="parContent">
+                                2.6.&nbsp;Es intención del INVERSIONISTA APORTANTE invertir los recursos entregados, y que estos sean gestionados y administrados
+                                en los términos y condiciones establecidos en Reglamento Interno del FONDO, el mismo que
+                                ha sido entregado en su debido momento al INVERSIONISTA APORTANTE, quien manifiesta conocer
+                                el Reglamento Interno del FONDO y aceptar el conjunto de normas contenidas en el mismo. La
+                                ADMINISTRADORA se reserva el derecho de modificar el Reglamento Interno sujetándose a las
+                                normas establecidas en la Codificación de Resoluciones de la Junta de Política y Regulación
+                                Monetaria y Crediticia.</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width:100%">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+        </div>
+        <div style="page-break-after: always"></div>
+
+        <div>
+        </div>
+
+
+        <!-- Segunda Pagina -->
+        <div style="width: 700px; padding: 60px 60px 0 0px ">
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td>
+                           <h5 class="parContent">CLÁUSULA TERCERA: INCORPORACION Y MANDATO.-</h5>
+                            <p class="parContent">
+                                Con los antecedentes expuestos el INVERSIONISTA APORTANTE se incorpora al FONDO y aporta recursos que se integran al patrimonio
+                                del FONDO, el cual será administrado por ANEFI con el objeto de integrar los recursos con
+                                los que entreguen otros inversionistas y así constituir un patrimonio común, de acuerdo a
+                                las políticas de inversión establecidas en el Reglamento Interno del FONDO y las demás disposiciones
+                                de Ley, Reglamentos y Resoluciones.
+                            </p>
+                            <p class="parContent">
+                                &nbsp;La responsabilidad que adquiere la ADMINISTRADORA por este mandato es de medio y no de resultado, lo
+                                <br></br>cual es conocido y aceptado por el INVERSIONISTA APORTANTE. La ADMINISTRADORA está facultada
+                                para
+                                <br></br>cobrar, transferir y realizar todo tipo de negociaciones a cualquier título.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="parContent">CLÁUSULA CUARTA: INFORMACION DEL INVERSIONISTA APORTANTE.-</h5>
+                            <p class="parContent">
+                                &nbsp;La información básica del partícipe que mediante el presente contrato se incorpora al Fondo y de la inversión
+                                <br></br>realizada en este acto, es la siguiente:
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="height:100%">
+                                <table style="border-collapse:collapse; width: 100%; height: 100%" border="1">
+                                    <tbody>
+ 
+                                        <tr>
+                                            <td class="parContent">&nbsp;Monto:</td>
+                                            <td class="parContent">&nbsp;&nbsp;$<apex:outputText value="{0, number,###,###,##0.00}">
+                                                    <apex:param value="{!amountOpportunityS}" />
+                                                </apex:outputText>&nbsp;&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Moneda:</td>
+                                            <td class="parContent">&nbsp;&nbsp;Dólares&nbsp;&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Fecha:</td>
+                                            <td class="parContent">&nbsp;&nbsp;
+                                                <apex:outputText rendered="{!NOT(ISBLANK(DataOpp))}" value="{0,date, dd'/'MM'/'yyyy}">
+                                                    <apex:param value="{!DataOpp[0].CloseDate}" />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Número de inversi&oacute;n :</td>
+                                            <td class="parContent">&nbsp;&nbsp;
+                                                <apex:outputText value="{0}" rendered="{!NOT(ISBLANK(Opp[5]) )}">
+                                                    <apex:param value="{!Opp[5]}" />
+                                                </apex:outputText>
+                                             </td>   
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Valor de la inversi&oacute;n (d&oacute;lares):</td>
+                                                
+                                            <td class="parContent">&nbsp;&nbsp;$<apex:outputText value="{0, number, ###,###,##0.00}">
+                                                    <apex:param value="{!amountOpportunityS}" />
+                                                </apex:outputText>&nbsp;&nbsp;</td>
+                                        </tr>
+ 
+                                        <tr>
+                                            <td class="parContent">&nbsp;Nombre o razon social:</td>
+                                            <td class="parContent">
+                                                &nbsp;&nbsp;
+                                                <apex:outputText value="{0}" rendered="{!NOT(ISBLANK(Acc[0]) )}">
+                                                    <apex:param value="{!Acc[0]}" />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Nacionalidad:</td>
+                                            <td class="parContent">
+                                                &nbsp;&nbsp;
+                                                <apex:outputText value="{0}" rendered="{!NOT(ISBLANK(Nac[0]) )}">
+                                                    <apex:param value="{!Nac[0]}" />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Estado civil :</td>
+                                            <td class="parContent">
+                                                &nbsp;&nbsp;
+                                                <apex:outputText value="{0}" rendered="{!AND(CONTAINS(RecTyp[0], 'Persona Natural'), NOT(ISBLANK(Acc[0])) )}">
+                                                    <apex:param value="{!Acc[18]}" />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Direcci&oacute;n:</td>
+                                            <td class="parContent">
+
+                                                &nbsp;&nbsp;
+                                                <apex:outputText value="{0}" rendered="{!NOT(ISBLANK(Dir))}">
+                                                    <apex:param value="{!Dir}" />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;N&deg; C.C / C.I / Pasaporte o Ruc:</td>
+                                            <td class="parContent">
+                                                &nbsp;&nbsp;
+                                                <apex:outputText value="{0}" rendered="{!NOT(ISBLANK(Acc[16]))}">
+                                                    <apex:param value="{!Acc[16]}" />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Nombre del representate legal
+                                                <br/>&nbsp;o apoderado :</td>
+                                            <td class="parContent">
+                                                &nbsp;&nbsp;
+                                                <apex:outputText rendered="{!NOT(ISBLANK( RepresentLegal[0] ))}" value="{0}">
+                                                    <apex:param value="{!if(RepresentLegal[0] != null,RepresentLegal[0],'')}" />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;Cargo del Rep. o Apoderado:</td>
+                                            <td class="parContent">
+                                                &nbsp;&nbsp;
+                                                <apex:outputText rendered="{!NOT(ISBLANK(RepresentLegal[1]))}" value="{0}">
+                                                    <apex:param value="{!if(RepresentLegal[1] != null,RepresentLegal[1],'')}"
+                                                    />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent">&nbsp;C.I del Rep. o Apoderado:</td>
+                                            <td class="parContent">
+                                                &nbsp;&nbsp;
+
+                                                <apex:outputText rendered="{!NOT(ISBLANK(RepresentLegal[2]))}" value="{0}">
+                                                    <apex:param value="{!if( RepresentLegal[2] != null, RepresentLegal[2],'')} "
+                                                    />
+                                                </apex:outputText>
+                                                &nbsp;&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="parContent ">&nbsp;Beneficiarios:</td>
+                                            <td class="parContent ">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="parContent ">CLAUSULA QUINTA: DECLARACIONES.-</h5>
+                            <p class="parContent ">
+                                5.1&nbsp;EL PARTICIPE declara conocer que los fondos de inversión en general, y el FONDO en particular, no puede
+                                <br></br>garantizar una rentabilidad fija sobre los recursos aportados.
+                            </p>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+        </div>
+        <div style="page-break-after: always "></div>
+        <div>
+        </div>
+
+        <!--  Tercera pagina -->
+        <div style="width: 700px; padding: 60px 0 0 0px ">
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="parContent ">
+                                5.2&nbsp;Los aportes del PARTICIPE o inversionistas, podrán realizarse en numerario, cheque efectivizado a favor del fondo
+                                o transferencia a la cuenta que el fondo mantiene para el efecto. De igual manera, el PARTICIPE
+                                o inversionista declara conocer que los agentes y/o distribuidores del FONDO, no pueden recibir
+                                dinero en efectivo o cheques a nombre de ellos, ni tampoco realizar transferencias a las
+                                cuentas personales de los agentes y/o sus distribuidores. Los aportes, por cualquier medio,
+                                deberán depositarse exclusivamente en las cuentas del FONDO DE INVERSION ADMINISTRADO CORTO
+                                PLAZO CP GUION UNO.
+                            </p>
+                            <p class="parContent ">
+                                5.3&nbsp;El PARTICIPE declara que los recursos que entrega a ANEFI por concepto de su inversión tienen origen lícito y que
+                                no proviene de negocios relacionados con el tráfico de estupefacientes o sustancias psicotrópicas.
+                                El PARTICIPE libera a ANEFI de toda responsabilidad en caso de que esta declaración fuere
+                                falsa o inexacta. Ante requerimiento expreso de las autoridades competentes, la ADMINISTRADORA,
+                                dentro de las normas de sigilo bancario, podrá entregar información sobre el partícipe y
+                                sus inversiones.
+                            </p>
+
+                            <p class="parContent ">
+                                5.4&nbsp;El PARTICIPE acepta que la autorización de funcionamiento otorgada por la Superintendencia de Compañías, Valores
+                                y Seguros no implica una recomendación alguna de inversión por parte de ésta.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h5 class="parContent ">CLÁUSULA SEXTA:</h5>
+                            <p class="parContent ">
+                                El FONDO prevé la posibilidad de que el inversionista designe beneficiarios. Por tanto, en caso de que el INVERSIONISTA APORTANTE
+                                hubiere designado beneficiario(s), este(os) será(n) los detallados en la cláusula cuarta
+                                de este contrato, quien(es) tendrá(n) la facultad de hacer retiros parciales o totales de
+                                los recursos netos de su fondo de inversión administrado.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="parContent ">CLÁUSULA SÉPTIMA: HONORARIOS Y GASTOS.-</h5>
+                            <p class="parContent ">
+                                Por concepto del ejercicio del presente mandato, el partícipe reconoce a favor de la Administradora las comisiones y los
+                                gastos que se encuentran detallados en el Reglamento Interno del FONDO. El INVERSIONISTA
+                                APORTANTE declara que la ADMINISTRADORA le ha informado de todos los costos y gastos a cargó
+                                del INVERSIONISTA APORTANTE, de conformidad con el Reglamento Interno del FONDO, los cuales
+                                declara conocer y aceptar de manera expresa.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+
+                            <h5 class="parContent ">CLÁUSULA OCTAVA: PLAZO</h5>
+                            <p class="parContent ">
+                                El presente contrato es de vigencia indefinida. El partícipe podrá cancelarlo de manera unilateral y en cualquier momento
+                                cumpliendo con el aviso previo que establece el Reglamento Interno del FONDO. Por su parte,
+                                la Administradora también tendrá la facultad de cancelar unilateralmente este contrato notificando
+                                por escrito al partícipe con al menos 5 días laborables de anticipación.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100% ">
+                            <h5 class="parContent ">CLÁUSULA NOVENA: NATURALEZA.-</h5>
+                            <p class="parContent ">
+                                El presente contrato es de naturaleza mercantil y las partes lo ratifican por ser conveniente a sus intereses.
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div>
+        </div>
+        <div style="page-break-after: always "></div>
+        <div>
+        </div>
+
+        <!--  Cuarta pagina -->
+
+        <div style="width: 700px; padding: 60px 60px 0 0px ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <h5 class="parContent ">CLÁUSULA DÉCIMA: SERVICIOS ELETRONICOS y CANALES VIRTUALES.-</h5>
+                            <p class="parContent ">
+                                SI <span style="font-weight: bold;text-decoration:underline;font-size:13px"> X  </span>&nbsp;&nbsp;NO ______ deseo contar con los servicios de transacciones electrónicas que ANEFI ponen a
+                                <br></br>disposición de sus partícipes, para lo cual autorizo a ANEFI a debitar de mi inversión
+                                (es) todos los retiros a
+                                <br></br>realizarse a través de los canales tecnológicos con quienes la Administradora suscriba
+                                un convenio para tal
+                                <br></br>efecto, así como los costos que estas transacciones impliquen.
+                            </p>
+                            <p class="parContent ">
+                                El PARTÍCIPE declara que conoce y acepta que la ADMINISTRADORA mantiene a disposición de los PARTICIPES una plataforma de consulta en línea a la cual se puede acceder a través de su página web y que permite al PARTÍCIPE el acceso a consultas y transacciones de sus productos y servicios, dentro de los límites establecidos privativamente por la ADMINISTRADORA.
+                            </p>
+                            <p class="parContent ">
+                                De manera adicional el PARTICIPE declara conocer y aceptar que la ADMINISTRADORA podrá desarrollar y/o contratar canales virtuales, sean estos aplicativos web, móviles, accesos electrónicos, digitales, entre otros, conforme lo establecidos en el numeral 23 del Reglamento Interno del FONDO.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <h5 class="parContent ">CLÁUSULA PRIMERA: NOTIFICACIONES. -</h5>
+                            <p class="parContent ">
+                                El ADMINISTRADOR remitirá a sus PARTÍCIPES, con la periodicidad establecida en la ley, el estado de cuenta y demás información que sea legalmente exigible.
+                            </p>
+                            <p class="parContent ">
+                                La información antes señalada será remitida a las direcciones de correo electrónico establecida(s) en este contrato. De producirse cambios en las direcciones establecidas en el presente contrato el PARTICIPE se obliga a notificar dentro de un plazo máximo de 72 horas, caso contrario se entenderá que no ha ocurrido cambio de domicilio y que por tanto la entrega de información se ha realizado válidamente.
+                            </p>
+                            <h5 class="parContent ">CLÁUSULA DÉCIMA SEGUNDA: CLÁUSULA COMPROMISORIA. -</h5>
+                            <p class="parContent ">
+
+                                El FONDO se somete a la legislación vigente de la República del Ecuador. Toda controversia o diferencia
+                                <br></br>derivada de este contrato será resuelta con la asistencia de un mediador del Centro
+                                de Arbitraje y Mediación de la
+                                <br></br>Cámara de Comercio de Quito. Si las partes no llegaren a un acuerdo total, estas renuncian
+                                fuero y domicilio y
+                                <br></br>acuerdan someter sus controversias a la resolución en derecho de un Tribunal de Arbitraje
+                                de la Cámara de
+                                <br></br>Comercio de Quito que se sujetará a lo dispuesto en la Ley de Arbitraje y Mediación,
+                                el Reglamento del Centro de
+                                <br></br>Arbitraje y Mediación de la Cámara de Comercio de Quito y a las siguientes normas:
+                                <br></br>
+                                <br></br>&nbsp;&nbsp;a. Los árbitros serán seleccionados conforme a lo establecido en la Ley
+                                de Arbitraje y Mediación;
+                                <br></br>&nbsp;&nbsp;b. Las partes renuncian a la jurisdicción ordinaria, se obligan a acatar
+                                el laudo en derecho que expida el Tribunal
+                                <br></br>&nbsp;&nbsp;Arbitral y se comprometen a no interponer ningún tipo de recurso en contra
+                                del laudo arbitral;
+                                <br></br>&nbsp;&nbsp;c. Para la ejecución de medidas cautelares el Tribunal Arbitral está facultado
+                                para solicitar el auxilio de los
+                                <br></br>&nbsp;&nbsp;funcionarios públicos judiciales, policiales y administrativos sin que sea
+                                necesario recurrir a
+                                <br></br>&nbsp;&nbsp;juez ordinario alguno;
+                                <br></br>&nbsp;&nbsp;d. El Tribunal Arbitral estará integrado por un árbitro;
+                                <br></br>&nbsp;&nbsp;e. El procedimiento arbitral será confidencial;
+                                <br></br>&nbsp;&nbsp;f. Los árbitros deberán decidir en derecho; y,
+
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- <div style="page-break-after: always " /> -->
+<!--  Quinta pagina -->
+
+        <div style="width: 700px; padding: 60px 60px 0 0px ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <br></br>
+                    		<br></br>
+            				<br></br>
+							<br></br>
+							<br></br>
+							<br></br>
+                        <p class="parContent ">
+                                El lugar del arbitraje será en las instalaciones del Centro de Arbitraje y Mediación de la Cámara de Comercio de
+                                <br></br>Quito. La reconvención, de haberla, se someterá igualmente al arbitraje
+                            </p>
+                            <p class="parContent ">
+                                Los comparecientes aceptan cada una de las cláusulas que anteceden, en fe de lo cual firman en dos ejemplares
+                                <br></br>de igual tenor en el lugar y fechas indicadas.
+                            </p>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="margin-right: 200px ; ">
+                                <table style="width: 600px; border=0; margin: 150px 0 0 100px ;cellpadding=4 ">
+                                    <tbody>
+                                        
+                                        <tr>
+                                         <td><img style="width:130px;heigth:3px;display: block;" src="{!$Resource.firmaEmpleado3}" /></td>     
+                                        <td class="parContent" ><!--img style="width:100px;heigth:1px;display: block;margin-buttom:0px;margin-top:0px;margin-left: auto;margin-right: auto;padding-top: 0px;padding-buttom: 0px;" src="{!$Resource.firmaVacia}" /--></td>                   
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;
+                                                <b class="parContent ">ADMINISTRADORA</b>
+                                            </td>
+                                            <td>&nbsp;
+                                                <b class="parContent ">PARTICIPE</b>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+						</td>
+                    </tr>
+				</tbody>
+			</table>
+		</div>
+
+    </div>
+
+
+</apex:page>

@@ -1,0 +1,207 @@
+<template>
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col">
+            <article class="slds-card">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-standard-account" title="Consulta y procesamiento de aportes programados">
+                            <lightning-icon icon-name="standard:search" alternative-text="Consulta y procesamiento de aportes programados" size="medium" title="search"></lightning-icon>
+                            <span class="slds-assistive-text">Consulta y procesamiento de aportes programados</span>
+                        </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <a href="#" class="slds-card__header-link slds-truncate" title="Consulta y procesamiento de aportes programados">
+                                    <span>Consulta y procesamiento de aportes programados</span>
+                                </a>
+                            </h2>
+                        </div>
+                    </header>
+                </div>
+            </article>
+        </div>
+        <div class="slds-col">
+            <article class="slds-card">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__body">
+                            <div class="slds-form" role="list">
+                                <div class="slds-form__row">
+                                    <div class="slds-form__item" role="listitem">
+                                        <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                                            <label class="slds-form-element__label" for="horizontal-form-element-id-02">
+                                                <abbr class="slds-required" title="required">* </abbr>Fecha desde
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <lightning-input type="date" name="dateSince" value={dateSince} data-datesince='dateSince' min="1900-01-01" max="2999-12-31" date-style="short"></lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form__item" role="listitem">
+                                        <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                                            <label class="slds-form-element__label" for="horizontal-form-element-id-02">
+                                                <abbr class="slds-required" title="required">* </abbr>Fecha hasta
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <lightning-input type="date" name="dateUntil" value={dateUntil} data-dateuntil='dateUntil' min="1900-01-01" max="2999-12-31" date-style="short"></lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form__row">
+                                    <div class="slds-form__item" role="listitem">
+                                        <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                                            <label class="slds-form-element__label" for="horizontal-form-element-id-02">
+                                                Producto
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <lightning-select data-selectproduct='product'
+                                                    name="Producto"
+                                                    label=""
+                                                    value={products}
+                                                    options={productOptions}>
+                                                </lightning-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form__item" role="listitem">
+                                        <div class="slds-form-element slds-form-element_horizontal slds-is-editing slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                                            <label class="slds-form-element__label" for="horizontal-form-element-id-03">
+                                                Estado
+                                            </label>
+                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                                <lightning-select data-selectstatus='status'
+                                                        name="Estado"
+                                                        label=""
+                                                        value={thestatus}
+                                                        options={statusOptions}>
+                                                </lightning-select> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form__row">
+                                    <div class="slds-form__item" role="listitem">
+                                        <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                                            <label class="slds-form-element__label" for="horizontal-form-element-id-02">
+                                                Código cliente
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <lightning-input type="text" name="codeClient" value={codeClient} data-codeclient='codeClient' placeholder="Código cliente"></lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form__item" role="listitem">
+                                        <div class="slds-form-element slds-form-element_horizontal slds-is-editing slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                                            <div class="slds-grid">
+                                                <div class="slds-col slds-size_1-of-3">
+                                                    <button class="slds-button slds-button_brand" onclick={consultRecords}>Consultar</button>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-3 ">
+                                                    <button class="slds-button slds-button_success" onclick={processRecords}>Procesar registros</button>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-3">
+                                                    <button class="slds-button slds-button_neutral" onclick={exportData}>Exportar registros</button>    
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+            </article>
+        </div>
+        <div class="slds-col">
+            <template if:true={isSpinner}>
+                <div class="spinner">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+            <template if:true={data}>
+                <lightning-datatable data={data} 
+                    columns={columns} 
+                    key-field="Id">
+                </lightning-datatable>
+
+
+                
+                    <table class="slds-table" style="column-width: 100px;">
+                        <tbody>
+                            <tr class="slds-hint-parent">
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 67px !important">
+                                    <div class="slds-cell-wrap">
+                                        <span>Monto Total</span>
+                                    </div>
+                                </td>
+                                <td data-label="Spec File" style="width: 73px !important">
+                                    <lightning-input type="number" step=".01" formatter="currency" value={montoTotal} placeholder="Monto Total" disabled></lightning-input>
+                                </td>
+                                <td data-label="Spec File" style="width: 64px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                                <td data-label="Spec File" style="width: 64px !important">
+                                    <div class="slds-cell-wrap"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+
+                <!-- c-anefi_pagination records={data}  show-table="true" columns={columns} recordsperpage="10" onactions={handleRowActions} onpagination={handlePagination}></c-anefi_pagination -->
+                <!--  Pagination Buttons Start -->
+                <template if:true={divVisible}>
+                <div class="slds-align_absolute-center">
+                    <lightning-button label="Anterior" icon-name="utility:chevronleft" onclick={previousHandler}
+                        disabled={isPreviousDisable}>
+                    </lightning-button>
+                    <span class="slds-badge slds-badge_lightest"
+                        style="margin-right: 10px;margin-left: 10px;">
+                        Mostrando {startingRecord} a {endingRecord} de {totalRecountCount} registros.
+                        Página {page} de {totalPage}.
+                    </span>
+                    <lightning-button label="Siguiente" icon-name="utility:chevronright" icon-position="right" onclick={nextHandler}
+                        disabled={isNextDisable}>
+                    </lightning-button>
+                </div>
+                </template>
+                <!--  Pagination Buttons End -->
+            </template>
+            <!-- template if:true={error}>
+                {error}
+            </template -->
+        </div>
+    </div>
+</template>

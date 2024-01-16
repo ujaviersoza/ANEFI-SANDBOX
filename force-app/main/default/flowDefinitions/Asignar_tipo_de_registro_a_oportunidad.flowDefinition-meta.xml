@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>1</activeVersionNumber>
+    <description>Permite asignar el tipo de registro a una oportunidad dependiendo del tipo de registro del candidato</description>
+    <masterLabel>Flow - Asignar tipo de registro a oportunidad</masterLabel>
+</FlowDefinition>

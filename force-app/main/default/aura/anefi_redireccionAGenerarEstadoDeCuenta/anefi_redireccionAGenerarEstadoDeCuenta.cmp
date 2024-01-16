@@ -1,0 +1,22 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" access="global">
+    <!-- attribute to accept Visualforce page's javascript method -->
+   <aura:attribute name="sendData" type="object"/>
+   <lightning:navigation aura:id="navService"/>
+   <aura:attribute type="String" name="clienteId"/>
+   <aura:attribute type="String" name="codigoProducto"/>
+   <aura:attribute type="String" name="numeroCuentaParticipe"/>
+   <aura:attribute type="String" name="fechaCorte"/>
+   <aura:attribute type="String" name="fechaDesde"/>
+   
+   <aura:attribute type="String" name="urlVisualForcePage"/>
+   
+   <!--Lightning Workspace API-->
+   <lightning:workspaceAPI aura:id="workspace"/>
+
+   <aura:handler name="init" value="{!this}" action="{!c.init}"/> 
+   <!-- Button component to invoke PDF download -->
+   <!--<lightning:button label="Download Document" onclick="{!c.downloadDocument}" />-->
+   
+   <iframe src="{!v.urlVisualForcePage}" width="100%" height="600px" frameBorder="0"/>
+
+</aura:component>

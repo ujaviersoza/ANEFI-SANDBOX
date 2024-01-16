@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Posgrado</fullName>
+        <default>false</default>
+        <label>Posgrado</label>
+    </customValue>
+    <customValue>
+        <fullName>Universitario</fullName>
+        <default>false</default>
+        <label>Universitario</label>
+    </customValue>
+    <customValue>
+        <fullName>Tecnólogo</fullName>
+        <default>false</default>
+        <label>Tecnólogo</label>
+    </customValue>
+    <customValue>
+        <fullName>Técnico</fullName>
+        <default>false</default>
+        <label>Técnico</label>
+    </customValue>
+    <customValue>
+        <fullName>Bachiller</fullName>
+        <default>false</default>
+        <label>Bachiller</label>
+    </customValue>
+    <masterLabel>Nivel de estudios</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

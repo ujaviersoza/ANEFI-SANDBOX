@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Procesar aportes</label>
+    <protected>false</protected>
+    <values>
+        <field>Body__c</field>
+        <value xsi:type="xsd:string">{
+  &quot;data&quot;: {
+    &quot;codigoAgencia&quot;: &quot;1&quot;,
+    &quot;canal&quot;: &quot;CRM&quot;,
+    &quot;tipo&quot;: &quot;IP_PROG&quot;
+  }
+}</value>
+    </values>
+    <values>
+        <field>Endpoint__c</field>
+        <value xsi:type="xsd:string">http://129.153.151.211:8100/gestor-api-rest/gw/empresas/1/productos/ProductosVal/participes/ParticipesVal/aportesProgramados/NumeroCuentaVal/NumeroAporteProgramadoVal/SecuenciaAporteVal</value>
+    </values>
+    <values>
+        <field>GestorTokenApp__c</field>
+        <value xsi:type="xsd:string">anefi</value>
+    </values>
+    <values>
+        <field>GestorTokenEnv__c</field>
+        <value xsi:type="xsd:string">cHJ1ZWJh</value>
+    </values>
+    <values>
+        <field>Method__c</field>
+        <value xsi:type="xsd:string">POST</value>
+    </values>
+    <values>
+        <field>PageSize__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

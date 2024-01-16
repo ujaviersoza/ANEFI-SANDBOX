@@ -1,0 +1,24 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <lightning-progress-indicator current-step={etapaActual} type="path" variant="base">
+            <template for:each={etapas} for:item="etapa">
+                <lightning-progress-step key={etapa.nombre} label={etapa.nombre} value={etapa.nombre}
+                    onstepfocus={handleCambioEtapa}>
+                </lightning-progress-step>
+            </template>
+        </lightning-progress-indicator>
+        <p>Campos Clave</p>
+        <template for:each={objetosClaveActuales} for:item="objeto">
+            <lightning-record-edit-form key={objeto.id} record-id={objeto.id} object-api-name={objeto.apiName}>
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <template for:each={objeto.camposClave} for:item="campo">
+                        <div key={campo} class="slds-col slds-size_1-of-3">
+                            <lightning-input-field field-name={campo} required>
+                            </lightning-input-field>
+                        </div>
+                    </template>
+                </div>
+            </lightning-record-edit-form>
+        </template>
+    </div>
+</template>

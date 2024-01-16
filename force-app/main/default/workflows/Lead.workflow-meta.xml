@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Asignar_persona_juridica</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Persona_Juridica</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Asignar persona jurídica</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Asignar_record_type</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Persona_Natural</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Asignar record type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

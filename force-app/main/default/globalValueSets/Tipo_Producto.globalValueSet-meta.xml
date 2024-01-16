@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>E</fullName>
+        <default>false</default>
+        <label>ENCARGO FIDUCIARIO</label>
+    </customValue>
+    <customValue>
+        <fullName>A</fullName>
+        <default>false</default>
+        <label>FIDEICOMISO DE ADMINISTRACIÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>G</fullName>
+        <default>false</default>
+        <label>FIDEICOMISO DE GARANTÍA</label>
+    </customValue>
+    <customValue>
+        <fullName>I</fullName>
+        <default>false</default>
+        <label>FIDEICOMISO DE INVERSIÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>T</fullName>
+        <default>false</default>
+        <label>FIDEICOMISO DE TITULARIZACIÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>M</fullName>
+        <default>false</default>
+        <label>FIDEICOMISO INMOBILIARIO</label>
+    </customValue>
+    <customValue>
+        <fullName>F</fullName>
+        <default>false</default>
+        <label>FONDO DE INVERSIÓN</label>
+    </customValue>
+    <masterLabel>Tipo Producto</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

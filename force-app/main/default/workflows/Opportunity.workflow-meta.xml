@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>AlertaNotificacionCierreOportunidadGanadaJuridica</fullName>
+        <ccEmails>ihernandez.cevallos@intellectsystem.net</ccEmails>
+        <description>Alerta notificación cierre de oportunidad ganada (Jurídica)</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>DirectoresComercialesJuridico</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>infomail@anefi.com.ec</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Oportunidad_Notificacion_Cierre_Ganado_membrete</template>
+    </alerts>
+    <alerts>
+        <fullName>AlertaNotificacionCierreOportunidadGanadaNatural</fullName>
+        <ccEmails>ihernandez.cevallos@gmail.com</ccEmails>
+        <description>Alerta notificación cierre de oportunidad ganada (Natural)</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>DirectoresComercialesNatural</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>infomail@anefi.com.ec</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Oportunidad_Notificacion_Cierre_Ganado_membrete</template>
+    </alerts>
+    <alerts>
+        <fullName>AlertaNotificacionCierreOportunidadPerdidaJuridica</fullName>
+        <ccEmails>ihernandez.cevallos@intellectsystem.net</ccEmails>
+        <description>Alerta notificación cierre oportunidad perdida (Jurídica)</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>DirectoresComercialesJuridico</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>infomail@anefi.com.ec</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Oportunidad_Notificacion_cierre_perdido_membrete</template>
+    </alerts>
+    <alerts>
+        <fullName>AlertaNotificacionCierreOportunidadPerdidaNatural</fullName>
+        <ccEmails>ihernandez.cevallos@gmail.com</ccEmails>
+        <description>Alerta notificación cierre oportunidad perdida (Natural)</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>DirectoresComercialesNatural</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>infomail@anefi.com.ec</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Oportunidad_Notificacion_cierre_perdido_membrete</template>
+    </alerts>
+    <alerts>
+        <fullName>Alerta_notificacion_asignacion_de_oportunidad</fullName>
+        <description>Alerta notificación asignación de oportunidad</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>infomail@anefi.com.ec</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Oportunidad_Notificacion_asignacion_oportunidad_membrete</template>
+    </alerts>
+    <alerts>
+        <fullName>Alerta_notificacion_cierre_de_oportunidad_ganada</fullName>
+        <description>Alerta notificación cierre de oportunidad ganada</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Directora_Comercial</recipient>
+            <type>role</type>
+        </recipients>
+        <senderAddress>infomail@anefi.com.ec</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Oportunidad_Notificacion_Cierre_Ganado_membrete</template>
+    </alerts>
+    <alerts>
+        <fullName>Alerta_notificacion_cierre_oportunidad_perdida</fullName>
+        <description>Alerta notificación cierre oportunidad perdida</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Directora_Comercial</recipient>
+            <type>role</type>
+        </recipients>
+        <senderAddress>infomail@anefi.com.ec</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Oportunidad_Notificacion_cierre_perdido_membrete</template>
+    </alerts>
+</Workflow>

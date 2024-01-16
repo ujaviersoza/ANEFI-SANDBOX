@@ -1,0 +1,10 @@
+<aura:component implements="lightning:homeTemplate" description="Plantilla personalizada para la pagina de inicio">
+	<aura:attribute name="center" type="Aura.Component[]" />
+    <div aura:id="container">
+        <lightning:layout>            
+            <lightning:layoutItem size="12">
+                {!v.center}
+            </lightning:layoutItem>            
+        </lightning:layout>
+    </div>
+</aura:component>

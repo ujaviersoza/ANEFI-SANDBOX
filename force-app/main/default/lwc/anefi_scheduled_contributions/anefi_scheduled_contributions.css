@@ -1,0 +1,19 @@
+.slds-button_brand, .slds-button--brand {
+    background-color: #1B96FF !important;
+    border-color: #1B96FF !important;
+}
+
+.slds-button_brand:hover {
+    background-color: #0176D3 !important;
+    border-color: #0176D3 !important;
+}
+
+.slds-button_success, .slds-button--success {
+    color: #FFFFFF !important;
+    border-color: #45C600 !important;
+}
+
+.slds-modal__container {
+    width: 100% !important;
+    max-width: 100rem;
+}

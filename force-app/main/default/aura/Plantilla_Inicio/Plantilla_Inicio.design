@@ -1,0 +1,6 @@
+<design:component label="Plantilla personalizada para la pagina de inicio">
+    <flexipage:template>        
+        <flexipage:region name="center" defaultWidth="Xlarge" />        
+    </flexipage:template>
+	
+</design:component>

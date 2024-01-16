@@ -1,0 +1,26 @@
+.seccion-campos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.hijo-campo{
+    width: 32%;
+    max-width: 32%;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.checkbox-input-field{
+    width: 32%;
+    max-width: 32%;
+    padding-top: 2%;
+    padding-left: 6%;
+}
+
+@media (max-width: 600px) {
+    .hijo-campo{
+        width: 96%;
+        max-width: 96%;
+    }
+  }

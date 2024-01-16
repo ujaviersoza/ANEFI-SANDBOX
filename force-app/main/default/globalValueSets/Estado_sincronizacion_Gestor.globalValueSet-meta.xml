@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>SIN SINCRONIZAR</fullName>
+        <default>false</default>
+        <label>SIN SINCRONIZAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SINCRONIZADO OK</fullName>
+        <default>false</default>
+        <label>SINCRONIZADO OK</label>
+    </customValue>
+    <customValue>
+        <fullName>SINCRONIZANDO</fullName>
+        <default>false</default>
+        <label>SINCRONIZANDO</label>
+    </customValue>
+    <customValue>
+        <fullName>ERROR SINCRONIZACIÓN</fullName>
+        <default>false</default>
+        <label>ERROR SINCRONIZACIÓN</label>
+    </customValue>
+    <description>Estado de sincronización de oportunidades y cliente en Gestor Web</description>
+    <masterLabel>Estado sincronización Gestor</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

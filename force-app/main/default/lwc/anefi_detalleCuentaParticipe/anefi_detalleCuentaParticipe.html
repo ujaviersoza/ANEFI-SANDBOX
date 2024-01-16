@@ -1,0 +1,56 @@
+<template>
+    <div
+        class="slds-grid slds-gutters_x-large slds-wrap slds-grid_vertical-align-center slds-grid_align-center slds-var-p-around_medium">
+        <div class="slds-col slds-size_full">
+            <lightning-card title="Detalle Cuenta de Partícipe" icon-name="action:info">
+                <div class="dlle-cta-participe">
+                    <div class="btn-regresar"> 
+                        <lightning-button label="Regresar" variant="neutral" onclick={handleRegresar}>
+                        </lightning-button>
+                    </div>                
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Número de cuenta</p>
+                            <p class="underline">{numeroCuenta}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Código de producto</p>
+                            <p class="underline">{codigoProducto}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Nombre producto</p>
+                            <p class="underline">{nombreProducto}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Código Agencia</p>
+                            <p class="underline">{codigoAgencia}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Nombre Agencia</p>
+                            <p class="underline">{nombreAgencia}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Código Trader</p>
+                            <p class="underline">{codigoTrader}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Nombre Trader</p>
+                            <p class="underline">{nombreTrader}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Fecha Apertura</p>
+                            <p class="underline">{fechaApertura}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <p class="slds-text-body_small">Estado</p>
+                            <p class="underline">{estado}</p>
+                        </div>
+                    </div> 
+                </div>
+                
+            </lightning-card>
+        </div>
+    </div>
+
+
+</template>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Fondos</fullName>
+        <default>false</default>
+        <label>Fondos</label>
+    </customValue>
+    <customValue>
+        <fullName>Negocios Fiduciarios</fullName>
+        <default>false</default>
+        <label>Negocios Fiduciarios</label>
+    </customValue>
+    <masterLabel>Línea de nogocio</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

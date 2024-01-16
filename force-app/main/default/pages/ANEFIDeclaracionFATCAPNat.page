@@ -1,0 +1,313 @@
+<apex:page extensions="ANEFIDeclaracionFatcaPN" renderAs="pdf" applyBodyTag="false" standardController="Opportunity">
+
+    <head>
+        <style type="text/css" media="print">
+            * {
+                font-size: 9px;
+                font-family: Helvetica, sans-serif
+            }
+
+
+            @page {
+                @top-center {}
+
+                @bottom-center {}
+                @bottom-left {
+                    content: element(footer);
+
+                }
+            }
+
+            @page :first {
+                @top-center {
+                    content: element(header);
+                }
+                @bottom-left {}
+            }
+
+
+
+            div.header {
+                padding: 0px;
+                position: running(header);
+            }
+
+            div {}
+
+            div.footer {
+                display: block;
+                padding: 0px;
+                position: running(footer);
+            }
+
+            .pagenumber:before {
+                content: counter(page);
+            }
+
+            .pagecount:before {
+                content: counter(pages);
+            }
+
+            .parContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 14px;
+
+            }
+
+            .parContentLight {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 11px;
+
+            }
+
+            .parContentMicro {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                font-style: italic;
+
+
+            }
+
+            .cuentasContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                text-align: left;
+            }
+
+            .vline {
+                border-left: 2px solid black;
+                height: 60px;
+                margin: -80px 0 0 180px;
+            }
+        </style>
+    </head>
+    <div class="header">
+        <img style="width:160px;margin: 20px 0 0 0px;" src="{!$Resource.LogoAnefiPdf}" />
+        <!-- <hr  size="2px" color="black" /> -->
+        <div class="vline"></div>
+
+        <div style="text-align: center; margin: -60px 0 0 -100px;font-size: 24px; ">&nbsp;Declaración FATCA</div>
+        <h4 style="text-align: center; margin: 5px 135px 0 0px;font-size: 22px; ">&nbsp;Persona Natural </h4>
+        <!-- <h4 style="text-align: center; margin: -60px 0 0 -215px;font-size: 24px; ">&nbsp;Formulario</h4>
+        <div style="text-align: center; margin: 5px 80px 0 0px;font-size: 22px; ">Origen Lícito de Recursos</div> -->
+
+        <!-- <h4 style="text-align: center; padding-right: 40px; margin: -50px 0 0 0px; font-size: 20px; "></h4> -->
+
+        <!-- <div class="cuentas" style=";padding: 880px 0px 0 100px">
+
+            <table style="border-collapse: collapse; width: 100%;" border="0">
+                <tbody>
+                    <tr>
+                        <td style="width: 80%; text-align: left;">
+                            <table style="border-collapse: collapse; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="cuentasContent">Checoslovaquia E10—195 y Av. Eloy Alfaro,</td>
+                                        <td class="cuentasContent">Av. Francisco de Orellana, Edificio World</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">Edificio Cuarzo, Sto piso, of. 503 </td>
+                                        <td class="cuentasContent">Trade Center torre B, piso 7 of. 70B</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">(+593) 2 3324-400</td>
+                                        <td class="cuentasContent">(+593) 4 390 6673</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Quito - Ecuador</b>
+                                        </td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Guayaquil -Ecuador</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">@AnefiEcuador</td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">www.anefi.com.ec</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div> -->
+
+    </div>
+
+    <div class="footer">
+        <apex:outputText value="Fecha de actualización {0,date,MMMM, YYYY}">
+            <apex:param value="{!TODAY()}" />
+        </apex:outputText>
+        <!-- <img style="width:820px;margin: -175px 0 0 -48px;" src="{!$Resource.PiePagina_Logo}" /> -->
+    </div>
+
+    <div class="content">
+        <!--  Primera pagina -->
+        <!-- <h4 style="text-align: center; margin: -300px 0 0 -60px;font-size: 24px; ">&nbsp;Condiciones de Firmas</h4> -->
+        <div style="width: 700px; padding: 60px 0 0 0px ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="parContent">
+                                <br></br>
+                                <br></br>
+                                <b class="parContent">A. </b><span style="font-weight: bold;text-decoration:underline;font-size:13px">( X )</span> A través del presente documento,
+                                el cliente declara que NO es una persona estadounidense (1) para efectos de la Ley de Cumplimiento
+                                Tributario de Cuentas Extranjeras - FATCA (por sus siglas en inglés) y que no está actuando
+                                en nombre y representación de una persona estadounidense. Una declaración falsa en este sentido
+                                puede ser sujeta a las penalidades previstas en las leyes de los EE.UU. El cliente declara
+                                además que si su situación impositiva se modifica convirtiéndose en ciudadano o residente
+                                de los EE.UU., deberá comunicar a ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMISOS de este
+                                hecho en un plazo no mayor a 30 días desde que el mismo se hubiera producido.
+                                <br></br>
+                                <br></br>
+
+                            </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <p class="parContent" >
+                                <b class="parContent">B. </b> (___) (marcar con una X en caso de corresponder). El cliente declara que SI es una
+                                persona estadounidense (1), adjuntando el Formulario W-9 correcta y completamente lleno.
+                                El cliente por la presente manifesta que presta consentimiento y autoriza expresamente a
+                                ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMISOS para entregar al Servicio de Rentas Internas
+                                de los Estados Unidos de América (Internal Revenue Service (IRS)), información respecto de
+                                su persona y/o de los negocios fiduciarios que el cliente mantiene en la compañía. Asimismo,
+                                el cliente reconoce y acepta expresamente que el envío de dicha información al IRS en el
+                                marco de la presente autorización no constituye una vulneración por parte de ANEFI S.A. ADMINISTRADORA
+                                DE FONDOS Y FIDEICOMISOS al sigilo bursátil previsto en las normas ecuatorianas, especialmente
+                                a lo previsto en la Disposición General Quinta de la Ley de Mercado de Valores contenida
+                                en el Libro II del Código Orgánico Monetario y Financiero, y que dicho envío se lo realiza
+                                en cumplimiento de la normativa FATCA, en su condición de institución financiera extranjera
+                                participante, conforme a lo previsto en dicha Ley.
+                                <br></br>
+                                <br></br>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5><b>
+                                <p class="parContent" >
+                                
+                                    Firma: ___________________________________
+                                    <br></br>
+                                    <br></br>
+                                    Nombres Completos: <span style="font-weight: bold;text-decoration:underline;font-size:10px"> {!nameAcc}</span>
+                                    <br></br>
+                                    <br></br>
+                                    Fecha:  <span style="font-weight: bold;text-decoration:underline;font-size:10px"> <apex:outputText value="{0,date,d'/'MM'/'yyyy}">
+                                                   <apex:param value="{!TODAY()}" />
+                                                </apex:outputText>
+											</span>
+                                    <br></br>
+                                    <br></br>
+                                </p>
+                            </b>
+                            </h5>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="parContentLight" >
+                                Nota: Si es una Persona Estadounidense deberá adicionalmente firmar el FormW-9.
+                                <br></br>
+                                <br></br>
+                                1 Persona Estadounidense para la Ley FACTA: es un Individuo que reúne alguna de las siguientes características:
+                                <br></br>
+                                <br></br>
+                                1) Ciudadano estadounidense con pasaporte estadounidense,
+                                <br></br>
+                                2) Residente estadounidense con tarjeta de residencia (Green Card) y
+                                <br></br>
+                                3) Residente parcial (183 días en 1 año calendario, o 122 días en promedio en los últimos tres años calendario).
+                                <br></br>
+                            </p>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- <div style="page-break-after: always" /> -->
+
+        <!-- Segunda Pagina -->
+        <!-- 
+        <div style="width: 700px; padding: 60px 60px 0 0px ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h5>
+                                Firma: ___________________________________
+                                <br></br>
+                                <br></br>
+                                Nombres Completos: _______________________
+                                <br></br>
+                                <br></br>
+                                Fecha: _________________
+                                <br></br>
+                                <br></br>
+                            </h5>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="border:1px solid #000; width: 100%;   ">
+                                <tr>
+                                    <td>
+                                        <p class="parContentMicro">
+                                            Nota: Si es una Persona Estadounidense deberá adicionalmente firmar el FormW-9.
+                                            <br></br>
+                                            <br></br>
+                                            1 Persona Estadounidense para la Ley FACTA: es un Individuo que reúne alguna de las siguientes características:
+                                            <br></br>
+                                            <br></br>
+                                            1) Ciudadano estadounidense con pasaporte estadounidense,
+                                            <br></br>
+                                            2) Residente estadounidense con tarjeta de residencia (Green Card) y
+                                            <br></br>
+                                            3) Residente parcial (183 días en 1 año calendario, o 122 días en promedio en los últimos tres años calendario).
+                                            <br></br>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div> -->
+
+    </div>
+
+
+</apex:page>

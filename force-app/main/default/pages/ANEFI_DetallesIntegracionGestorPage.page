@@ -1,0 +1,41 @@
+<apex:page lightningStylesheets="true" standardController="Opportunity" extensions="ANEFI_DetallesIntegracionGestorCC">
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />  
+    <apex:slds />
+    <!-- Recurso estático para indicar que se está ejecutando una acción en la página -->
+    <c:ANEFI_StatusLoading />
+    <style>    	      
+    </style>    
+    <div class="slds-scope div_informacion_sinc">       
+        <apex:form id="formDetallesSincronizacion">        
+            <div class="slds-form-element ">                                     
+                <label class="slds-form-element__label" >                        
+                    <span style="font-weight: bold;">Estado de sincronización: </span>
+                    <span style="color:#2b675a;">{!oportunidadSeleccionada.Estado_sincronizacion_Gestor__c}</span>
+                </label>
+                <label class="slds-form-element__label" >                        
+                    <span style="font-weight: bold;">Fecha de sincronización: </span>
+                    <apex:outputText value="{0,date,dd'/'MM'/'yyyy}" style="color:#2b675a;">
+                        <apex:param value="{!oportunidadSeleccionada.Fecha_de_sincronizacion_en_Gestor__c}" /> 
+                    </apex:outputText>                    
+                </label> 
+                <label class="slds-form-element__label">
+                    <apex:outputLabel style="font-weight: bold;color:#2b675a;" value="El cliente se encuentra bloqueado en listas negras de Gestor" rendered="{!oportunidadSeleccionada.Bloqueado_en_listas_negras_de_Gestor__c}"></apex:outputLabel>
+                    <apex:outputLabel style="font-weight: bold;color:#2b675a;" value="El cliente no se encuentra bloqueado en listas negras de Gestor" rendered="{!!oportunidadSeleccionada.Bloqueado_en_listas_negras_de_Gestor__c}"></apex:outputLabel>
+                </label>
+                <label class="slds-form-element__label" >  
+                    <apex:outputLabel style="font-weight: bold;" value="Código de persona en Gestor:" rendered="{!oportunidadSeleccionada.Estado_sincronizacion_Gestor__c = 'SINCRONIZADO OK'}"></apex:outputLabel>
+                    <apex:outputLabel style="color:#2b675a;" value="{!oportunidadSeleccionada.Account.Codigo_persona_en_Gestor__c}" rendered="{!oportunidadSeleccionada.Estado_sincronizacion_Gestor__c = 'SINCRONIZADO OK'}"></apex:outputLabel>                                       
+                </label>
+                <label class="slds-form-element__label" >  
+                    <apex:outputLabel style="font-weight: bold;" value="Número cuenta participe:" rendered="{!oportunidadSeleccionada.Estado_sincronizacion_Gestor__c = 'SINCRONIZADO OK' && oportunidadSeleccionada.Numero_cuenta_de_participe__c != null}"></apex:outputLabel>
+                    <apex:outputLabel style="color:#2b675a;" value="{!oportunidadSeleccionada.Numero_cuenta_de_participe__c}" rendered="{!oportunidadSeleccionada.Estado_sincronizacion_Gestor__c = 'SINCRONIZADO OK' && oportunidadSeleccionada.Numero_cuenta_de_participe__c != null}"></apex:outputLabel>                                       
+                </label>
+                <label class="slds-form-element__label" >  
+                    <apex:outputLabel style="font-weight: bold;" value="Número transacción aporte:" rendered="{!oportunidadSeleccionada.Estado_sincronizacion_Gestor__c = 'SINCRONIZADO OK' && oportunidadSeleccionada.Numero_transaccion_aporte_en_gestor__c != null}"></apex:outputLabel>
+                    <apex:outputLabel style="color:#2b675a;" value="{!oportunidadSeleccionada.Numero_transaccion_aporte_en_gestor__c}" rendered="{!oportunidadSeleccionada.Estado_sincronizacion_Gestor__c = 'SINCRONIZADO OK' && oportunidadSeleccionada.Numero_transaccion_aporte_en_gestor__c != null}"></apex:outputLabel>                                       
+                </label>
+                <apex:commandButton action="{!sincronizarOportunidadEnGestor}" value="Sincronizar en Gestor" rendered="{!habilitarBotonSincronizacionManual}" reRender="formDetallesSincronizacion" onclick="showLoadingDialog();" oncomplete="hideLoadingDialog();"  />
+            </div>            
+        </apex:form>
+    </div>
+</apex:page>

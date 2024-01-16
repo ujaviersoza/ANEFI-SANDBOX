@@ -1,0 +1,502 @@
+<apex:page extensions="ANEFISolicitudRescateController" standardController="ANEFI_Rescates_Programados__c" language="es-ES"
+    renderAs="pdf" applyBodyTag="false">
+
+
+    <head>
+        <style type="text/css" media="print">
+            * {
+                font-size: 8px;
+                font-family: Helvetica, sans-serif
+            }
+
+            @page {
+                @top-center {
+                    content: element(header);
+                    font-size: 8px;
+                    font-family: Helvetica, sans-serif;
+                }
+
+                @bottom-center {
+                    content: element(footer);
+
+                }
+            }
+
+
+            div.header {
+                padding: 0px;
+                position: running(header);
+            }
+
+            div {}
+
+            div.footer {
+                display: block;
+                padding: 0px;
+                position: running(footer);
+            }
+
+            .pagenumber:before {
+                content: counter(page);
+            }
+
+            .pagecount:before {
+                content: counter(pages);
+            }
+
+            .parContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px;
+
+            }
+            
+            .parContentSpecial {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px;
+                display: flex;
+
+            }
+
+            .parContentLight {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 9px;
+
+            }
+
+            .cuentasContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 9px;
+                text-align: left;
+            }
+
+            .vline {
+                border-left: 2px solid black;
+                height: 40px;
+                margin: -80px 0 0 180px;
+            }
+        </style>
+    </head>
+    <div class="header">
+        <img style="width:160px;margin: 20px 0 0 0px;" src="{!$Resource.LogoAnefiPdf}" />
+        <!-- <hr  size="2px" color="black" /> -->
+        <div class="vline"></div>
+        <!-- <h4 style="text-align: center; margin: -60px 0 0 -215px;font-size: 24px; ">&nbsp;Solicitud de Rescate</h4> -->
+        <div style="text-align: center; margin: -30px 120px 0 0px;font-size: 22px; ">Solicitud de Rescate</div>
+        <div style="text-align: center; margin: 0px -350px 0 0px;font-size: 16px; ">Fecha: {!rescate[1]}</div>
+
+    </div>
+
+    <div class="footer">
+        <!-- <apex:outputText value="Fecha de actualización {!DataDate[1]} de {!DataDate[2]}" /> -->
+
+        <!-- <img style="width:820px;margin: -175px 0 0 -48px;" src="{!$Resource.PiePagina_Logo}" /> -->
+    </div>
+
+    <div class="content">
+        <!--  Primera pagina -->
+
+        <div style="width: 700px; padding: 60px 0 0 0px ">
+            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="0">
+                <tbody>
+                    <tr>
+                        <td class="parContent" colspan="5">
+                            <p class="parContent">
+                                &nbsp;Solicito de ustedes el rescate de la inversión que mantengo de acuerdo al siguiente detalle:
+
+                            </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">
+                            <b class="parContent">
+                                &nbsp;1.- Datos del aportante
+                                <br></br>
+                            </b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">
+                            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent" style="width: 30%;">&nbsp;Nombre / Razon Social:</td>
+                                        <td class="parContent" style="width: 70%;">&nbsp;{!acc[0]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContent" style="width: 30%;">&nbsp;C.I / RUC</td>
+                                        <td class="parContent" style="width: 70%;">&nbsp;{!acc[1]}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5" style="border-collapse: collapse; width: 100%; border-color: black;" border="1">
+
+                            <b class="parContent">
+                                <br></br>
+                                &nbsp;2.- Descripción del rescate
+                            </b>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">&nbsp;
+
+                            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;Fondo CP-1:
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                        if(rescate[2]=='CP-1','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                    width="15px" height="14px" />
+                                                
+                                            </b>
+                                        </td>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;Fondo FS-2:
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[2]=='FS-2','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                                
+                                            </b>
+
+                                        </td>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;Fondo FM-3:
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[2]=='FM-3','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                            </b>
+
+                                        </td>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;Fondo Óptimo:
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[2]=='Optimo','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                            </b>
+
+                                        </td>
+
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;FAS 5:
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[2]=='FAS 5','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                            </b>
+
+                                        </td>                                        
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;Cuenta: {!rescate[3]}
+                                            </b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">&nbsp;
+
+                            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;Tipo de Rescate:
+                                            </b>
+                                        </td>
+                                        <td class="parContentSpecial">&nbsp;Parcial:
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[4]=='PAR','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                        </td>
+                                        <td class="parContentSpecial">&nbsp;Total:
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[4]=='TOT','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+
+
+                                        </td>
+
+                                        <td class="parContent">&nbsp;Rendimiento:
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[4]=='REN','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">&nbsp;
+
+                            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                &nbsp;Frecuencia:
+                                            </b>
+                                        </td>
+                                        <td class="parContent">&nbsp;Mensual</td>
+                                        <td class="parContent">&nbsp;Bimensual</td>
+                                        <td class="parContent">&nbsp;Trimestral</td>
+                                        <td class="parContent">&nbsp;Semestral</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5" style="border-collapse: collapse; width: 100%; border-color: black;" border="1">
+
+                            <b class="parContent">
+                                <br></br>
+                                &nbsp;Día de pago: &nbsp;{!rescate[1]}
+                            </b>
+                        </td>
+                        <!-- <td class="parContent" colspan="3"></td> -->
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">
+
+                            <b class="parContent">
+                                <br></br>
+                                &nbsp;3.- Valor del rescate
+                            </b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">
+                            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent" style="width: 20%;">&nbsp;Valor en números:</td>
+                                        <td class="parContent" style="width: 80%;">&nbsp;{!rescate[5]}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </td>
+                        <br></br>
+                            <b class="parContent">
+                                En caso de rescate total, el valor del rendimiento podrá variar hasta la fecha de pago. 
+                                En su estado de cuenta podrá consultar los valores &nbsp;finales rescatados.
+                            </b>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table style="width: 100%;border-collapse: collapse; width: 100%;" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                <br></br>
+                                                &nbsp;4.- Forma de Pago
+                                            </b>
+                                        </td>
+                                        <td class="parContent">
+                                            <b class="parContent">
+                                                <br></br>
+                                                <br></br>
+                                                &nbsp;Transferencia:
+                                                <!-- Marcado en true por solicitud de Anefi!  -->
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                        if(true,'checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                    width="15px" height="14px" />
+                                            </b>
+                                        </td>
+                                        <td class="parContent">
+                                            <b class="parContent">
+                                                <br></br>
+                                                <br></br>
+                                                &nbsp;Cheque:
+                                            </b>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">&nbsp;
+                            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent" style="width: 30%;">&nbsp;C.I / RUC titular cuenta:</td>
+                                        <td class="parContent" style="width: 70%;">&nbsp;{!rescate[6]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContent" style="width: 30%;">&nbsp;Titular de la cuenta:</td>
+                                        <td class="parContent" style="width: 70%;">&nbsp;{!rescate[7]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContent" style="width: 30%;">&nbsp;Banco:</td>
+                                        <td class="parContent" style="width: 70%;">&nbsp;{!rescate[8]}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="5">
+
+                            <table style="width: 100%;border-collapse: collapse; width: 100%;" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent">
+
+                                            <b class="parContent">
+                                                <br></br>
+                                                &nbsp;Tipo de Cuenta
+                                            </b>
+                                        </td>
+                                        <td class="parContent">
+                                            <b class="parContent">
+                                                <br></br>
+                                                &nbsp;Ahorros:
+                                                    
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[9]=='Ahorro','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                            </b>
+                                        </td>
+                                        <td class="parContent">
+                                            <b class="parContent">
+                                                <br></br>
+                                                &nbsp;Corriente:
+                                                
+                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                    if(rescate[9]=='Cheque','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                width="15px" height="14px" />
+                                            </b>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" colspan="5">&nbsp;
+
+
+                            <table style="border-collapse: collapse; width: 100%; border-color: black;" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent" style="width: 20%;">&nbsp;Número de cuenta:</td>
+                                        <td class="parContent" style="width: 80%;">&nbsp;{!rescate[10]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContent" style="width: 20%;">&nbsp;Fecha de pago:</td>
+                                        <td class="parContent" style="width: 80%;">&nbsp;{!rescate[1]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContent" style="width: 20%;">&nbsp;Transaccion N°:</td>
+                                        <td class="parContent" style="width: 80%;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContent" rowspan="2" style="width: 20%;">&nbsp;Observaciones:</td>
+                                        <td class="parContent" rowspan="2" style="width: 80%;">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="parContent" colspan="5">
+
+                            <p class="parContentLight" style="margin-rigth:10px">El rescate solicitado a través del presente instrumento se lo realiza de acuerdo a los plazos,
+                                términos y condiciones establecidos en el Reglamento Interno del Fondo. En tal sentido, el
+                                firmante acepta los costos que se generen por la presente transacción. Los firmantes declaran
+                                expresamente que los recursos que se me entreguen en virtud de los rescates que realice,
+                                no provienen ni serán destinados a la financiación de actividades terroristas o ilícitas.
+                                En caso de que se inicien investigaciones sobre los firmantes relacionadas con las actividades
+                                antes señaladas o de producirse transacciones inusuales o injustificadas, ANEFI S.A. podrá
+                                proporcionar a las autoridades competentes toda la información que tenga sobre las mismas
+                                o que le sea requerida. En tal sentido, los firmantes renuncian a presentar en contra de
+                                ANEFI S.A. o de sus funcionarios o empleados o de los negocios fiduciarios por ésta administrados,
+                                cualquier reclamo o acción legal, judicial, extrajudicial, administrativa, civil, penal o
+                                arbitral en la eventualidad de producirse tales hechos.
+                            </p>
+                        </td>
+                    </tr>
+                     
+                    <tr>
+                        <td class="parContent" colspan="5">
+                            <p class="parContentLight">
+                                El partícipe declara que la presente solicitud de rescate quedará sin efecto en caso de suscribir una nueva solicitud
+                            </p>
+                        </td>
+                    </tr>
+             
+                    <tr>
+                        <td class="parContent" ><!--img style="width:100px;heigth:1px;display: block;margin-buttom:0px;margin-top:0px;margin-left: auto;margin-right: auto;padding-top: 0px;padding-buttom: 0px;" src="{!$Resource.firmaVacia}" /--></td>
+                        
+                        <td class="parContent" ><img style="width:150px;heigth:4px;display: block;margin-buttom:0px;margin-top:0px;margin-left: auto;margin-right: auto;padding-top: 0px;padding-buttom: 0px;" src="{!$Resource.firmaEmpleado3}" /></td>                        
+                    </tr>
+                    
+                    
+                    <tr>
+                        
+                        <td class="parContent" style="padding-top: 0px;padding-buttom: 0px;margin-buttom:0px;margin-top:0px;" >_______________________________________</td>
+                        
+                        <td class="parContent"  style="padding-top: 0px;padding-buttom: 0px;margin-buttom:0px;margin-top:0px;" >_______________________________________</td>
+                    </tr>
+                    <tr>
+                        <td class="parContent" style="text-align:center">
+
+                            <b class="parContent">
+                                &nbsp;Participe/ Representante Legal
+                            </b>
+                        </td>
+                        <td class="parContent" style="text-align:center">
+                            <b class="parContent">
+                                &nbsp;Ejecutivo Anefi
+                            </b>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+</apex:page>

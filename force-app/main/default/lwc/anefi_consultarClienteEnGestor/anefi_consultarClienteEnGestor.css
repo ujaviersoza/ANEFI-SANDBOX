@@ -1,0 +1,48 @@
+.error-titulo{
+    color:#EF6E64;
+    font-size: large;
+    font-weight: bold;
+}
+
+.color-dark-blue{
+    color:#54698D;
+}
+
+.color-green{
+    color:#1c5c4f;
+}
+
+.bg-gray {
+    background-color: lightgrey;
+}
+
+.btn-accion-gestor{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.button-group{
+    display: flex;    
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.seccion-campos-faltantes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.hijo-campo-faltante{
+    width: 32%;
+    max-width: 32%;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+@media (max-width: 600px) {
+    .hijo-campo-faltante{
+        width: 96%;
+        max-width: 96%;
+    }
+  }

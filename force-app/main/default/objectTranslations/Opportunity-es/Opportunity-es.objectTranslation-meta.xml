@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Aporte Persona Jurídica Layout</layout>
+        <sections>
+            <label></label>
+            <section>Información de pago</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Aporte Persona Natural Layout</layout>
+        <sections>
+            <label></label>
+            <section>Información de pago</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Fondos de inversión</layout>
+        <sections>
+            <label></label>
+            <section>Información de pago</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Gestión de Cuentas</layout>
+        <sections>
+            <label></label>
+            <section>Información de pago</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Medición de SLA</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Negocios Fiduciarios</layout>
+        <sections>
+            <label></label>
+            <section>Información de pago</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Persona Jurídica Layout</layout>
+        <sections>
+            <label></label>
+            <section>Información de pago</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Persona Natural Layout</layout>
+        <sections>
+            <label></label>
+            <section>Información de pago</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>AssignToCampaign</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>ChangeOwner</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Generar_documentos</name>
+    </quickActions>
+</CustomObjectTranslation>

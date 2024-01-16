@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>1036399</fullName>
+        <default>false</default>
+        <label>Joselyn Pillajo</label>
+    </customValue>
+    <customValue>
+        <fullName>692212</fullName>
+        <default>false</default>
+        <label>Andrea Palacios</label>
+    </customValue>
+    <customValue>
+        <fullName>1007390</fullName>
+        <default>false</default>
+        <label>Soledad Negrete</label>
+    </customValue>
+    <customValue>
+        <fullName>333095</fullName>
+        <default>false</default>
+        <label>Oliver Palacios</label>
+    </customValue>
+    <customValue>
+        <fullName>1020249</fullName>
+        <default>false</default>
+        <label>Maritza Vallejo</label>
+    </customValue>
+    <customValue>
+        <fullName>1001394</fullName>
+        <default>false</default>
+        <label>Angela Herrera</label>
+    </customValue>
+    <customValue>
+        <fullName>958379</fullName>
+        <default>false</default>
+        <label>Jairo Morillo</label>
+    </customValue>
+    <customValue>
+        <fullName>1039933</fullName>
+        <default>false</default>
+        <label>Berenice Arroyo</label>
+    </customValue>
+    <customValue>
+        <fullName>1034635</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Jorge Castillo</label>
+    </customValue>
+    <customValue>
+        <fullName>963715</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Bernardo Orellana</label>
+    </customValue>
+    <customValue>
+        <fullName>1034415</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Jair Ponce</label>
+    </customValue>
+    <customValue>
+        <fullName>1034414</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Alejandra Moreno</label>
+    </customValue>
+    <masterLabel>Códigos Trader</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Correo_Administrador</fullName>
+        <categories>Correo</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>Correo Administrador</shortDescription>
+        <value>zambranoa@anefi.com.ec</value>
+    </labels>
+    <labels>
+        <fullName>anefi_NombrePersonaNuevaNatural</fullName>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>NombrePersonaNuevaNatural</shortDescription>
+        <value>Nombre de la cuenta</value>
+    </labels>
+    <labels>
+        <fullName>anefi_ProductosInversion</fullName>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>Productos de Inversión</shortDescription>
+        <value>F001,F002,F003,F004,F005</value>
+    </labels>
+</CustomLabels>

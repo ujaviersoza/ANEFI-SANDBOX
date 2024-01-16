@@ -1,0 +1,173 @@
+<template>
+    <template if:true={camposFaltantesVisible}>
+        <div class="slds-grid slds-gutters slds-grid_vertical-align-center slds-grid_align-center">
+            <div class="slds-col slds-grow-none">
+                <div class="slds-card material-card slds-var-p-around_x-small" style="background-color: #F36E83;">
+                    <div class="slds-grid slds-gutters slds-grid_vertical-align-center slds-grid_align-center">
+                        <div class="slds-col slds-grow-none">
+                            <lightning-icon icon-name="custom:custom53" alternative-text="Alerta" title="Alerta">
+                            </lightning-icon>
+                        </div>
+                        <div class="slds-col slds-grow-none slds-col_bump-left">
+                            <p> Antes de cerrar esta oportunidad debes llenar ciertos campos. <strong>Presiona el
+                                    siguiente
+                                    botón para completarlos de forma rápida.</strong></p>
+                        </div>
+                        <div class="slds-col slds-grow-none">
+                            <lightning-button variant="destructive-text" label="Mostrar campos faltantes"
+                                title="Mostrar campos faltantes" icon-name="utility:new_window" onclick={handleMostrarCamposFaltantes}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template if:true={errorVisible}>
+        <div class="slds-box">
+            <div class="slds-grid slds-gutters_x-large slds-wrap slds-grid_vertical-align-center slds-grid_align-center">
+                <div class="slds-col slds-grow-none">
+                    <lightning-icon icon-name="action:close" alternative-text="Error" title="Error" size="x-small">
+                    </lightning-icon>
+                </div>
+                <div class="slds-col slds-var-m-left_medium">
+                    <div class="error-titulo slds-text-title_caps">¡Algo ha salido mal!</div>
+                </div>
+                <div class="slds-col slds-size_full slds-var-m-vertical_large">
+                    <p class="slds-text-align_center">Por favor, intente cargando la página de nuevo. Si el el problema
+                        persiste contacte el administrador
+                        del sistema.</p>
+                    <p class="slds-text-align_center"><strong>NO OLVIDE GUARDAR LA INFORMACIÓN DEL ERROR QUE SE
+                            ENCUENTRA EN
+                            EL CUADRO DE
+                            ABAJO.</strong></p>
+                </div>
+                <div class="slds-col slds-size_full">
+                    <div class="slds-box">
+                        <template if:true={error.body.statusCode}>
+                            <p><strong>Status Code:</strong>&nbsp;{error.body.statusCode}</p>
+                        </template>
+                        <template if:true={error.body.exceptionType}>
+                            <p><strong>Tipo de excepción:</strong>&nbsp;{error.body.exceptionType}</p>
+                        </template>
+                        <template if:true={error.body.errorCode}>
+                            <p><strong>Código de error:</strong>&nbsp;{error.body.errorCode}</p>
+                        </template>
+                        <template if:true={error.body.message}>
+                            <p><strong>Mensaje:</strong>&nbsp;{error.body.message}</p>
+                        </template>
+                        <template if:true={error.body.stackTrace}>
+                            <p><strong>Stack Trace:</strong>&nbsp;{error.body.stackTrace}</p>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template if:true={modalVisible}>
+        <div class="demo-only" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Cerrar" onclick={handleCerrarModal}>
+                            <lightning-icon icon-name="utility:close" size="medium" variant="inverse">
+                            </lightning-icon>
+                            <span class="slds-assistive-text">Cerrar</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Campos faltantes para
+                            cerrar la oportunidad</h2>
+                    </header>
+                    <div class="slds-modal__content slds-var-p-around_medium">
+                        <template if:true={hayCamposOportunidad}>
+                            <lightning-record-edit-form record-id='{recordId}' object-api-name='Opportunity'
+                                onsubmit={handleSubmitOpportunity} onsuccess={handleSuccessOpportunity}
+                                onerror={handleErrorOpportunity}>
+                                <div
+                                    class="slds-box slds-theme_default slds-p-around_none slds-var-m-vertical_small slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center">
+                                    <div class="slds-col slds-size_full modal-section-header slds-var-p-around_small">
+                                        <p class="slds-text-title_caps slds-text-color_inverse">Campos Oportunidad</p>
+                                    </div>
+                                    <div class="slds-col slds-size_full">
+                                        <!--<div class="slds-var-p-around_small slds-grid slds-wrap slds-gutters">
+                                            <template for:each={camposFaltantesOportunidad} for:item="campo">
+                                                <div key={campo} class="slds-col slds-size_1-of-3">
+                                                    <lightning-input-field field-name={campo}
+                                                        onchange={handleCambioCampoOportunidad} required>
+                                                    </lightning-input-field>
+                                                </div>
+                                            </template>
+                                        </div>-->
+                                         
+                                        <div class="seccion-campos-faltantes">
+                                            <template  for:each={listaCamposFaltantesOpp} for:item="c">
+                                                <div key={campo} class="hijo-campo-faltante">
+
+                                                    <lightning-input-field field-name={c.campo}
+                                                        onchange={handleCambioCampoOportunidad} required ={c.esRequerido} >
+                                                    </lightning-input-field>
+                                                </div>
+                                            </template>
+                                        </div>
+
+                                    </div>
+                                    <div class="slds-col slds-var-m-around_small">
+                                        <lightning-button variant="brand" type="submit"
+                                            disabled={guardarOportunidadDeshabilitado} name="update" label="Guardar">
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </lightning-record-edit-form>
+                        </template>
+                        <template if:true={hayCamposCliente}>
+                            <lightning-record-edit-form record-id='{clienteId}' object-api-name='Account'
+                                onsubmit={handleSubmitAccount} onsuccess={handleSuccessAccount}
+                                onerror={handleErrorAccount}>
+                                <div
+                                    class="slds-box slds-theme_default slds-p-around_none slds-var-m-vertical_small slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center">
+                                    <div class="slds-col slds-size_full modal-section-header slds-var-p-around_small">
+                                        <p class="slds-text-title_caps slds-text-color_inverse">Campos Cliente</p>
+                                    </div>
+                                    <div class="slds-col slds-size_full">
+                                        <!--<div class="slds-var-p-around_small slds-grid slds-wrap slds-gutters">
+                                            <template for:each={camposFaltantesCliente} for:item="campo">
+                                                <div key={campo} class="slds-col slds-size_1-of-3">
+                                                    <lightning-input-field field-name={campo}
+                                                        onchange={handleCambioCampoCliente} required>
+                                                    </lightning-input-field>
+                                                </div>
+                                            </template>
+                                        </div>-->                                        
+                                         
+                                        <div class="seccion-campos-faltantes">
+                                            <template  for:each={listaCamposFaltantesCliente} for:item="c">
+                                                <div key={campo} class="hijo-campo-faltante">
+
+                                                    <lightning-input-field field-name={c.campo}
+                                                        onchange={handleCambioCampoCliente} required ={c.esRequerido} >
+                                                    </lightning-input-field>
+                                                </div>
+                                            </template>
+                                        </div>
+
+                                    </div>
+                                    <div class="slds-col slds-var-m-around_small">
+                                        <lightning-button variant="brand" type="submit"
+                                            disabled={guardarClienteDeshabilitado} name="update" label="Guardar">
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </lightning-record-edit-form>
+                        </template>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Cerrar" variant="brand" onclick={handleCerrarModal}></lightning-button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+</template>

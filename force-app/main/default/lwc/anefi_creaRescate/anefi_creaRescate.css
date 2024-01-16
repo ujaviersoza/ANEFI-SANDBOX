@@ -1,0 +1,44 @@
+.seccion-campos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    height: auto;
+}
+
+.hijo-campo{
+    width: 32%;
+    max-width: 32%;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.seccion-saldos{
+    border: solid 1px #e3e2e1;
+    margin: 10px;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.elementos-saldos{
+    display:flex;
+    justify-content: left;
+}
+
+.elemento-saldos{
+    padding-right:10px;
+    padding-left: 10px;  
+
+}
+
+.valor-saldos{
+    text-align: center;  
+}
+
+.span-titulo{    
+    margin-right: 5px;
+}
+
+.span-valor{
+    color: #1c5c4f;
+    
+}

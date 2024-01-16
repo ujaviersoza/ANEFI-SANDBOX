@@ -1,0 +1,13 @@
+.seccion-campos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    height: auto;
+}
+
+.hijo-campo{
+    width: 32%;
+    max-width: 32%;
+    padding-left: 2px;
+    padding-right: 2px;
+}

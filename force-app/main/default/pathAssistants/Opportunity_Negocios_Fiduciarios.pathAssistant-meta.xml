@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>Opportunity - Negocios Fiduciarios</masterLabel>
+    <pathAssistantSteps>
+        <picklistValueName>Cerrada perdida</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>ANEFI_Proposal_followup__c</fieldNames>
+        <fieldNames>ANEFI_Contract_followup__c</fieldNames>
+        <fieldNames>Loss_Reason__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos una opción de Seguimiento a propuesta, para poder avanzar a la etapa de Constitución.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos una opción de Seguimiento de contratos, para poder avanzar a la etapa de Cerrada ganada.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;﻿Elija al menos una Razón de pérdida, para poder avanzar a la etapa de Cerrada perdida.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Constitución</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Loss_Reason__c</fieldNames>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos una Razón de pérdida, para poder avanzar a la etapa de Cerrada perdida.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Propuesta</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Loss_Reason__c</fieldNames>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos una Razón de pérdida, para poder avanzar a la etapa de Cerrada perdida.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Visita​</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Negocios_Fiduciarios</recordTypeName>
+</PathAssistant>

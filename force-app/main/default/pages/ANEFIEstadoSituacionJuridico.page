@@ -1,0 +1,563 @@
+<!--
+  @description       : 
+  @author            : Jeffry Mejia
+  @group             : 
+  @last modified on  : 11-05-2022
+  @last modified by  : Jeffry Mejia
+-->
+<apex:page extensions="ANEFIEstadoSituacionJuridico_Controller" renderAs="pdf" applyBodyTag="false" standardController="Opportunity">
+
+    <head>
+        <style type="text/css" media="print">
+            * {
+                font-size: 9px;
+                font-family: Helvetica, sans-serif
+            }
+
+
+            @page {
+                @top-center {}
+
+                @bottom-center {}
+                @bottom-left {
+                    content: element(footer);
+
+                }
+            }
+
+            @page :first {
+                @top-center {
+                    content: element(header);
+                }
+                @bottom-left {}
+            }
+
+
+
+            div.header {
+                padding: 0px;
+                position: running(header);
+            }
+
+            div {}
+
+            div.footer {
+                display: block;
+                padding: 0px;
+                position: running(footer);
+            }
+
+            .pagenumber:before {
+                content: counter(page);
+            }
+
+            .pagecount:before {
+                content: counter(pages);
+            }
+
+            .parContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 14px;
+
+            }
+
+            .parContentLight {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 11px;
+
+            }
+
+            .parContentMicro {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                font-style: italic;
+
+
+            }
+            
+            .parContentlittle {
+                font-size: 8.7px;
+
+
+            }
+
+            .cuentasContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                text-align: left;
+            }
+
+            .vline {
+                border-left: 2px solid black;
+                height: 60px;
+                margin: -80px 0 0 180px;
+            }
+
+            .GeneratedTable {
+                background-color: #ffffff;
+                border-collapse: collapse;
+                border-width: 1px;
+                border-color: #030303;
+                border-style: solid;
+                color: #000000;
+            }
+
+            .GeneratedTable td,
+            .GeneratedTable th {
+                border-width: px;
+                border-color: #030303;
+                border-style: solid;
+                padding: 2px;
+            }
+
+            .GeneratedTable thead {
+                background-color: #d9d7ce;
+            }
+        </style>
+    </head>
+    <div class="header">
+        <img style="width:160px;margin: 20px 0 0 0px;" src="{!$Resource.LogoAnefiPdf}" />
+        <!-- <hr  size="2px" color="black" /> -->
+        <div class="vline"></div>
+
+        <div style="text-align: center; margin: -40px 0 0 0px;font-size: 24px; ">&nbsp;Estado de situación
+            <b style="margin: -40px 0 0 0px;font-size: 24px; ">Jurídico</b>
+        </div>
+        <!-- <h4 style="text-align: center; margin: 5px 135px 0 0px;font-size: 22px; ">&nbsp;Persona Jurídico</h4> -->
+        <!-- <h4 style="text-align: center; margin: -60px 0 0 -215px;font-size: 24px; ">&nbsp;Formulario</h4>
+        <div style="text-align: center; margin: 5px 80px 0 0px;font-size: 22px; ">Origen Lícito de Recursos</div> -->
+
+        <!-- <h4 style="text-align: center; padding-right: 40px; margin: -50px 0 0 0px; font-size: 20px; "></h4> -->
+
+        <!-- <div class="cuentas" style=";padding: 880px 0px 0 100px">
+
+            <table style="border-collapse: collapse; width: 100%;" border="0">
+                <tbody>
+                    <tr>
+                        <td style="width: 80%; text-align: left;">
+                            <table style="border-collapse: collapse; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="cuentasContent">Checoslovaquia E10—195 y Av. Eloy Alfaro,</td>
+                                        <td class="cuentasContent">Av. Francisco de Orellana, Edificio World</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">Edificio Cuarzo, Sto piso, of. 503 </td>
+                                        <td class="cuentasContent">Trade Center torre B, piso 7 of. 70B</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">(+593) 2 3324-400</td>
+                                        <td class="cuentasContent">(+593) 4 390 6673</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Quito - Ecuador</b>
+                                        </td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Guayaquil -Ecuador</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">@AnefiEcuador</td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">www.anefi.com.ec</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div> -->
+
+    </div>
+
+    <div class="footer">
+        <apex:outputText value="Fecha de actualización {0,date,MMMM, YYYY}">
+            <apex:param value="{!TODAY()}" />
+        </apex:outputText>
+        <!-- <img style="width:820px;margin: -175px 0 0 -48px;" src="{!$Resource.PiePagina_Logo}" /> -->
+    </div>
+
+    <div class="content">
+        <!--  Primera pagina -->
+        <!-- <h4 style="text-align: center; margin: -300px 0 0 -60px;font-size: 24px; ">&nbsp;Condiciones de Firmas</h4> -->
+        <div style="width: 700px; padding: 35px 0 0 0px ">
+            <table class="GeneratedTable" style="width: 100%;">
+                <thead>
+                    <th class="parContentlittle" colspan="9" style="font-weight: normal;border-color: #000; background-color: #fff;">
+                        Escribir a máquina o en letra imprenta. La información aquí descrita será considerada confidencial.
+                    </th>
+                    <tr>
+                        <th class="parContentlittle" colspan="9">1. DATOS GENERALES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="parContentlittle" colspan="4">RAZÓN SOCIAL:&nbsp;{!Acc[0]}</td>
+                        <td class="parContentlittle" colspan="5">Fecha de constitución:{!Acc[2]}</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="2">R.U.C.:&nbsp;{!Acc[1]}</td>
+                        <td class="parContentlittle" colspan="7">ACTIVIDAD ECONÓMICA PRINCIPAL:&nbsp;{!Acc[3]}</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="2">Origen de capital:</td>
+                        <td class="parContentlittle" colspan="1">Público &nbsp;
+                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                width="12px" height="12px" /></td>
+                        <td class="parContentlittle" colspan="1">Privado &nbsp;
+                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                width="12px" height="12px" /></td>
+                        <td class="parContentlittle" colspan="2">Mixto &nbsp;
+                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                width="12px" height="12px" /></td>
+                        <td class="parContentlittle" colspan="3">cual:</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="7">DIRECCIÓN:&nbsp;{!Acc[4]} {!Acc[5]} {!Acc[6]} {!Acc[7]}</td>
+                        <td class="parContentlittle" colspan="2">Código Postal:</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="2">Nombre Edificio:</td>
+                        <td class="parContentlittle" colspan="2">Núm. Casa/Dpto.:</td>
+                        <td class="parContentlittle" colspan="3">Piso:</td>
+                        <td class="parContentlittle" colspan="2" rowspan="3">
+                            <table style="border-collapse: collapse; border:none;border:0 SOLID #fff;text-align: center;width:100%">
+                                <thead>
+                                    <tr>
+                                        <td class="parContentlittle" colspan="2" style="border:none;background-color: #fff;">OFICINA PRINCIPAL:</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="text-align: center;border:none; border-color: #FFF;">
+                                        <td class="parContentlittle" style="border:none; margin: 0px;">Propia &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                        <td class="parContentlittle" style="border:none; margin: 0px;">Arrendada &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">Teléfono:&nbsp;{!Acc[8]}</td>
+                        <td class="parContentlittle" colspan="4">Referencia:</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="2">Provincia:</td>
+                        <td class="parContentlittle" colspan="2">Ciudad:</td>
+                        <td class="parContentlittle" colspan="3">Parroquia:</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="5">Nombre de la persona de contacto:</td>
+                        <td class="parContentlittle" colspan="4">E-mail:&nbsp;{!Acc[9]}</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="9">Dirección sucursales:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="9">
+                            <table style="border-collapse: collapse;border:0 SOLID #fff; border-color: #FFF;text-align: LEFT;width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContentlittle" style="border:none;" colspan="2">TIENE RESIDENCIA TRIBUTARIA EN OTRO PAÍS DIFERENTE A ECUADOR</td>
+                                        <td class="parContentlittle" style="border:none;" colspan="1">SI &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                        <td class="parContentlittle" style="border:none;" colspan="1">NO &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                        <!-- <td class="parContentlittle" style="border:none;" colspan="2">&nbsp;</td> -->
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border:none;" colspan="2">Estados Unidos de America:</td>
+                                        <td style="border:none;" colspan="1">SI &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                        <td style="border:none;" colspan="1">NO &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                        <td class="parContentlittle" style="border:none;" colspan="2">Si su respuesta es SI llene el formulario FATCA</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border:none;" colspan="2">Otros paises:</td>
+                                        <td style="border:none;" colspan="1">SI &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                        <td style="border:none;" colspan="1">NO &nbsp;
+                                            <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                width="12px" height="12px" /></td>
+                                        <td class="parContentlittle" style="border:none;" colspan="2">Si su respuesta es SI llene el formulario CRS</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+                <thead>
+                    <tr>
+                        <th colspan="9">2. DATOS GENERALES DEL REPRESENTANTE LEGAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">NOMBRES:&nbsp;{!Acc[10]} {!Acc[11]}</td>
+                        <td class="parContentlittle" colspan="3">Primer nombre: &nbsp;{!Acc[10]}</td>
+                        <td class="parContentlittle" colspan="3">Segundo nombre:  &nbsp;{!Acc[11]}</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">APELLIDOS:&nbsp;{!Acc[12]}</td>
+                        <td class="parContentlittle" colspan="3">Primer apellido: &nbsp;{!Acc[21]}</td>
+                        <td class="parContentlittle" colspan="3">Segundo apellido: &nbsp;{!Acc[22]}</td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">C.I/ RUC/Pasaporte:&nbsp;{!Acc[14]}</td>
+                        <td class="parContentlittle" colspan="3">Cargo:&nbsp;{!Acc[15]}</td>
+                        <td class="parContentlittle" colspan="3">E-mail:&nbsp;{!Acc[13]}</td>
+                    </tr>
+                </tbody>
+
+                <thead>
+                    <tr>
+                        <th colspan="9">3. SITUACIÓN PATRIMONIAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">Total activos:&nbsp;$<apex:outputText value="{0, number, ###,###,##0.00}">
+      										 		<apex:param value="{!amountActivo}" />
+											 	</apex:outputText>  </td>
+                        <td class="parContentlittle" colspan="3">Total pasivos:&nbsp;$<apex:outputText value="{0, number, ###,###,##0.00}">
+      										 		<apex:param value="{!amountPasivo}" />
+											 	</apex:outputText>   </td>
+                        <td class="parContentlittle" colspan="3">Total patrimonio:&nbsp; $<apex:outputText value="{0, number, ###,###,##0.00}">
+      										 		<apex:param value="{!totalPatrimonio}" />
+											 	</apex:outputText> </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="9">4. SITUACIÓN FINANCIERA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">Ingresos actividad económica principal:&nbsp; $<apex:outputText value="{0, number, ###,###,##0.00}">
+      										 		<apex:param value="{!AnnualRevenue}" />
+											 	</apex:outputText></td>
+                        <td class="parContentlittle" colspan="3">Otros ingresos:</td>
+                        <td class="parContentlittle" colspan="3">Total ingresos: &nbsp; $<apex:outputText value="{0, number, ###,###,##0.00}">
+      										 		<apex:param value="{!AnnualRevenue}" />
+											 	</apex:outputText></td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="7">Detalle de otros ingresos: &nbsp; $<apex:outputText value="{0, number, ###,###,##0.00}">
+      										 		<apex:param value="{!totalGastos}" />
+											 	</apex:outputText></td>
+                        <td class="parContentlittle" colspan="2">Total egresos: &nbsp; $<apex:outputText value="{0, number, ###,###,##0.00}">
+      										 		<apex:param value="{!totalGastos}" />
+											 	</apex:outputText></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="9">5. REFERENCIAS BANCARIAS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">Institución:&nbsp;{!Acc[19]}</td>
+                        <td class="parContentlittle" colspan="4">Cuenta #:&nbsp;{!Acc[20]}</td>
+                        <td class="parContentlittle" colspan="1">Ahorros <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                        if(Acc[23]=='A','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                    width="20px" height="15px" /></td>
+                        <td class="parContentlittle" colspan="1">Corriente <apex:image url="{!URLFOR($Resource.checkboxImgs,
+                                                        if(Acc[23]=='C','checked_checkbox.png','unchecked_checkbox.png') )}"
+                                                    width="20px" height="15px" /></td>
+                    </tr>
+                    <tr>
+                        <td class="parContentlittle" colspan="3">Institución:</td>
+                        <td class="parContentlittle" colspan="4">Cuenta #:</td>
+                        <td class="parContentlittle" colspan="1">Ahorros</td>
+                        <td class="parContentlittle" colspan="1">Corriente</td>
+                    </tr>
+                </tbody>
+
+                <thead>
+                    <tr>
+                        <th colspan="9">6.- DECLARACIÓN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="parContentlittle" colspan="9">
+                            Declaro (amos) expresamente que :
+                            <br></br>
+                            1. Los firmantes declaran expresamente que los bienes que lleguen a entregar a ANEFI S.A, para la conformación o integración
+                            de cualquier negocio fiduciario o fondo de inversión, tienen un origen lícito y legítimo, y en
+                            especial declaran que no provienen ni provendrán de ninguna actividad relacionada con el cultivo,
+                            fabricación, almacenamiento, transporte o tráfico ilícito de sustancias estupefacientes o psicotrópicas,
+                            lavado de dinero o cualquier otra actividad ilegal o ilícita, eximiendo a ANEFI S.A. de la comprobación
+                            de esta declaración, sin perjuicio de lo cual los firmantes autorizan a ANEFI S.A. para que efectúe
+                            todas las indagaciones que razonablemente considere oportuno realizar para comprobar el origen
+                            de tales bienes. En caso de que se inicien investigaciones sobre los firmantes relacionadas con
+                            las actividades antes señaladas o de producirse transacciones inusuales o injustificadas, ANEFI
+                            S.A. podrá proporcionar a las autoridades competentes toda la información que tenga sobre las
+                            mismas o que le sea requerida. En tal sentido, los firmantes renuncian a presentar en contra
+                            de ANEFI S.A., sus funcionarios o de los negocios fiduciarios administrados por ésta cualquier
+                            reclamo o acción legal, judicial, extrajudicial, administrativa, civil, penal o arbitral en la
+                            eventualidad de producirse tales hechos.
+                            <br></br>
+                            Adicionalmente los firmantes autorizan expresamente a ANEFI S.A. para que obtenga de cualquier fuente de información, pública
+                            o privada, sus referencias personales, sobre su comportamiento crediticio, manejo de sus cuentas
+                            corrientes, de ahorro, tarjetas de crédito, etc., y en general al cumplimiento de sus obligaciones
+                            y demás activos, pasivos y datos personales. De igual forma, la Fiduciaria queda expresamente
+                            autorizada para que pueda utilizar, transferir o entregar dicha información a autoridades competentes,
+                            organismos de control, Burós de Información Crediticia y otras instituciones o personas jurídicas,
+                            legal o reglamentariamente facultadas.
+                            <br></br>2. La información que he suministrado en este documento es veraz y verificable y me obligo
+                            a actualizarla anualmente.
+                            <br></br>3. Los recursos que utilice o se me entreguen en virtud de las operaciones que realice,
+                            no provienen ni serán destinados a la financiación de actividades terroristas o ilícitas.
+                            <br></br>4. Me comprometo a entregar toda la documentación e información que ANEFI S.A. requiera
+                            con el fin de cumplir con las normas y procedimientos contra el lavado de activos y financiamiento
+                            del terrorismo y otros delitos u otras disposiciones legales o reglamentarias. De tratarse de
+                            una persona jurídica, me obligo además a entregar toda la información y documentación que se
+                            requiera para determinar la identidad y domicilio de los socios, accionistas o partícipes de
+                            la misma y los de todos éstos, hasta identificar con claridad a la última persona natural de
+                            dicha cadena. Conozco y me obligo a actualizar la mencionada información y documentación al menos
+                            de forma anual o cuando así lo solicite ANEFI S.A; adicional a esto si existiera cambio en Residencia
+                            Fiscal, los firmantes actualizarán la documentación necesaria en un plazo de 30 dias a partir
+                            de la fecha de cambio.
+                            <br></br>
+                            5. Estatus de la persona que ejerce el control
+                            <br></br>
+                            <br></br>
+                            CRS801 - Persona que ejerce el control de la persona jurídica - control por propiedad
+                            <br></br>
+                            CRS803 - Persona que ejerce el control de la persona jurídica - por cargo directivo
+                            <br></br>
+                            CRS804 - Persona que ejerce el control de la figura jurídica - fideicomiso - fideicomitente
+                            <br></br>
+                            CRS805 - Persona que ejerce el control de la figura jurídica - fideicomiso - fiduciario
+                            <br></br>
+                            CRS807 - Persona que ejerce el control de la figura juridica - fideicomiso - beneficiario
+                            <br></br>
+
+                        </td>
+                    </tr>
+                </tbody>
+
+                <thead>
+                    <tr>
+                        <th colspan="9">7.- FIRMAS DE ACEPTACIÓN </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="9">
+                            <table style="border-collapse: collapse;border:0 SOLID #fff; border-color: #FFF;text-align: LEFT;width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContentlittle" colspan="9" style="border:none;" cellspacing="0">Como constancia de haber leido, entendido y aceptado lo anterior, declaro que la
+                                            información que he suministrado es exacta en todas sus partes y firmo el presente
+                                            documento:
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7" style="border:none;" cellspacing="0">
+                                            <b>CIUDAD Y FECHA:  Quito 170135, Ecuador&nbsp; 
+                                                <apex:outputText value="{0,date,d'/'MM'/'yyyy}">
+                                                    <apex:param value="{!TODAY()}" />
+                                                </apex:outputText></b>
+                                        </td>
+                                        <td colspan="3" rowspan="5" style="border:1px solid #000;">
+                                            <div>
+                                                <table style="border-collapse: collapse;border:1px solid #000;text-align: center;width:100%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="parContentlittle"  style="border:none;text-align:center;" colspan="2">
+                                                                Revisión
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;">Observados</td>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;"> &nbsp;
+                                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                                    width="12px" height="12px" />&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;">OFAC</td>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;"> &nbsp;
+                                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                                    width="12px" height="12px" />&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;">ONU</td>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;"> &nbsp;
+                                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                                    width="12px" height="12px" />&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;">PEPS</td>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;"> &nbsp;
+                                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                                    width="12px" height="12px" />&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;">Responsable</td>
+                                                            <td class="parContentlittle" style="border:none;text-align:left;"> &nbsp;
+                                                                <apex:image url="{!URLFOR($Resource.checkboxImgs,'unchecked_checkbox.png') }"
+                                                                    width="12px" height="12px" />&nbsp;</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="border:none;text-align:center;">_________________________</td>
+                                        <td colspan="3" style="border:none;text-align:center;">_________________________</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="border:none;text-align:center;">
+                                            <b>FIRMA DEL REPRESENTANTE LEGAL</b>
+                                        </td>
+                                        <td colspan="3" style="border:none;text-align:center;">
+                                            <b>FIRMA DEL FUNCIONARIO DE ANEFI S.A</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContentlittle" colspan="6" style="border:none;" cellspacing="0">Certifico / certificamos que la firma que antecede concuerda con la registrada en
+                                            nuestros documentos y fue registrada en mi presencia
+                                            <br></br>
+                                            <apex:outputText value="Fecha de actualización {0,date,MMMM, YYYY}">
+                                                <apex:param value="{!TODAY()}" />
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+</apex:page>

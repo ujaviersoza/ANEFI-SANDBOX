@@ -1,0 +1,47 @@
+<template>
+    <template if:true={cargandoVisible}>
+        <div class="slds-col slds-grow-none slds-var-p-around_xx-large">
+            <lightning-spinner alternative-text="Cargando" size="large" variant="brand"
+                class="slds-var-m-around_xx-large">
+            </lightning-spinner>
+        </div>
+    </template>
+    <lightning-card variant="neutral">
+        <template if:true={mostrarSeccionFiltros}>
+            <lightning-record-edit-form object-api-name='Opportunity' > 
+                <div class="slds-theme_default slds-p-around_none slds-var-m-vertical_small slds-grid slds-grid_vertical slds-grid_align-center slds-grid_vertical-align-center div-contenedor"> 
+                    <div class="slds-col slds-size_full">
+                        <div class="seccion-campos">
+                            <!--<lightning-input-field field-name="Producto_de_Interes__c" onchange={handleChangeProducto} required class="hijo-campo">
+                            </lightning-input-field> -->
+                            <lightning-combobox
+                                name="producto"
+                                label="Producto"                                
+                                placeholder="Seleccione el producto a consultar"
+                                value={valorInicialProducto}
+                                options={opcionesProducto}
+                                onchange={handleChangeProducto} 
+                                required class="hijo-campo">
+                            </lightning-combobox>
+                            <lightning-input type="date" name="fechaDesde" label="Fecha desde" onchange={handleFechaDesde} class="hijo-campo"></lightning-input>                    
+                            <lightning-input type="date" name="fechaHasta" label="Fecha hasta" max={fechaHastaMax} onchange={handleFechaHasta} required class="hijo-campo"></lightning-input>                                                           
+                        </div>
+                    </div> 
+                    <div class="slds-col slds-var-m-around_small">
+                        <lightning-button label="Actualizar" variant="brand" onclick={handleActualizar}></lightning-button>
+                    </div>               
+                </div>                                                       
+            </lightning-record-edit-form>
+        </template>      
+        <template if:true={mostrarConsultaReporte}>
+            <div style="text-align:center;">
+                <h1 class="slds-text-heading_large">Consulte el reporte de saldos de partícipes!</h1>
+                <lightning-button variant="brand" label="Abrir reporte" onclick={handleNavigate}>
+                </lightning-button>
+            </div>
+        </template>
+        
+        
+    </lightning-card>
+
+</template>

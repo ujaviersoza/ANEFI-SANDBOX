@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Prospecto</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Prospectos</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Persona Jurídica Layout</layout>
+        <sections>
+            <label></label>
+            <section>Campos</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Campos Pardot</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Información Descarte</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Información del sistema</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Medición de SLA</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Nueva sección</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Vínculos personalizados</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Persona Natural Layout</layout>
+        <sections>
+            <label></label>
+            <section>Campos</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Campos Pardot</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Información Descarte</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Información del sistema</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Medición de SLA</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Nueva sección</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Vínculos personalizados</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Validar_lista_negra</name>
+    </quickActions>
+</CustomObjectTranslation>

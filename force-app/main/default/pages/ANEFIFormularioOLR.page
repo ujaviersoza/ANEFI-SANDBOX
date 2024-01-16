@@ -1,0 +1,300 @@
+<apex:page extensions="ANEFIFormularioOLRController" standardController="Opportunity" language="es-ES" renderAs="pdf" applyBodyTag="false">
+
+
+    <head>
+        <style type="text/css" media="print">
+            * {
+                font-size: 9px;
+                font-family: Helvetica, sans-serif
+            }
+
+            @page {
+                @top-center {
+                    content: element(header);
+                    font-size: 9px;
+                    font-family: Helvetica, sans-serif;
+                }
+
+                @bottom-center {
+                    content: element(footer);
+
+                }
+            }
+
+
+            div.header {
+                padding: 0px;
+                position: running(header);
+            }
+
+            div {}
+
+            div.footer {
+                display: block;
+                padding: 0px;
+                position: running(footer);
+            }
+
+            .pagenumber:before {
+                content: counter(page);
+            }
+
+            .pagecount:before {
+                content: counter(pages);
+            }
+
+            .parContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 11px;
+
+            }
+
+            .cuentasContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                text-align: left;
+            }
+
+            .vline {
+                border-left: 2px solid black;
+                height: 50px;
+                margin: -80px 0 0 180px;
+            }
+        </style>
+    </head>
+    <div class="header">
+        <img style="width:160px;margin: 20px 0 0 0px;" src="{!$Resource.LogoAnefiPdf}" />
+        <!-- <hr  size="2px" color="black" /> -->
+        <div class="vline"></div>
+        <h4 style="text-align: center; margin: -60px 0 0 -215px;font-size: 24px; ">&nbsp;Formulario</h4>
+        <div style="text-align: center; margin: 5px 80px 0 0px;font-size: 22px; ">Origen Lícito de Recursos</div>
+
+        <!-- <h4 style="text-align: center; padding-right: 40px; margin: -50px 0 0 0px; font-size: 20px; "></h4> -->
+
+        <!-- <div class="cuentas" style=";padding: 880px 0px 0 100px">
+
+            <table style="border-collapse: collapse; width: 100%;" border="0">
+                <tbody>
+                    <tr>
+                        <td style="width: 80%; text-align: left;">
+                            <table style="border-collapse: collapse; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="cuentasContent">Checoslovaquia E10—195 y Av. Eloy Alfaro,</td>
+                                        <td class="cuentasContent">Av. Francisco de Orellana, Edificio World</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">Edificio Cuarzo, Sto piso, of. 503 </td>
+                                        <td class="cuentasContent">Trade Center torre B, piso 7 of. 70B</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">(+593) 2 3324-400</td>
+                                        <td class="cuentasContent">(+593) 4 390 6673</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Quito - Ecuador</b>
+                                        </td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Guayaquil -Ecuador</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">@AnefiEcuador</td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">www.anefi.com.ec</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div> -->
+
+    </div>
+
+    <div class="footer">
+        <apex:outputText value="Fecha de actualización {!DataDate[1]} de {!DataDate[2]}"/>
+            
+        <!-- <img style="width:820px;margin: -175px 0 0 -48px;" src="{!$Resource.PiePagina_Logo}" /> -->
+    </div>
+
+    <div class="content">
+        <!--  Primera pagina -->
+
+        <div style="width: 700px; padding: 60px 0 0 0px ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h5 class="parContent">1. Identificación de quien realiza la transacción (tercera persona)</h5>
+                            <table style=" border-collapse:collapse; width: 100%; border: 1px solid #000;">
+                                <tbody>
+                                    <tr>
+                                        <td class="parContent" style="width: 70%; border: 1px solid #000;">&nbsp;Nombre o razón social:&nbsp;&nbsp;&nbsp;{!Opp[0]}</td>
+                                        <td class="parContent" style="width: 30%; border: 1px solid #000;">&nbsp;CI/RUC:&nbsp;&nbsp;&nbsp;{!Acc[16]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="parContent" style="border: 1px solid #000;">&nbsp;Actividad económica o profesión:&nbsp;&nbsp;&nbsp;{!ActEco[0]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="parContent" style=" border: 1px solid #000;">&nbsp;Nombre del representante legal:&nbsp;&nbsp;&nbsp;{!RepresentLegal[0]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="parContent" style="width: 70%; border: 1px solid #000;">&nbsp;Ciudad:&nbsp;&nbsp;&nbsp;{!Acc[1]}</td>
+                                        <td class="parContent" style="width: 70%; border: 1px solid #000;">&nbsp;Teléfono:&nbsp;&nbsp;&nbsp;{!Acc[2]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="parContent" style="border: 1px solid #000;">&nbsp;Dirección:&nbsp;&nbsp;&nbsp;{!Dir}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <h5 class="parContent">2. Identificación de la transacción</h5>
+                            <table style=" border-collapse:collapse; width: 100%; border: 1px solid #000;">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" class="parContent" style="width: 70%; border: 1px solid #000;">&nbsp;Monto de la transacción:&nbsp;&nbsp;$<apex:outputText value="{0, number, ###,###,##0.00}">
+                                                    <apex:param value="{!amountOpportunityS}" />
+                                                </apex:outputText>&nbsp;&nbsp;</td>
+                                        <td colspan="2" class="parContent" style="width: 30%; border: 1px solid #000;">&nbsp;Tipo de transacción:&nbsp;&nbsp;&nbsp;Transferencia</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="parContent" style="border: 1px solid #000;">&nbsp;Número de cuenta o producto en la que se realiza la transacción:&nbsp;&nbsp;&nbsp;{!Opp[4]}</td>
+                                    </tr>
+                                    <!--
+                                    <tr>
+                                        <td class="parContent" style="width: 24%; border: 1px solid #000;">&nbsp;Tipo de la cuenta en que &nbsp;se realiza la transacción:</td>
+                                        <td class="parContent" style="width: 18%; border: 1px solid #000;">&nbsp;Corriente:
+                                              <apex:form>
+                                                <apex:inputCheckbox value="{!if(Activo__c!=null,false,true)}"></apex:inputCheckbox>
+                                            </apex:form> 
+                                        </td>
+                                        <td class="parContent" style="width: 18%; border: 1px solid #000;">&nbsp;Ahorro:
+                                             <apex:form>
+                                                <apex:inputCheckbox value="{!Activo__c}"></apex:inputCheckbox>
+                                            </apex:form> 
+                                        </td>
+                                        <td class="parContent" style="width: 40%; border: 1px solid #000;">&nbsp;Otros:</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="parContent" style="border: 1px solid #000;">&nbsp;Los Fondos de esta transacción provienen de:</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%">
+                            <h5 class="parContent">3. Declaración de origen lícito de recursos</h5>
+                            <p class="parContent">
+                                ENTREGA DE FONDOS
+                                <br></br>
+                                Conocedor (a) de las penas de perjurio, declaro bajo juramento que el origen de los fondos entregados a&nbsp;Anefi S.A. Administradora de Fondos y Fideicomisos &nbsp; es lícito y no provienen de
+                                ninguna actividad ilícita contemplada dentro de las leyes ecuatorianas.
+                                <br></br>
+                                <br></br>
+                                RECEPCIÓN DE FONDOS (cliente)
+                                <br></br>
+                                Conocedor (a) de las penas de perjurio, declaro bajo juramento que los fondos que recibo de {!nombreCuenta} 
+                                no serán destinados a la realización o financiamiento de ninguna actividad
+                                ilícita.
+                                <br></br>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%">
+                            <h5 class="parContent">4. Autorización</h5>
+                            <p class="parContent">
+                                Conocedor (a) de las disposiciones de la ley de detección, prevención y erradicación del delito del lavado de activos y financiamiento
+                                de otros delitos, autorizo expresamente a ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMISOS
+                                a realizar los análisis y verificaciones que considere necesario; así como a las autoridades
+                                competentes en caso de llegar a determinar la existencia de operaciones y/o transacciones
+                                inusuales e injustificadas, en virtud de lo autorizado, renuncio a instaurar por este motivo
+                                cualquier tipo de acción civil, penal o administrativa en contra de ANEFI S.A. ADMINISTRADORA
+                                DE FONDOS Y FIDEICOMISOS.
+                                <br></br>
+                                <br></br>
+                                {!DataDate[0]} de {!DataDate[1]} de {!DataDate[2]}
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="margin-right: 0px ;">
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <table style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td  >&nbsp;
+ 
+                                            </td>
+                                            <td style="width: 40%">&nbsp;</td>
+                                            <td >&nbsp;
+                                               <img style="width:140px;heigth:30px;display: block;margin-left: auto;margin-right: auto;" src="{!$Resource.firmaEmpleado3}" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 30%">&nbsp;
+                                                <b class="parContent">____________________________________________</b>
+                                            </td>
+                                            <td style="width: 40%">&nbsp;</td>
+                                            <td style="width: 30%">&nbsp;
+                                                <b class="parContent">____________________________________________</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 30%">&nbsp;
+                                                <b class="parContent">Firma cliente o persona que realiza la transacción</b>
+                                            </td>
+                                            <td style="width: 40%">&nbsp;</td>
+                                            <td style="width: 30%">&nbsp;
+                                                <b class="parContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma empleado que verifica la información</b>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+</apex:page>

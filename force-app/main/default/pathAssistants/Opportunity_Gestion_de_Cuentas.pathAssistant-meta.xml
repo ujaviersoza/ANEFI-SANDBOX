@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>Opportunity - Gestión de Cuentas</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>ANEFI_Management_reason__c</fieldNames>
+        <fieldNames>Loss_Reason__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos un Motivo de gestión, para poder avanzar al estado de Gestionado.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos una &lt;/span&gt;&lt;span style=&quot;font-size: 11.375px;&quot;&gt;Razón de perdida&lt;/span&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;, para poder avanzar a la etapa de No Interesado.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Gestionado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>ANEFI_Account_interest__c</fieldNames>
+        <fieldNames>ANEFI_Generate_opportunity__c</fieldNames>
+        <fieldNames>Loss_Reason__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Marque la casilla: Prospecto manifiesta interés, para poder avanzar al estado de Interesado.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;﻿&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Marque la casilla: Genera oportunidad de venta, para poder avanzar al estado de Convertido.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos una &lt;/span&gt;&lt;span style=&quot;font-size: 11.375px;&quot;&gt;Razón de perdida&lt;/span&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;, para poder avanzar a la etapa de No Interesado.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Interesado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>No Interesado</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Gestion_de_Cuentas</recordTypeName>
+</PathAssistant>

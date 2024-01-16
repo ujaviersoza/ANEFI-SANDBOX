@@ -1,0 +1,29 @@
+<aura:component controller="ANEFI_ConsultarClienteEnGestorController"  implements="lightning:isUrlAddressable,lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:hasPageReference,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.handlePageChange}" />   
+    <lightning:navigation aura:id="navService"/> 
+    <lightning:pageReferenceUtils aura:id="pageRefUtils"/>  
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="clienteId" type="String"/>  
+    <aura:attribute name="availableRecordTypes" type="List" />
+    <aura:attribute name="recordTypeId" type="String" default=""/>    
+    <aura:attribute name="retrievedTypes" type="Boolean"/>
+    <aura:attribute name="valorSeleccionado" type="String" />
+    <aura:attribute name="pageReference" type="Object" />    
+        
+    <div class="forceChangeRecordType" style="width: 50%;margin: 0 auto;">
+        <h2 class="inlineTitle slds-p-top--large slds-p-horizontal--medium slds-p-bottom--medium slds-text-heading--medium" style="border-bottom: 1px solid;border-color:#DDDBDA;" >Nueva Oportunidad</h2>
+        <lightning:radioGroup name="radioGroup"                          
+                    options="{! v.availableRecordTypes }"                          
+                    type="radio"
+                    onchange="{!c.optionSelected}"
+                    value="{!v.valorSeleccionado}"/>
+        <br/>
+        <div class="slds-align_absolute-center">
+            <lightning:button variant="neutral" label="Cancelar" onclick="{!c.cancel}" />
+            <lightning:button variant="brand" label="Siguiente" onclick="{!c.siguiente}" />
+        </div>
+        
+    </div>      
+      
+</aura:component>

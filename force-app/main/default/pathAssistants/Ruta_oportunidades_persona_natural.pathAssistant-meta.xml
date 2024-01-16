@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>Ruta oportunidades persona natural</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Cliente_hizo_el_pago__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Validar si el cliente realizó el pago&lt;/li&gt;&lt;li&gt;Marcar el campo ¿Cliente realizó el pago?&lt;/li&gt;&lt;li&gt;Validar que la etapa actual sea firma de contrato&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Cerrada ganada</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Loss_Reason__c</fieldNames>
+        <fieldNames>CloseDate</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Seleccionar la razón de por que se pierde la oportunidad&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Cerrada perdida</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Firmo_el_contrato__c</fieldNames>
+        <fieldNames>Cliente_hizo_el_pago__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Validar si el cliente firma o no el contrato&lt;/li&gt;&lt;li&gt;Validar que antes de pasar a firma de contrato la etapa actual sea recopilación de documentos, de esta forma se garantiza que se esta siguiendo el orden de las etapas del proceso comercial&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Firma de contrato</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Amount</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Iniciar el desarrollo de la propuesta&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Nueva oportunidad</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Finalizar la propuesta&lt;/li&gt;&lt;li&gt;Elaborar simulador&lt;/li&gt;&lt;li&gt;Enviar propuesta y simulador al cliente mediante un correo electrónico desde el tab de actividades&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Propuesta</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Se_recopilo_cedula__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Solicitar copia de la cédula al cliente&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Recopilación de documentos</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Persona_Natural</recordTypeName>
+</PathAssistant>

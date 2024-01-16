@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rescates Programados</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rescates Programados</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Formato Rescates Programados</layout>
+        <sections>
+            <label></label>
+            <section>Vínculos personalizados</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Generar_Rescate</name>
+    </quickActions>
+</CustomObjectTranslation>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AZUAY</fullName>
+        <default>false</default>
+        <label>AZUAY</label>
+    </customValue>
+    <customValue>
+        <fullName>BOLIVAR</fullName>
+        <default>false</default>
+        <label>BOLIVAR</label>
+    </customValue>
+    <customValue>
+        <fullName>CAÑAR</fullName>
+        <default>false</default>
+        <label>CAÑAR</label>
+    </customValue>
+    <customValue>
+        <fullName>CARCHI</fullName>
+        <default>false</default>
+        <label>CARCHI</label>
+    </customValue>
+    <customValue>
+        <fullName>CHIMBORAZO</fullName>
+        <default>false</default>
+        <label>CHIMBORAZO</label>
+    </customValue>
+    <customValue>
+        <fullName>COTOPAXI</fullName>
+        <default>false</default>
+        <label>COTOPAXI</label>
+    </customValue>
+    <customValue>
+        <fullName>EL ORO</fullName>
+        <default>false</default>
+        <label>EL ORO</label>
+    </customValue>
+    <customValue>
+        <fullName>ESMERALDAS</fullName>
+        <default>false</default>
+        <label>ESMERALDAS</label>
+    </customValue>
+    <customValue>
+        <fullName>GALAPAGOS</fullName>
+        <default>false</default>
+        <label>GALAPAGOS</label>
+    </customValue>
+    <customValue>
+        <fullName>GUAYAS</fullName>
+        <default>false</default>
+        <label>GUAYAS</label>
+    </customValue>
+    <customValue>
+        <fullName>IMBABURA</fullName>
+        <default>false</default>
+        <label>IMBABURA</label>
+    </customValue>
+    <customValue>
+        <fullName>LOJA</fullName>
+        <default>false</default>
+        <label>LOJA</label>
+    </customValue>
+    <customValue>
+        <fullName>LOS RIOS</fullName>
+        <default>false</default>
+        <label>LOS RIOS</label>
+    </customValue>
+    <customValue>
+        <fullName>MANABI</fullName>
+        <default>false</default>
+        <label>MANABI</label>
+    </customValue>
+    <customValue>
+        <fullName>MORONA SANTIAGO</fullName>
+        <default>false</default>
+        <label>MORONA SANTIAGO</label>
+    </customValue>
+    <customValue>
+        <fullName>NAPO</fullName>
+        <default>false</default>
+        <label>NAPO</label>
+    </customValue>
+    <customValue>
+        <fullName>ORELLANA</fullName>
+        <default>false</default>
+        <label>ORELLANA</label>
+    </customValue>
+    <customValue>
+        <fullName>PASTAZA</fullName>
+        <default>false</default>
+        <label>PASTAZA</label>
+    </customValue>
+    <customValue>
+        <fullName>PICHINCHA</fullName>
+        <default>false</default>
+        <label>PICHINCHA</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA ELENA</fullName>
+        <default>false</default>
+        <label>SANTA ELENA</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTO DOMINGO DE LOS TSÁCHILAS</fullName>
+        <default>false</default>
+        <label>SANTO DOMINGO DE LOS TSÁCHILAS</label>
+    </customValue>
+    <customValue>
+        <fullName>SUCUMBIOS</fullName>
+        <default>false</default>
+        <label>SUCUMBIOS</label>
+    </customValue>
+    <customValue>
+        <fullName>TUNGURAHUA</fullName>
+        <default>false</default>
+        <label>TUNGURAHUA</label>
+    </customValue>
+    <customValue>
+        <fullName>ZAMORA CHINCHIPE</fullName>
+        <default>false</default>
+        <label>ZAMORA CHINCHIPE</label>
+    </customValue>
+    <customValue>
+        <fullName>ZONAS NO DELIMITADAS</fullName>
+        <default>false</default>
+        <label>ZONAS NO DELIMITADAS</label>
+    </customValue>
+    <description>Provincias dispoibles por País</description>
+    <masterLabel>Provincias</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

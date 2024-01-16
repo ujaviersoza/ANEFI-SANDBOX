@@ -1,0 +1,64 @@
+<!--
+  @description       : 
+  @author            : axel landa
+  @group             : 
+  @last modified on  : 10-04-2022
+  @last modified by  : axel landa
+-->
+<template>
+    <template if:true={alertVisible}>
+        <div class="slds-col slds-grow-none slds-var-p-around_xx-large">
+            <lightning-spinner alternative-text="Cargando" size="large" variant="brand"
+                class="slds-var-m-around_xx-large">
+            </lightning-spinner>
+        </div>  
+    </template>   
+    <lightning-record-edit-form object-api-name='Opportunity' record-type-id={recordTypeId} onsubmit={handleSubmit} onsuccess={handleSuccess} onerror={handleError}> 
+        <div class="slds-theme_default slds-p-around_none slds-var-m-vertical_small slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center"> 
+            <div class="slds-col slds-size_full">
+                <div class="seccion-campos">   
+                    
+
+                    <lightning-input-field field-name="Name" required class="hijo-campo">
+                    </lightning-input-field>                            
+                    <lightning-input-field field-name="Amount" required class="hijo-campo">
+                    </lightning-input-field>            
+                    <lightning-input-field field-name="Producto_de_Interes__c" value={codigoProducto} onchange={handleChangeProducto} required class="hijo-campo">
+                    </lightning-input-field>                 
+                    <lightning-input-field field-name="Trader__c" required class="hijo-campo">
+                    </lightning-input-field>
+                    <lightning-input-field field-name="Complementarios__c" required class="hijo-campo">
+                    </lightning-input-field>
+                    <lightning-input-field field-name="Transaccion_cooparticipe__c" required class="hijo-campo">
+                    </lightning-input-field> 
+                    <lightning-input-field field-name="CloseDate" required class="hijo-campo" value={fechaEfectiva}>
+                    </lightning-input-field>
+                    <lightning-input type="checkbox" label="Aporte confirmado" class="checkbox-input-field" onchange={handleCheckboxChange}>
+                    </lightning-input>
+                    <template if:true={mostrarSeccionPago}>
+                        <lightning-input-field field-name="Oportunidad_es_Aporte__c" value={valorTrue} class="slds-hidden">
+                        </lightning-input-field>  
+                        <lightning-input-field field-name="Fecha_efectiva_primer_aporte__c" value={fechaEfectiva} required class="hijo-campo">
+                        </lightning-input-field>
+                        <lightning-input-field field-name="Numero_documento_deposito__c" required class="hijo-campo">
+                        </lightning-input-field>
+                        <lightning-input-field field-name="Forma_de_Pago__c" required class="hijo-campo">
+                        </lightning-input-field>  
+                        <lightning-input-field field-name="Moneda__c" required class="hijo-campo">
+                        </lightning-input-field>                    
+                        <c-anefi_custom-lookup icon-name="custom:custom16" object-name="ANEFI_Entidad_financiera__c" searchfield="Name" 
+                        codigo-producto={codigoProductoSeleccionado} nombre-campo="Entidad Financiera" onselectedrec={handleSelectedrec} class="hijo-campo" required>
+                        </c-anefi_custom-lookup>
+                    </template>                    
+                                  
+                </div>
+            </div>
+            <div class="slds-col slds-var-m-around_small">
+                <lightning-button variant="brand" type="submit"
+                        name="save" label="Guardar"  onclick={realizarRescate} disabled={buttonDisabled}>
+                </lightning-button>
+            </div>
+        </div>                                                       
+    </lightning-record-edit-form>  
+    
+</template>

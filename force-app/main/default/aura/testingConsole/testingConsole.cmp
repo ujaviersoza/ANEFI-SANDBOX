@@ -1,0 +1,136 @@
+<aura:component implements="force:appHostable,force:hasRecordId,flexipage:availableForRecordHome" access="global" controller="IQA_testingConsoleController">
+    <!-- custom arrtibutes -->
+    <aura:attribute name="queryLimits" type="Integer" default="1000" />
+    <aura:attribute name="title" type="String" default="Selecione un Caso de Prueba"/>
+    <aura:attribute name="testingCasesOptions" type="List" />
+    <aura:attribute name="testingCaseSelected" type="String" default=""/>
+    <aura:Attribute name="testingCasesData" type="Map" />
+    <aura:attribute name="testingCasesFields" type="String[]" default="['Descripcion_del_Caso_de_Prueba__c','Estado_del_Caso_de_Prueba__c','Nombre_del_Ciclo_de_Pruebas__c', 'Enlace_de_Documentacion__c', 'Sprint__c', 'Titulo_de_la_Historia__c']" />
+
+    <aura:attribute name="criteriaCaseSelected" type="String" default=""/>
+    <aura:attribute name="criteriaCasesOptions" type="List" />
+    <aura:Attribute name="criteriaCasesData" type="Map" />
+
+    <aura:attribute name="stageCaseSelected" type="String" default=""/>
+    <aura:attribute name="stageCasesOptions" type="List" />
+    <aura:Attribute name="stageCasesData" type="Map" />
+
+    <aura:attribute name="executionCaseSelected" type="String" default=""/>
+    <aura:attribute name="executionCasesOptions" type="List" />
+    <aura:Attribute name="executionCasesData" type="Map" />
+
+    <aura:attribute name="executionFields" type="String[]" default="['Estado_de_la_Ejecucion__c', 'Inicio__c', 'Fin__c', 'Resultados_Obtenidos__c', 'URL_de_Evidencias__c']" />
+    <lightning:notificationsLibrary aura:id="notifLib" />
+    <lightning:workspaceAPI aura:id="workspace" />
+    <aura:import library="lightning:confirm" property="LightningConfirm" />
+
+    <aura:attribute name="disableCloneBtn" type="Boolean" default="false" />
+
+    <!-- aura actions -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+
+    <lightning:card>
+        <aura:if isTrue="{!v.disableCloneBtn}">
+            <div class="exampleHolder">
+                <lightning:spinner alternativeText="Loading" size="large" />
+            </div>
+        </aura:if>
+        <aura:set attribute="title">
+            {!v.title}
+        </aura:set>
+        <aura:set attribute="actions">
+            <lightning:button label="Nueva Mejora" iconName="utility:task" iconPosition="left"  variant="brand" onclick="{!c.openNewWork}"/>
+            <lightning:button label="Nuevo Bug" iconName="utility:bug" iconPosition="left"  variant="brand" onclick="{!c.openNewWork}"/>
+        </aura:set>
+        <div class="slds-p-around_large">
+            <lightning:combobox name="testingCaseOption" label="Caso de prueba" value="{!v.testingCaseSelected}" placeholder="Seleccione un caso de prueba" options="{!v.testingCasesOptions}" onchange="{!c.testingCaseOptionHandler}"/>
+            
+            <aura:if isTrue="{! not(empty(v.testingCaseSelected)) }">
+                <lightning:card title="Detalle del caso">
+                    <p class="slds-p-horizontal_small">
+                        <lightning:recordForm 
+                            aura:id="detailCaseRecordForm" 
+                            recordId="{!v.testingCaseSelected}" 
+                            objectApiName="IQA_Caso_de_Prueba__c" 
+                            fields="{!v.testingCasesFields}" 
+                            columns="2" 
+                            mode="view" 
+                            onsuccess="{!c.handleSuccess}" 
+                            onerror="{!c.handleError}" />
+                    </p>
+                </lightning:card>
+                <lightning:card title="Detalle de ejecución">
+                    <p class="slds-p-horizontal_small">
+                        <lightning:tabset selectedTabId="executionRecord">
+                            <lightning:tab label="Registro de Ejecución" id="executionRecord">
+                                <lightning:card>
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-p-around_xx-small"><lightning:combobox name="criteriaCaseOption" label="Criterio" value="{!v.criteriaCaseSelected}" placeholder="Seleccione un criterio" options="{!v.criteriaCasesOptions}" onchange="{!c.criteriaCaseOptionHandler}"/></div>
+                                        <div class="slds-col slds-p-around_xx-small"><lightning:combobox name="stageCaseOption" label="Escenario" value="{!v.stageCaseSelected}" placeholder="Seleccione un escenario" options="{!v.stageCasesOptions}" onchange="{!c.stageCaseOptionHandler}"/></div>
+                                        <div class="slds-col slds-p-around_xx-small"><lightning:combobox name="executionCaseOption" label="Ejecución" value="{!v.executionCaseSelected}" placeholder="Seleccione una ejecución" options="{!v.executionCasesOptions}"/></div>
+                                    </div>
+                                </lightning:card>
+                                <aura:if isTrue="{! not(empty(v.executionCaseSelected)) }">
+                                    <lightning:card>
+                                        <aura:set attribute="actions">
+                                            <lightning:button label="Clonar Ejecución" iconName="utility:copy" iconPosition="left"  variant="brand" disabled="{!v.disableCloneBtn}" onclick="{!c.cloneConfirmationPrompt}"/>
+                                        </aura:set>
+                                        <lightning:recordForm 
+                                            aura:id="executionRecordForm"
+                                            recordId = "{!v.executionCaseSelected}" 
+                                            objectApiName="IQA_Ejecucion__c" 
+                                            fields="{!v.executionFields}" 
+                                            columns="2" 
+                                            mode="view" 
+                                            onsuccess="{!c.handleSuccess}" 
+                                            onerror="{!c.handleError}" />
+                                    </lightning:card>
+                                </aura:if>
+                            </lightning:tab>
+                            <lightning:tab label="Roles y Perfiles" id="roles">
+                                <lightning:recordForm 
+                                    aura:id="detailStageRecordForm" 
+                                    recordId="{!v.stageCaseSelected}" 
+                                    objectApiName="IQA_Escenario__c" 
+                                    fields="Perfil_o_Rol__c" 
+                                    mode="view" 
+                                    onsuccess="{!c.handleSuccess}" 
+                                    onerror="{!c.handleError}" />
+                            </lightning:tab>
+                            <lightning:tab label="Datos de Prueba" id="testingData">
+                                <lightning:recordForm 
+                                    aura:id="detailStageRecordForm" 
+                                    recordId="{!v.stageCaseSelected}" 
+                                    objectApiName="IQA_Escenario__c" 
+                                    fields="Datos_de_Prueba__c" 
+                                    mode="view" 
+                                    onsuccess="{!c.handleSuccess}" 
+                                    onerror="{!c.handleError}" />
+                            </lightning:tab>
+                            <lightning:tab label="Pasos" id="steps">
+                                <lightning:recordForm 
+                                    aura:id="detailStageRecordForm" 
+                                    recordId="{!v.stageCaseSelected}" 
+                                    objectApiName="IQA_Escenario__c" 
+                                    fields="Pasos__c" 
+                                    mode="view" 
+                                    onsuccess="{!c.handleSuccess}" 
+                                    onerror="{!c.handleError}" />
+                            </lightning:tab>
+                            <lightning:tab label="Resultados Esperados" id="expectedResults">
+                                <lightning:recordForm 
+                                    aura:id="detailStageRecordForm" 
+                                    recordId="{!v.stageCaseSelected}" 
+                                    objectApiName="IQA_Escenario__c" 
+                                    fields="Resultado_Esperado__c" 
+                                    mode="view" 
+                                    onsuccess="{!c.handleSuccess}" 
+                                    onerror="{!c.handleError}" />
+                            </lightning:tab>
+                        </lightning:tabset>
+                    </p>
+                </lightning:card>
+            </aura:if>
+        </div>
+    </lightning:card>
+</aura:component>

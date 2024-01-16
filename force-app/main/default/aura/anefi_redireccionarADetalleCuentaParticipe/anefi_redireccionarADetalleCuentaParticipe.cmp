@@ -1,0 +1,27 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" access="global">
+    <aura:attribute type="String" name="clienteId"/>
+    <aura:attribute type="String" name="codigoProducto"/>
+    <aura:attribute type="String" name="nombreProducto"/>
+    <aura:attribute type="String" name="codigoAgencia"/>
+    <aura:attribute type="String" name="nombreAgencia"/>
+    <aura:attribute type="String" name="codigoTrader"/>
+    <aura:attribute type="String" name="nombreTrader"/>
+    <aura:attribute type="String" name="numeroCuenta"/>
+    <aura:attribute type="String" name="codigoTipoCuenta"/>
+    <aura:attribute type="String" name="nombreTipoCuenta"/>
+    <aura:attribute type="String" name="fechaApertura"/>
+    <aura:attribute type="String" name="estado"/>    
+
+     <!--Lightning Workspace API-->
+     <lightning:workspaceAPI aura:id="workspace"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>    
+    <div class="slds-card">
+        <c:anefi_detalleCuentaParticipe clienteId ="{!v.clienteId}" codigoProducto="{!v.codigoProducto}" 
+            nombreProducto="{!v.nombreProducto}" codigoAgencia="{!v.codigoAgencia}" 
+            nombreAgencia="{!v.nombreAgencia}" codigoTrader="{!v.codigoTrader}" 
+            nombreTrader="{!v.nombreTrader}" numeroCuenta="{!v.numeroCuenta}" 
+            codigoTipoCuenta="{!v.codigoTipoCuenta}" nombreTipoCuenta="{!v.nombreTipoCuenta}" 
+            fechaApertura="{!v.fechaApertura}" estado="{!v.estado}"/>        
+    </div>
+</aura:component>

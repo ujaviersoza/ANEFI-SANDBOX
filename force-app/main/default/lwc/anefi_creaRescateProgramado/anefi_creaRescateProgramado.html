@@ -1,0 +1,47 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-21-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+     
+    <div class=" slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center"> 
+
+        <div class="slds-col slds-size_full">
+            <div class="seccion-campos" style="overflow: initial;">   
+                <lightning-input required class="hijo-campo"   name="agencia"  label="Codigo Agencia" id="agenciaId" type='text'  value={agencia} readonly>
+                </lightning-input>
+                <lightning-combobox required class="hijo-campo"   id="tipoRescate" label="Tipo Rescate "    name="tipoRescate"   options={tipoRescate} onchange={changeHandler}  ></lightning-combobox>
+                <div if:true={mostrarMonto} style="height: 40px; width:330px">
+                    <lightning-input  required class="hijo-campo" type="number"    step="0.01" label="Monto" id="monto" name="monto" onchange={changeHandler} ></lightning-input>
+
+                </div>
+                
+                <lightning-combobox dropdown-alignment="auto" field-level-help="Codigo Tipo Entidad Financiera - Codigo Entidad Financiera - Numero Cuenta" required class="hijo-campo"   id="cuentaBancariaDestino" label="Cuenta Bancario Producto "    name="cuentaBancariaDestino"   options={comboboxcuentaBancariaDestino} onchange={changeHandler} ></lightning-combobox>
+                <lightning-combobox dropdown-alignment="auto" field-level-help="Codigo Tipo Entidad Financiera - Codigo Entidad Financiera - Numero Cuenta"  required class="hijo-campo"   id="cuentaBancariaReferencia" label="Cuenta Bancario Destino"    name="cuentaBancariaReferencia"   options={comboboxcuentaBancariaReferencia} onchange={changeHandler} ></lightning-combobox>
+                <div if:true={mostrarReferencia}  style="height: 55px; width:320px; display:contents">
+                    <lightning-input  class="hijo-campo"   name="nombreReferencia"  label="Nombre-Identificación Referencia" id="nombreReferencia" type='text'  value={nombreReferencia} readonly></lightning-input>
+
+                </div>
+                <!--<lightning-input type="date" name="fechaEfectiva"  min={fechaMinima} label="Fecha Efectiva" class="reqInpFld"  onchange={changeHandler} field-level-help="El valor de la fecha efectiva debe de ser una fecha mayor o igual a hoy, no se acepta Sábado ni Domingo" ></lightning-input>
+                -->
+                <lightning-input type="date" name="fechaEjecucionRescate"  min={fechaMinima} label="Fecha a Ejecutar" required class="reqFechaEje"  onchange={changeHandler} field-level-help="El valor de la fecha ejecutar debe de ser una fecha mayor o igual a hoy, no se acepta Sábado ni Domingo" ></lightning-input>
+
+                <lightning-combobox dropdown-alignment="auto" required class="hijo-campo"   id="FrecuenciaRescate" label="Frecuencia Rescate"    name="FrecuenciaRescate"   options={opcionesFrecuencia} onchange={changeHandler} ></lightning-combobox>
+                <div if:true={mostrarPeriodo}>
+                    <lightning-input  required class="hijo-campo" type="number" label="Periodo" id="periodo" name="periodo" onchange={changeHandler}  ></lightning-input>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="slds-col slds-var-m-around_small">
+            <lightning-button variant="brand"  
+                    name="save" label="Guardar" onclick={creaRescate}>
+            </lightning-button>
+        </div>
+    </div>
+ 
+</template>

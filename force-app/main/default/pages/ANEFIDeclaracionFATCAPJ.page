@@ -1,0 +1,398 @@
+<apex:page extensions="ANEFIDeclaracionFatcaPJ" renderAs="pdf" applyBodyTag="false" standardController="Opportunity">
+
+    <head>
+        <style type="text/css" media="print">
+            * {
+                font-size: 9px;
+                font-family: Helvetica, sans-serif
+            }
+
+
+            @page {
+                @top-center {
+                }
+
+                @bottom-center {
+                }
+                @bottom-left {
+                    content: element(footer);
+
+                }
+            }
+
+            @page :first {
+                @top-center {
+                    content: element(header);
+                }
+                @bottom-left {
+                }
+            }
+            
+
+
+            div.header {
+                padding: 0px;
+                position: running(header);
+            }
+
+            div {}
+
+            div.footer {
+                display: block;
+                padding: 0px;
+                position: running(footer);
+            }
+
+            .pagenumber:before {
+                content: counter(page);
+            }
+
+            .pagecount:before {
+                content: counter(pages);
+            }
+
+            .parContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 14px;
+
+            }
+
+            .parContentLight {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 11px;
+
+            }
+
+            .parContentMicro {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                font-style: italic;
+
+
+            }
+
+            .cuentasContent {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                text-align: left;
+            }
+
+            .vline {
+                border-left: 2px solid black;
+                height: 60px;
+                margin: -80px 0 0 180px;
+            }
+        </style>
+    </head>
+    <div class="header">
+        <img style="width:160px;margin: 20px 0 0 0px;" src="{!$Resource.LogoAnefiPdf}" />
+        <!-- <hr  size="2px" color="black" /> -->
+        <div class="vline"></div>
+
+        <div style="text-align: center; margin: -60px 0 0 -100px;font-size: 24px; ">&nbsp;Declaración FATCA</div>
+        <h4 style="text-align: center; margin: 5px 135px 0 0px;font-size: 22px; ">&nbsp;Persona Jurídica</h4>
+        <!-- <h4 style="text-align: center; margin: -60px 0 0 -215px;font-size: 24px; ">&nbsp;Formulario</h4>
+        <div style="text-align: center; margin: 5px 80px 0 0px;font-size: 22px; ">Origen Lícito de Recursos</div> -->
+
+        <!-- <h4 style="text-align: center; padding-right: 40px; margin: -50px 0 0 0px; font-size: 20px; "></h4> -->
+
+        <!-- <div class="cuentas" style=";padding: 880px 0px 0 100px">
+
+            <table style="border-collapse: collapse; width: 100%;" border="0">
+                <tbody>
+                    <tr>
+                        <td style="width: 80%; text-align: left;">
+                            <table style="border-collapse: collapse; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td class="cuentasContent">Checoslovaquia E10—195 y Av. Eloy Alfaro,</td>
+                                        <td class="cuentasContent">Av. Francisco de Orellana, Edificio World</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">Edificio Cuarzo, Sto piso, of. 503 </td>
+                                        <td class="cuentasContent">Trade Center torre B, piso 7 of. 70B</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">(+593) 2 3324-400</td>
+                                        <td class="cuentasContent">(+593) 4 390 6673</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Quito - Ecuador</b>
+                                        </td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">Guayaquil -Ecuador</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuentasContent">@AnefiEcuador</td>
+                                        <td class="cuentasContent">
+                                            <b style="font-size: 10px;">www.anefi.com.ec</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div> -->
+
+    </div>
+
+    <div class="footer">
+        <apex:outputText value="Fecha de actualización {0,date,MMMM, YYYY}">
+            <apex:param value="{!TODAY()}" />
+        </apex:outputText>
+        <!-- <img style="width:820px;margin: -175px 0 0 -48px;" src="{!$Resource.PiePagina_Logo}" /> -->
+    </div>
+
+    <div class="content">
+        <!--  Primera pagina -->
+        <!-- <h4 style="text-align: center; margin: -300px 0 0 -60px;font-size: 24px; ">&nbsp;Condiciones de Firmas</h4> -->
+        <div style="width: 700px; padding: 60px 0 0 0px ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h5 class="parContentLight">Favor marcar solo una de las 2 opciones con una X</h5>
+                            <p class="parContentLight">
+                                El solicitante declara que la persona jurídica a la cual representa:
+                                <br></br>
+                                <br></br>
+                                <b>1. </b><span style="font-weight: bold;text-decoration:underline;font-size:13px">( X )</span> NO es una persona jurídica estadounidense para efectos de la Ley de Cumplimiento Tributario de Cuentas Extranjeras
+                                - FATCA (por sus siglas en inglés). Mediante la presente el firmante reconoce que una declaración
+                                falsa en este sentido puede ser sujeta a las penalidades previstas en las leyes de los Estados
+                                Unidos de América. En igual sentido, declara además que si la situación impositiva de la
+                                compañía a la que representa se modifica, convirtiéndose en una persona jurídica estadounidense,
+                                deberá comunicar a ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMISOS de este hecho en un
+                                plazo no mayor a 30 días desde que el mismo se hubiera producido.
+                                <br></br>
+                                <br></br>
+
+                            </p>
+                            <p class="parContentLight" style="margin-left:30px">
+                                A. <span style="font-weight: bold;text-decoration:underline;font-size:13px">( X )</span> Hasta donde conoce y por la información que le ha sido otorgada por los accionistas o socios de la compañía a la
+                                que representa, la misma NO posee beneficiarios finales con intereses estadounidenses sustanciales
+                                para efectos de la Ley de Cumplimiento Tributario de Cuentas Extranjeras - FATCA (por sus
+                                siglas en inglés) que de forma directa o indirecta (miembros de la familia y cónyuges) posean
+                                más 10% de la propiedad. Mediante la presente el firmante reconoce que una declaración falsa
+                                en este sentido puede ser sujeta a las penalidades previstas en las leyes de los Estados
+                                Unidos de América. En igual sentido declara además que si su situación impositiva de la persona
+                                jurídica a la que representa o la de sus accionistas se modifica, y pasa a ser personas estadounidenses,
+                                deberá comunicar a ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMI- SOS de este hecho en
+                                un plazo no mayor a 30 días desde que el mismo se hubiera producido.
+                                <br></br>
+                                <br></br>
+                                B. (___) Que SI posee beneficiarios finales estadounidenses sustanciales para efectos de la Ley de Cumplimiento Tributario
+                                de Cuentas Extranjeras - FATCA (por sus siglas en inglés) y por la presente presta consentimiento
+                                y autoriza expresamente a ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMISOS para que proporcione
+                                al Servicio de Rentas Internas de los Estados Unidos de América (Internal Revenue Service
+                                (IRS)) información respecto de su persona, la compañía a la que representa, de sus accionistas,
+                                socios y/o de los negocios fiduciarios que la compañía mantiene en ANEFI S.A. ADMINISTRADORA
+                                DE FONDOS Y FIDEICOMISOS. Asimismo el firmante reconoce y acepta expresamente que el envío
+                                de dicha información al IRS en el marco de la presente autorización no constituye una vulneración
+                                por parte de ANEFI S.A. ADMINISTRADORA DE FONDOS Y FIDEICOMI- SOS al sigilio bursátil previsto
+                                en las nomas ecuatorianas, especialmente a lo previsto en la Disposición General Quinta de
+                                la Ley de Mercado de Valores contenida en el Libro II del Código Orgánico Monetario y Financiero,
+                                y que dicho envío se lo realiza en cumplimiento de la normativa FATCA, en su condición de
+                                institución financiera extranjera participante,
+                                <br></br>
+                                <br></br>
+                                Conforme a lo previsto en dicha Ley.
+                                <br></br>
+                                <br></br>
+                                Los beneficiarios finales estadounidenses sustanciales son los siguientes:
+                                <br></br>
+                                <br></br>
+                                1) Nombre y Apellido ___________________________________________
+                                <br></br>
+                                <br></br>
+                                RUC/ID : _Porcentaje de Propiedad: ___________%
+                                <br></br>
+                                <br></br>
+                                2) Nombre y Apellido ___________________________________________
+                                <br></br>
+                                <br></br>
+                                RUC/ID: _Porcentaje de Propiedad: ___________%
+                                <br></br>
+                                <br></br>
+                                3) Nombre y Apellido ___________________________________________
+                                <br></br>
+                                <br></br>
+                                RUC/ID: _Porcentaje de Propiedad: ___________%
+                                <br></br>
+                                <br></br>
+                                Nota: TIN: Taxpayer Identification Number, SSN: Social Security Number
+                                <br></br>
+                                <br></br>
+                            </p>
+                            <p class="parContentLight">
+                                <b>2. </b>(___) que SI es una ___”Persona Jurídica No Estadounidende Exenta”, ___ “Persona Jurídica que informa en forma directa
+                                al IRS” para la Ley FATCA.
+                                <br></br>
+                                <br></br>
+                                Persona Jurídica No Estadounidense Exenta
+                                <br></br>
+                                <br></br>
+                            </p>
+                            <p class="parContentLight" style="margin-left:30px">
+                                Entidad sin fines de lucro
+                                <br></br>
+                                Beneficiario Final Exento
+                                <br></br>
+                                Entidad No Financiera Activa
+                                <br></br>
+                                Entidad que cotiza en Bolsa y o Afiliada
+                                <br></br>
+                                Compañía de Seguro con actividad de inversión de reservas
+                                <br></br>
+                                Entidad Intra-Afiliada
+                                <br></br>
+                                Entidad No Financiera de Grupo No Financiero
+                                <br></br>
+                                Entidad No Financiera start-up y nuevas líneas de Negocios
+                                <br></br>
+                                Entidad No Financiera en liquidación o quiebra
+                                <br></br>
+                                Entidad Sección 501(C)
+                                <br></br>
+                                Entidad de Territorio Estadounidense
+                                <br></br>
+
+                            </p>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Segunda Pagina -->
+
+        <div style="width: 700px; padding: 60px 60px 0 0px ">
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style="height:100%">
+                                <p class="parContentLight">
+                                    Persona Jurídica que informa en forma directa al IRS
+                                </p>
+                                <table style="border-collapse:collapse; width: 100%; height: 100%" border="1">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">&nbsp;Tipo Entidad (marcar opción)</td>
+                                            <td><b>&nbsp;GIIN - NÚMERO</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;Intermediario Calificado (Qls)</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;Trust Extranjero con Acuerdo de Retención</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;Partenariado Extranjero con Acuerdo de Retención</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;Entidad Extranjera No Financiera de Reporte Directo</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>
+                                Firma Apoderado: ______________________________________________________
+                                <br></br>
+                                <br></br>
+                                Razón Social: <span style="font-weight: bold;text-decoration:underline;font-size:10px">{!Acc[0]}</span> 
+                                <br></br>
+                                <br></br>
+                                Nombres y Apellidos Completos: <span style="font-weight: bold;text-decoration:underline;font-size:10px">{!nameRepresentLegal}</span> 
+                                <br></br>
+                                <br></br>
+                                Cargo : <span style="font-weight: bold;text-decoration:underline;font-size:10px">{!rolRepresentLegal}</span>   Fecha : <span style="font-weight: bold;text-decoration:underline;font-size:10px"><apex:outputText rendered="{!NOT(ISBLANK(DataOpp))}" value="{0,date, dd'/'MM'/'yyyy}">
+                                                    <apex:param value="{!DataOpp[0].CloseDate}" />
+                                                </apex:outputText></span>
+                                <br></br>
+                                <br></br>
+                            </h5>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="border:1px solid #000; width: 100%;   ">
+                                <tr>
+                                    <td>
+                                        <p class="parContentMicro">
+                                            <b>Intereses Sustanciales Estadounidenses:</b> Es cuando en una persona jurídica
+                                            no estadounidense hay personas Naturales que tienen (ellas o partes relacionadas
+                                            10% o mas de la propiedad y son "Personas Especificadas Estadounidenses”. ”Partes
+                                            Relacionadas" incluye hermanos, conyugue, ancestros y descendientes hasta nietos,
+                                            incluyendo esposos/esposas de miembros de la familia. También incluye adoptados
+                                            legalmente.
+
+                                            <br></br>
+                                            <br></br>
+                                            <b>Persona Estadounidense para la Ley FATCA:</b> es un Individuo que reúne alguna
+                                            de los siguientes características: I) Ciudadano estadounidense con Pasaporte
+                                            estadounidense, 2) Residente estadounidense con Tarjeta de Residencia (Green
+                                            Card) y 3) Residente Parcial(183 días en I año calendario, o 122 días en promedio
+                                            en los últimos 3 años calendario).
+                                            <br></br>
+                                            <br></br>
+                                            <b>fotos:</b>
+                                            <br></br>
+                                            <b>A) </b>Si es una Persona Estadounidense deberá además firmar el Form W-9.
+                                            <br></br>
+                                            <b>B) </b>Si hay beneficiarios fino/es con intereses sustancia/es estadounidenses, cada uno de ellos deberá completar un formulario
+                                            de Declaración Jurada FATCA Persona Natural y Form W-9
+                                            <br></br>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</apex:page>

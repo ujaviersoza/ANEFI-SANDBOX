@@ -1,0 +1,20 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" access="global">
+    <aura:attribute type="String" name="clienteId"/>
+    <aura:attribute type="String" name="codigoProducto"/>
+    <aura:attribute type="String" name="numeroCuenta"/>
+    <aura:attribute type="String" name="clienteCodigoGestor"/>
+    <aura:attribute type="String" name="tipoTransaccion"/>
+    <aura:attribute type="String" name="nombreProducto"/>
+    
+
+     <!--Lightning Workspace API-->
+     <lightning:workspaceAPI aura:id="workspace"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>    
+    <div class="slds-card">
+        <c:anefi_consultarMovimientosCuentaParticipe clienteId ="{!v.clienteId}" 
+            codigoProducto="{!v.codigoProducto}" 
+            numeroCuenta="{!v.numeroCuenta}" clienteCodigoGestor="{!v.clienteCodigoGestor}" 
+            tipoTransaccion="{!v.tipoTransaccion}" nombreProducto="{!v.nombreProducto}"/>        
+    </div>
+</aura:component>

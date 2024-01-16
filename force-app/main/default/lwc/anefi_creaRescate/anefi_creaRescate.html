@@ -1,0 +1,123 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-14-2022
+  @last modified by  : axel landa
+-->
+<template>
+
+
+
+     <template if:true={alertVisible}>
+        <lightning-card title="LightningConfirm" icon-name="utility:check">
+            &nbsp;&nbsp;
+            <lightning-button onclick={handleConfirmClick} label="Open Confirm Modal">
+            </lightning-button>
+        </lightning-card>
+     </template>
+
+    <template if:true={mostrarSeccionSaldos}>
+       <div class="slds-grid slds-gutters_x-large slds-wrap slds-grid_vertical-align-center slds-grid_align-center slds-var-p-around_medium">
+       <div class="slds-col slds-size_full">
+       <lightning-card  title="Información Saldos" variant="neutral"  >                                             
+           <div class="slds-grid slds-wrap elementos-saldos">                    
+               <div class="elemento-saldos"> 
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Capital:</span> 
+                       <span class="span-valor">{saldosCuentaParticipe.capital}</span>
+                   </p>                                    
+               </div>
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Saldo Intéres: </span>
+                       <span class="span-valor">{saldosCuentaParticipe.saldoInteres}</span>
+                   </p>                                    
+               </div>
+               <div  class="elemento-saldos"> 
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Saldo Total:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.saldoTotal}</span>
+                   </p>                                    
+               </div>
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Saldo Bloqueado:</span> 
+                       <span class="span-valor">{saldosCuentaParticipe.saldoBloqueado}</span>
+                   </p>                                    
+               </div>
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Saldo disponible:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.saldoDisponible}</span></p>                                    
+               </div>
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Saldo transacciones rescate transito:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.sumaTransaccionesRescateTransito}</span></p>                                    
+               </div>
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Saldo disponible efectivo:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.saldoDisponibleEfectivo}</span></p>                                    
+               </div>                                
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Saldo unidades:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.saldoUnidades}</span>
+                   </p>                                    
+               </div>
+               <div class="elemento-saldos" >
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Valor Unidad:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.valorUnidad}</span>
+                   </p>                                    
+               </div>
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Porcentaje Participación:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.porcentajeParticipacion}</span>
+                   </p>                                    
+               </div>
+               <div class="elemento-saldos">
+                   <p class="slds-text-body_small">
+                       <span class="span-titulo">Rendimiento:</span>
+                       <span class="span-valor">{saldosCuentaParticipe.rendimiento}</span>
+                       </p>                                    
+               </div> 
+                                                                                                       
+           </div>                                                       
+       </lightning-card>       
+   </div>
+       </div>
+   </template>   
+   <template if:true={mostrarSeccionRescate}>
+   <div class=" slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center">
+
+       <div class="slds-col slds-size_full">
+           <div class="seccion-campos" style="overflow: initial;">   
+               <lightning-input required class="hijo-campo"   name="agencia"  label="Codigo Agencia" id="agenciaId" type='text'  value={agencia} readonly>
+               </lightning-input>
+               <lightning-combobox required class="hijo-campo"   id="tipoRescate" label="Tipo Rescate "    name="tipoRescate"   options={tipoRescate} onchange={changeHandler}  ></lightning-combobox>
+               <div if:true={mostrarMonto} style="height: 40px; width:330px">
+               <lightning-input  required class="hijo-campo" step="0.01"  type="number" label="Monto" id="monto" name="monto" onchange={changeHandler} ></lightning-input>
+               </div>
+               <lightning-combobox dropdown-alignment="auto" field-level-help="Codigo Tipo Entidad Financiera - Codigo Entidad Financiera - Numero Cuenta" required class="hijo-campo"   id="cuentaBancariaProducto" label="Cuenta Bancario Producto "    name="cuentaBancariaProducto"   options={comboboxcuentaBancariaProducto} onchange={changeHandler} ></lightning-combobox>
+               <lightning-combobox dropdown-alignment="auto" field-level-help="Codigo Tipo Entidad Financiera - Codigo Entidad Financiera - Numero Cuenta"  required class="hijo-campo"   id="cuentaBancariaReferencia" label="Cuenta Bancario Destino"    name="cuentaBancariaReferencia"   options={comboboxcuentaBancariaReferencia} onchange={changeHandler} ></lightning-combobox>
+               <div if:true={mostrarReferencia} style="height: 55px; width:320px">
+                   <lightning-input     name="nombreReferencia"  label="Identificación - Nombre Referencia" id="nombreReferencia" type='text'  value={nombreReferencia} readonly></lightning-input>
+
+               </div>
+               <lightning-input type="date" name="fechaEfectiva" value ={fechaEfectiva} min={fechaMinima} label="Fecha Efectiva" class="reqInpFld"  onchange={changeHandler} field-level-help="El valor de la fecha efectiva debe de ser una fecha mayor o igual a hoy, no se acepta Sábado ni Domingo" ></lightning-input>
+           </div>
+       </div>
+       <div class="slds-col slds-var-m-around_small">
+           <lightning-button variant="brand"  
+                   name="save" label="Guardar" onclick={realizarRescate} disabled={buttonDisabled}>
+           </lightning-button>
+       </div>
+   </div>
+    </template>
+
+    
+</template>

@@ -1,0 +1,16 @@
+<template>
+    test interno
+    <lightning-radio-group name="radioGroup"
+                          label="Nueva oportunidad"
+                          options={opcionesArray}
+                          value={valorSeleccionado}
+                          onchange={handleChange}
+                          type="radio">
+    </lightning-radio-group>
+    
+    <div>
+        <lightning-button label="Siguiente" variant="neutral" icon-name="utility:forward" onclick={handleNext}></lightning-button>
+    </div>                     
+    
+    
+</template>

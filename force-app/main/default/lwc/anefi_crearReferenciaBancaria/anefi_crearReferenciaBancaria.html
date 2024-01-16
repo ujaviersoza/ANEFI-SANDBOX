@@ -1,0 +1,56 @@
+<template>
+    <template if:true={cargandoVisible}>
+        <div class="slds-col slds-grow-none slds-var-p-around_xx-large">
+            <lightning-spinner alternative-text="Cargando" size="large" variant="brand"
+                class="slds-var-m-around_xx-large">
+            </lightning-spinner>
+        </div>
+    </template>   
+    <lightning-record-edit-form object-api-name='Account'
+        onsubmit={handleSubmit} record-id={clienteId}> 
+        <div class="slds-theme_default slds-p-around_none slds-var-m-vertical_small slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center"> 
+            <div class="slds-col slds-size_full">
+                <div class="seccion-campos-faltantes">   
+                    <lightning-input-field field-name="Numero_de_cuenta_bancaria__c" required class="hijo-campo-faltante">
+                    </lightning-input-field>            
+                    <lightning-input-field field-name="Entidad_financiera__c" required class="hijo-campo-faltante">
+                    </lightning-input-field>            
+                    <lightning-input-field field-name="Tipo_de_cuenta_bancaria__c" required class="hijo-campo-faltante">
+                    </lightning-input-field> 
+                    <lightning-combobox
+                        name="moneda"
+                        label="Moneda"
+                        value={valorMoneda}
+                        placeholder="Seleccione la moneda"
+                        options={opcionesMoneda}
+                        onchange={handleChangeMoneda} class="hijo-campo-faltante" required>
+                    </lightning-combobox>
+                    <lightning-input type="date" name="fechaIngreso" label="Fecha Ingreso" value={fechaIngresoPorDefecto} onchange={handleFechaIngreso} class="hijo-campo-faltante"></lightning-input>
+                    <lightning-combobox
+                        name="principal"
+                        label="Principal"
+                        value={valorPrincipal}
+                        placeholder=""
+                        options={opcionesPrincipal}
+                        onchange={handleChangePrincipal} class="hijo-campo-faltante">
+                    </lightning-combobox>
+                    <lightning-combobox
+                        name="estado"
+                        label="Estado"
+                        value={valorEstado}
+                        placeholder=""
+                        options={opcionesEstado}
+                        onchange={handleChangeEstado} class="hijo-campo-faltante">
+                    </lightning-combobox>
+                    <lightning-textarea name="observacionesReferenciaBancaria" label="Observaciones" onchange={handleObservaciones} class="hijo-campo-faltante"></lightning-textarea>                                                                           
+                </div>
+            </div>
+            <div class="slds-col slds-var-m-around_small">
+                <lightning-button variant="brand" type="submit"
+                        name="update" label="Guardar">
+                </lightning-button>
+            </div>
+        </div>                                                       
+    </lightning-record-edit-form>  
+    
+</template>

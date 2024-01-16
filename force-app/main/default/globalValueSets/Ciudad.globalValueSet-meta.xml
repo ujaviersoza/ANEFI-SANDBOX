@@ -1,0 +1,1151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>24 DE MAYO</fullName>
+        <default>false</default>
+        <label>24 DE MAYO</label>
+    </customValue>
+    <customValue>
+        <fullName>AGUARICO</fullName>
+        <default>false</default>
+        <label>AGUARICO</label>
+    </customValue>
+    <customValue>
+        <fullName>ALAUSI</fullName>
+        <default>false</default>
+        <label>ALAUSI</label>
+    </customValue>
+    <customValue>
+        <fullName>ALFREDO BAQUERIZO MORENO</fullName>
+        <default>false</default>
+        <label>ALFREDO BAQUERIZO MORENO</label>
+    </customValue>
+    <customValue>
+        <fullName>AMBATO</fullName>
+        <default>false</default>
+        <label>AMBATO</label>
+    </customValue>
+    <customValue>
+        <fullName>ANTONIO ANTE</fullName>
+        <default>false</default>
+        <label>ANTONIO ANTE</label>
+    </customValue>
+    <customValue>
+        <fullName>ARAJUNO</fullName>
+        <default>false</default>
+        <label>ARAJUNO</label>
+    </customValue>
+    <customValue>
+        <fullName>ARCHIDONA</fullName>
+        <default>false</default>
+        <label>ARCHIDONA</label>
+    </customValue>
+    <customValue>
+        <fullName>ARENILLAS</fullName>
+        <default>false</default>
+        <label>ARENILLAS</label>
+    </customValue>
+    <customValue>
+        <fullName>ATACAMES</fullName>
+        <default>false</default>
+        <label>ATACAMES</label>
+    </customValue>
+    <customValue>
+        <fullName>ATAHUALPA</fullName>
+        <default>false</default>
+        <label>ATAHUALPA</label>
+    </customValue>
+    <customValue>
+        <fullName>AZOGUES</fullName>
+        <default>false</default>
+        <label>AZOGUES</label>
+    </customValue>
+    <customValue>
+        <fullName>BABA</fullName>
+        <default>false</default>
+        <label>BABA</label>
+    </customValue>
+    <customValue>
+        <fullName>BABAHOYO</fullName>
+        <default>false</default>
+        <label>BABAHOYO</label>
+    </customValue>
+    <customValue>
+        <fullName>BALAO</fullName>
+        <default>false</default>
+        <label>BALAO</label>
+    </customValue>
+    <customValue>
+        <fullName>BALSAS</fullName>
+        <default>false</default>
+        <label>BALSAS</label>
+    </customValue>
+    <customValue>
+        <fullName>BALZAR</fullName>
+        <default>false</default>
+        <label>BALZAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BAÑOS DE AGUA SANTA</fullName>
+        <default>false</default>
+        <label>BAÑOS DE AGUA SANTA</label>
+    </customValue>
+    <customValue>
+        <fullName>BIBLIÁN</fullName>
+        <default>false</default>
+        <label>BIBLIÁN</label>
+    </customValue>
+    <customValue>
+        <fullName>BOLÍVAR</fullName>
+        <default>false</default>
+        <label>BOLÍVAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BUENA FÉ</fullName>
+        <default>false</default>
+        <label>BUENA FÉ</label>
+    </customValue>
+    <customValue>
+        <fullName>CALUMA</fullName>
+        <default>false</default>
+        <label>CALUMA</label>
+    </customValue>
+    <customValue>
+        <fullName>CALVAS</fullName>
+        <default>false</default>
+        <label>CALVAS</label>
+    </customValue>
+    <customValue>
+        <fullName>CAMILO PONCE ENRÍQUEZ</fullName>
+        <default>false</default>
+        <label>CAMILO PONCE ENRÍQUEZ</label>
+    </customValue>
+    <customValue>
+        <fullName>CAÑAR</fullName>
+        <default>false</default>
+        <label>CAÑAR</label>
+    </customValue>
+    <customValue>
+        <fullName>CARLOS JULIO AROSEMENA TOLA</fullName>
+        <default>false</default>
+        <label>CARLOS JULIO AROSEMENA TOLA</label>
+    </customValue>
+    <customValue>
+        <fullName>CASCALES</fullName>
+        <default>false</default>
+        <label>CASCALES</label>
+    </customValue>
+    <customValue>
+        <fullName>CATAMAYO</fullName>
+        <default>false</default>
+        <label>CATAMAYO</label>
+    </customValue>
+    <customValue>
+        <fullName>CAYAMBE</fullName>
+        <default>false</default>
+        <label>CAYAMBE</label>
+    </customValue>
+    <customValue>
+        <fullName>CELICA</fullName>
+        <default>false</default>
+        <label>CELICA</label>
+    </customValue>
+    <customValue>
+        <fullName>CENTINELA DEL CÓNDOR</fullName>
+        <default>false</default>
+        <label>CENTINELA DEL CÓNDOR</label>
+    </customValue>
+    <customValue>
+        <fullName>CEVALLOS</fullName>
+        <default>false</default>
+        <label>CEVALLOS</label>
+    </customValue>
+    <customValue>
+        <fullName>CHAGUARPAMBA</fullName>
+        <default>false</default>
+        <label>CHAGUARPAMBA</label>
+    </customValue>
+    <customValue>
+        <fullName>CHAMBO</fullName>
+        <default>false</default>
+        <label>CHAMBO</label>
+    </customValue>
+    <customValue>
+        <fullName>CHILLA</fullName>
+        <default>false</default>
+        <label>CHILLA</label>
+    </customValue>
+    <customValue>
+        <fullName>CHILLANES</fullName>
+        <default>false</default>
+        <label>CHILLANES</label>
+    </customValue>
+    <customValue>
+        <fullName>CHIMBO</fullName>
+        <default>false</default>
+        <label>CHIMBO</label>
+    </customValue>
+    <customValue>
+        <fullName>CHINCHIPE</fullName>
+        <default>false</default>
+        <label>CHINCHIPE</label>
+    </customValue>
+    <customValue>
+        <fullName>CHONE</fullName>
+        <default>false</default>
+        <label>CHONE</label>
+    </customValue>
+    <customValue>
+        <fullName>CHORDELEG</fullName>
+        <default>false</default>
+        <label>CHORDELEG</label>
+    </customValue>
+    <customValue>
+        <fullName>CHUNCHI</fullName>
+        <default>false</default>
+        <label>CHUNCHI</label>
+    </customValue>
+    <customValue>
+        <fullName>COLIMES</fullName>
+        <default>false</default>
+        <label>COLIMES</label>
+    </customValue>
+    <customValue>
+        <fullName>COLTA</fullName>
+        <default>false</default>
+        <label>COLTA</label>
+    </customValue>
+    <customValue>
+        <fullName>CORONEL MARCELINO MARIDUEÑA</fullName>
+        <default>false</default>
+        <label>CORONEL MARCELINO MARIDUEÑA</label>
+    </customValue>
+    <customValue>
+        <fullName>COTACACHI</fullName>
+        <default>false</default>
+        <label>COTACACHI</label>
+    </customValue>
+    <customValue>
+        <fullName>CUENCA</fullName>
+        <default>false</default>
+        <label>CUENCA</label>
+    </customValue>
+    <customValue>
+        <fullName>CUMANDÁ</fullName>
+        <default>false</default>
+        <label>CUMANDÁ</label>
+    </customValue>
+    <customValue>
+        <fullName>CUYABENO</fullName>
+        <default>false</default>
+        <label>CUYABENO</label>
+    </customValue>
+    <customValue>
+        <fullName>DAULE</fullName>
+        <default>false</default>
+        <label>DAULE</label>
+    </customValue>
+    <customValue>
+        <fullName>DÉLEG</fullName>
+        <default>false</default>
+        <label>DÉLEG</label>
+    </customValue>
+    <customValue>
+        <fullName>DURÁN</fullName>
+        <default>false</default>
+        <label>DURÁN</label>
+    </customValue>
+    <customValue>
+        <fullName>ECHEANDÍA</fullName>
+        <default>false</default>
+        <label>ECHEANDÍA</label>
+    </customValue>
+    <customValue>
+        <fullName>EL CARMEN</fullName>
+        <default>false</default>
+        <label>EL CARMEN</label>
+    </customValue>
+    <customValue>
+        <fullName>EL CHACO</fullName>
+        <default>false</default>
+        <label>EL CHACO</label>
+    </customValue>
+    <customValue>
+        <fullName>EL EMPALME</fullName>
+        <default>false</default>
+        <label>EL EMPALME</label>
+    </customValue>
+    <customValue>
+        <fullName>EL GUABO</fullName>
+        <default>false</default>
+        <label>EL GUABO</label>
+    </customValue>
+    <customValue>
+        <fullName>ELOY ALFARO</fullName>
+        <default>false</default>
+        <label>ELOY ALFARO</label>
+    </customValue>
+    <customValue>
+        <fullName>EL PAN</fullName>
+        <default>false</default>
+        <label>EL PAN</label>
+    </customValue>
+    <customValue>
+        <fullName>EL PANGUI</fullName>
+        <default>false</default>
+        <label>EL PANGUI</label>
+    </customValue>
+    <customValue>
+        <fullName>EL PIEDRERO</fullName>
+        <default>false</default>
+        <label>EL PIEDRERO</label>
+    </customValue>
+    <customValue>
+        <fullName>EL TAMBO</fullName>
+        <default>false</default>
+        <label>EL TAMBO</label>
+    </customValue>
+    <customValue>
+        <fullName>EL TRIUNFO</fullName>
+        <default>false</default>
+        <label>EL TRIUNFO</label>
+    </customValue>
+    <customValue>
+        <fullName>ESMERALDAS</fullName>
+        <default>false</default>
+        <label>ESMERALDAS</label>
+    </customValue>
+    <customValue>
+        <fullName>ESPEJO</fullName>
+        <default>false</default>
+        <label>ESPEJO</label>
+    </customValue>
+    <customValue>
+        <fullName>ESPÍNDOLA</fullName>
+        <default>false</default>
+        <label>ESPÍNDOLA</label>
+    </customValue>
+    <customValue>
+        <fullName>FLAVIO ALFARO</fullName>
+        <default>false</default>
+        <label>FLAVIO ALFARO</label>
+    </customValue>
+    <customValue>
+        <fullName>GENERAL ANTONIO ELIZALDE</fullName>
+        <default>false</default>
+        <label>GENERAL ANTONIO ELIZALDE</label>
+    </customValue>
+    <customValue>
+        <fullName>GIRÓN</fullName>
+        <default>false</default>
+        <label>GIRÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>GONZALO PIZARRO</fullName>
+        <default>false</default>
+        <label>GONZALO PIZARRO</label>
+    </customValue>
+    <customValue>
+        <fullName>GONZANAMÁ</fullName>
+        <default>false</default>
+        <label>GONZANAMÁ</label>
+    </customValue>
+    <customValue>
+        <fullName>GUACHAPALA</fullName>
+        <default>false</default>
+        <label>GUACHAPALA</label>
+    </customValue>
+    <customValue>
+        <fullName>GUALACEO</fullName>
+        <default>false</default>
+        <label>GUALACEO</label>
+    </customValue>
+    <customValue>
+        <fullName>GUALAQUIZA</fullName>
+        <default>false</default>
+        <label>GUALAQUIZA</label>
+    </customValue>
+    <customValue>
+        <fullName>GUAMOTE</fullName>
+        <default>false</default>
+        <label>GUAMOTE</label>
+    </customValue>
+    <customValue>
+        <fullName>GUANO</fullName>
+        <default>false</default>
+        <label>GUANO</label>
+    </customValue>
+    <customValue>
+        <fullName>GUARANDA</fullName>
+        <default>false</default>
+        <label>GUARANDA</label>
+    </customValue>
+    <customValue>
+        <fullName>GUAYAQUIL</fullName>
+        <default>false</default>
+        <label>GUAYAQUIL</label>
+    </customValue>
+    <customValue>
+        <fullName>HUAMBOYA</fullName>
+        <default>false</default>
+        <label>HUAMBOYA</label>
+    </customValue>
+    <customValue>
+        <fullName>HUAQUILLAS</fullName>
+        <default>false</default>
+        <label>HUAQUILLAS</label>
+    </customValue>
+    <customValue>
+        <fullName>IBARRA</fullName>
+        <default>false</default>
+        <label>IBARRA</label>
+    </customValue>
+    <customValue>
+        <fullName>ISABELA</fullName>
+        <default>false</default>
+        <label>ISABELA</label>
+    </customValue>
+    <customValue>
+        <fullName>ISIDRO AYORA</fullName>
+        <default>false</default>
+        <label>ISIDRO AYORA</label>
+    </customValue>
+    <customValue>
+        <fullName>JAMA</fullName>
+        <default>false</default>
+        <label>JAMA</label>
+    </customValue>
+    <customValue>
+        <fullName>JARAMIJÓ</fullName>
+        <default>false</default>
+        <label>JARAMIJÓ</label>
+    </customValue>
+    <customValue>
+        <fullName>JIPIJAPA</fullName>
+        <default>false</default>
+        <label>JIPIJAPA</label>
+    </customValue>
+    <customValue>
+        <fullName>JUNÍN</fullName>
+        <default>false</default>
+        <label>JUNÍN</label>
+    </customValue>
+    <customValue>
+        <fullName>LA CONCORDIA</fullName>
+        <default>false</default>
+        <label>LA CONCORDIA</label>
+    </customValue>
+    <customValue>
+        <fullName>LAGO AGRIO</fullName>
+        <default>false</default>
+        <label>LAGO AGRIO</label>
+    </customValue>
+    <customValue>
+        <fullName>LA JOYA DE LOS SACHAS</fullName>
+        <default>false</default>
+        <label>LA JOYA DE LOS SACHAS</label>
+    </customValue>
+    <customValue>
+        <fullName>LA LIBERTAD</fullName>
+        <default>false</default>
+        <label>LA LIBERTAD</label>
+    </customValue>
+    <customValue>
+        <fullName>LA MANÁ</fullName>
+        <default>false</default>
+        <label>LA MANÁ</label>
+    </customValue>
+    <customValue>
+        <fullName>LAS GOLONDRINAS</fullName>
+        <default>false</default>
+        <label>LAS GOLONDRINAS</label>
+    </customValue>
+    <customValue>
+        <fullName>LAS LAJAS</fullName>
+        <default>false</default>
+        <label>LAS LAJAS</label>
+    </customValue>
+    <customValue>
+        <fullName>LAS NAVES</fullName>
+        <default>false</default>
+        <label>LAS NAVES</label>
+    </customValue>
+    <customValue>
+        <fullName>LATACUNGA</fullName>
+        <default>false</default>
+        <label>LATACUNGA</label>
+    </customValue>
+    <customValue>
+        <fullName>LA TRONCAL</fullName>
+        <default>false</default>
+        <label>LA TRONCAL</label>
+    </customValue>
+    <customValue>
+        <fullName>LIMÓN INDANZA</fullName>
+        <default>false</default>
+        <label>LIMÓN INDANZA</label>
+    </customValue>
+    <customValue>
+        <fullName>LOGROÑO</fullName>
+        <default>false</default>
+        <label>LOGROÑO</label>
+    </customValue>
+    <customValue>
+        <fullName>LOJA</fullName>
+        <default>false</default>
+        <label>LOJA</label>
+    </customValue>
+    <customValue>
+        <fullName>LOMAS DE SARGENTILLO</fullName>
+        <default>false</default>
+        <label>LOMAS DE SARGENTILLO</label>
+    </customValue>
+    <customValue>
+        <fullName>LORETO</fullName>
+        <default>false</default>
+        <label>LORETO</label>
+    </customValue>
+    <customValue>
+        <fullName>MACARÁ</fullName>
+        <default>false</default>
+        <label>MACARÁ</label>
+    </customValue>
+    <customValue>
+        <fullName>MACHALA</fullName>
+        <default>false</default>
+        <label>MACHALA</label>
+    </customValue>
+    <customValue>
+        <fullName>MANGA DEL CURA</fullName>
+        <default>false</default>
+        <label>MANGA DEL CURA</label>
+    </customValue>
+    <customValue>
+        <fullName>MANTA</fullName>
+        <default>false</default>
+        <label>MANTA</label>
+    </customValue>
+    <customValue>
+        <fullName>MARCABELÍ</fullName>
+        <default>false</default>
+        <label>MARCABELÍ</label>
+    </customValue>
+    <customValue>
+        <fullName>MEJIA</fullName>
+        <default>false</default>
+        <label>MEJIA</label>
+    </customValue>
+    <customValue>
+        <fullName>MERA</fullName>
+        <default>false</default>
+        <label>MERA</label>
+    </customValue>
+    <customValue>
+        <fullName>MILAGRO</fullName>
+        <default>false</default>
+        <label>MILAGRO</label>
+    </customValue>
+    <customValue>
+        <fullName>MIRA</fullName>
+        <default>false</default>
+        <label>MIRA</label>
+    </customValue>
+    <customValue>
+        <fullName>MOCACHE</fullName>
+        <default>false</default>
+        <label>MOCACHE</label>
+    </customValue>
+    <customValue>
+        <fullName>MOCHA</fullName>
+        <default>false</default>
+        <label>MOCHA</label>
+    </customValue>
+    <customValue>
+        <fullName>MONTALVO</fullName>
+        <default>false</default>
+        <label>MONTALVO</label>
+    </customValue>
+    <customValue>
+        <fullName>MONTECRISTI</fullName>
+        <default>false</default>
+        <label>MONTECRISTI</label>
+    </customValue>
+    <customValue>
+        <fullName>MONTÚFAR</fullName>
+        <default>false</default>
+        <label>MONTÚFAR</label>
+    </customValue>
+    <customValue>
+        <fullName>MORONA</fullName>
+        <default>false</default>
+        <label>MORONA</label>
+    </customValue>
+    <customValue>
+        <fullName>MUISNE</fullName>
+        <default>false</default>
+        <label>MUISNE</label>
+    </customValue>
+    <customValue>
+        <fullName>NABÓN</fullName>
+        <default>false</default>
+        <label>NABÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>NANGARITZA</fullName>
+        <default>false</default>
+        <label>NANGARITZA</label>
+    </customValue>
+    <customValue>
+        <fullName>NARANJAL</fullName>
+        <default>false</default>
+        <label>NARANJAL</label>
+    </customValue>
+    <customValue>
+        <fullName>NARANJITO</fullName>
+        <default>false</default>
+        <label>NARANJITO</label>
+    </customValue>
+    <customValue>
+        <fullName>NOBOL</fullName>
+        <default>false</default>
+        <label>NOBOL</label>
+    </customValue>
+    <customValue>
+        <fullName>OLMEDO</fullName>
+        <default>false</default>
+        <label>OLMEDO</label>
+    </customValue>
+    <customValue>
+        <fullName>OÑA</fullName>
+        <default>false</default>
+        <label>OÑA</label>
+    </customValue>
+    <customValue>
+        <fullName>ORELLANA</fullName>
+        <default>false</default>
+        <label>ORELLANA</label>
+    </customValue>
+    <customValue>
+        <fullName>OTAVALO</fullName>
+        <default>false</default>
+        <label>OTAVALO</label>
+    </customValue>
+    <customValue>
+        <fullName>PABLO SEXTO</fullName>
+        <default>false</default>
+        <label>PABLO SEXTO</label>
+    </customValue>
+    <customValue>
+        <fullName>PAJÁN</fullName>
+        <default>false</default>
+        <label>PAJÁN</label>
+    </customValue>
+    <customValue>
+        <fullName>PALANDA</fullName>
+        <default>false</default>
+        <label>PALANDA</label>
+    </customValue>
+    <customValue>
+        <fullName>PALENQUE</fullName>
+        <default>false</default>
+        <label>PALENQUE</label>
+    </customValue>
+    <customValue>
+        <fullName>PALESTINA</fullName>
+        <default>false</default>
+        <label>PALESTINA</label>
+    </customValue>
+    <customValue>
+        <fullName>PALLATANGA</fullName>
+        <default>false</default>
+        <label>PALLATANGA</label>
+    </customValue>
+    <customValue>
+        <fullName>PALORA</fullName>
+        <default>false</default>
+        <label>PALORA</label>
+    </customValue>
+    <customValue>
+        <fullName>PALTAS</fullName>
+        <default>false</default>
+        <label>PALTAS</label>
+    </customValue>
+    <customValue>
+        <fullName>PANGUA</fullName>
+        <default>false</default>
+        <label>PANGUA</label>
+    </customValue>
+    <customValue>
+        <fullName>PAQUISHA</fullName>
+        <default>false</default>
+        <label>PAQUISHA</label>
+    </customValue>
+    <customValue>
+        <fullName>PASAJE</fullName>
+        <default>false</default>
+        <label>PASAJE</label>
+    </customValue>
+    <customValue>
+        <fullName>PASTAZA</fullName>
+        <default>false</default>
+        <label>PASTAZA</label>
+    </customValue>
+    <customValue>
+        <fullName>PATATE</fullName>
+        <default>false</default>
+        <label>PATATE</label>
+    </customValue>
+    <customValue>
+        <fullName>PAUTE</fullName>
+        <default>false</default>
+        <label>PAUTE</label>
+    </customValue>
+    <customValue>
+        <fullName>PEDERNALES</fullName>
+        <default>false</default>
+        <label>PEDERNALES</label>
+    </customValue>
+    <customValue>
+        <fullName>PEDRO CARBO</fullName>
+        <default>false</default>
+        <label>PEDRO CARBO</label>
+    </customValue>
+    <customValue>
+        <fullName>PEDRO MONCAYO</fullName>
+        <default>false</default>
+        <label>PEDRO MONCAYO</label>
+    </customValue>
+    <customValue>
+        <fullName>PEDRO VICENTE MALDONADO</fullName>
+        <default>false</default>
+        <label>PEDRO VICENTE MALDONADO</label>
+    </customValue>
+    <customValue>
+        <fullName>PENIPE</fullName>
+        <default>false</default>
+        <label>PENIPE</label>
+    </customValue>
+    <customValue>
+        <fullName>PICHINCHA</fullName>
+        <default>false</default>
+        <label>PICHINCHA</label>
+    </customValue>
+    <customValue>
+        <fullName>PIMAMPIRO</fullName>
+        <default>false</default>
+        <label>PIMAMPIRO</label>
+    </customValue>
+    <customValue>
+        <fullName>PINDAL</fullName>
+        <default>false</default>
+        <label>PINDAL</label>
+    </customValue>
+    <customValue>
+        <fullName>PIÑAS</fullName>
+        <default>false</default>
+        <label>PIÑAS</label>
+    </customValue>
+    <customValue>
+        <fullName>PLAYAS</fullName>
+        <default>false</default>
+        <label>PLAYAS</label>
+    </customValue>
+    <customValue>
+        <fullName>PORTOVELO</fullName>
+        <default>false</default>
+        <label>PORTOVELO</label>
+    </customValue>
+    <customValue>
+        <fullName>PORTOVIEJO</fullName>
+        <default>false</default>
+        <label>PORTOVIEJO</label>
+    </customValue>
+    <customValue>
+        <fullName>PUCARA</fullName>
+        <default>false</default>
+        <label>PUCARA</label>
+    </customValue>
+    <customValue>
+        <fullName>PUEBLOVIEJO</fullName>
+        <default>false</default>
+        <label>PUEBLOVIEJO</label>
+    </customValue>
+    <customValue>
+        <fullName>PUERTO LÓPEZ</fullName>
+        <default>false</default>
+        <label>PUERTO LÓPEZ</label>
+    </customValue>
+    <customValue>
+        <fullName>PUERTO QUITO</fullName>
+        <default>false</default>
+        <label>PUERTO QUITO</label>
+    </customValue>
+    <customValue>
+        <fullName>PUJILI</fullName>
+        <default>false</default>
+        <label>PUJILI</label>
+    </customValue>
+    <customValue>
+        <fullName>PUTUMAYO</fullName>
+        <default>false</default>
+        <label>PUTUMAYO</label>
+    </customValue>
+    <customValue>
+        <fullName>PUYANGO</fullName>
+        <default>false</default>
+        <label>PUYANGO</label>
+    </customValue>
+    <customValue>
+        <fullName>QUERO</fullName>
+        <default>false</default>
+        <label>QUERO</label>
+    </customValue>
+    <customValue>
+        <fullName>QUEVEDO</fullName>
+        <default>false</default>
+        <label>QUEVEDO</label>
+    </customValue>
+    <customValue>
+        <fullName>QUIJOS</fullName>
+        <default>false</default>
+        <label>QUIJOS</label>
+    </customValue>
+    <customValue>
+        <fullName>QUILANGA</fullName>
+        <default>false</default>
+        <label>QUILANGA</label>
+    </customValue>
+    <customValue>
+        <fullName>QUININDÉ</fullName>
+        <default>false</default>
+        <label>QUININDÉ</label>
+    </customValue>
+    <customValue>
+        <fullName>QUINSALOMA</fullName>
+        <default>false</default>
+        <label>QUINSALOMA</label>
+    </customValue>
+    <customValue>
+        <fullName>QUITO</fullName>
+        <default>false</default>
+        <label>QUITO</label>
+    </customValue>
+    <customValue>
+        <fullName>RIOBAMBA</fullName>
+        <default>false</default>
+        <label>RIOBAMBA</label>
+    </customValue>
+    <customValue>
+        <fullName>RIOVERDE</fullName>
+        <default>false</default>
+        <label>RIOVERDE</label>
+    </customValue>
+    <customValue>
+        <fullName>ROCAFUERTE</fullName>
+        <default>false</default>
+        <label>ROCAFUERTE</label>
+    </customValue>
+    <customValue>
+        <fullName>RUMIÑAHUI</fullName>
+        <default>false</default>
+        <label>RUMIÑAHUI</label>
+    </customValue>
+    <customValue>
+        <fullName>SALCEDO</fullName>
+        <default>false</default>
+        <label>SALCEDO</label>
+    </customValue>
+    <customValue>
+        <fullName>SALINAS</fullName>
+        <default>false</default>
+        <label>SALINAS</label>
+    </customValue>
+    <customValue>
+        <fullName>SALITRE</fullName>
+        <default>false</default>
+        <label>SALITRE</label>
+    </customValue>
+    <customValue>
+        <fullName>SAMBORONDÓN</fullName>
+        <default>false</default>
+        <label>SAMBORONDÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN CRISTÓBAL</fullName>
+        <default>false</default>
+        <label>SAN CRISTÓBAL</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN FERNANDO</fullName>
+        <default>false</default>
+        <label>SAN FERNANDO</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN JACINTO DE YAGUACHI</fullName>
+        <default>false</default>
+        <label>SAN JACINTO DE YAGUACHI</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN JUAN BOSCO</fullName>
+        <default>false</default>
+        <label>SAN JUAN BOSCO</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN LORENZO</fullName>
+        <default>false</default>
+        <label>SAN LORENZO</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN MIGUEL</fullName>
+        <default>false</default>
+        <label>SAN MIGUEL</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN MIGUEL DE LOS BANCOS</fullName>
+        <default>false</default>
+        <label>SAN MIGUEL DE LOS BANCOS</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN MIGUEL DE URCUQUÍ</fullName>
+        <default>false</default>
+        <label>SAN MIGUEL DE URCUQUÍ</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN PEDRO DE HUACA</fullName>
+        <default>false</default>
+        <label>SAN PEDRO DE HUACA</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN PEDRO DE PELILEO</fullName>
+        <default>false</default>
+        <label>SAN PEDRO DE PELILEO</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA ANA</fullName>
+        <default>false</default>
+        <label>SANTA ANA</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA CLARA</fullName>
+        <default>false</default>
+        <label>SANTA CLARA</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA CRUZ</fullName>
+        <default>false</default>
+        <label>SANTA CRUZ</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA ELENA</fullName>
+        <default>false</default>
+        <label>SANTA ELENA</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA ISABEL</fullName>
+        <default>false</default>
+        <label>SANTA ISABEL</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA LUCÍA</fullName>
+        <default>false</default>
+        <label>SANTA LUCÍA</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTA ROSA</fullName>
+        <default>false</default>
+        <label>SANTA ROSA</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTIAGO</fullName>
+        <default>false</default>
+        <label>SANTIAGO</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTIAGO DE PÍLLARO</fullName>
+        <default>false</default>
+        <label>SANTIAGO DE PÍLLARO</label>
+    </customValue>
+    <customValue>
+        <fullName>SANTO DOMINGO</fullName>
+        <default>false</default>
+        <label>SANTO DOMINGO</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN VICENTE</fullName>
+        <default>false</default>
+        <label>SAN VICENTE</label>
+    </customValue>
+    <customValue>
+        <fullName>SAQUISILÍ</fullName>
+        <default>false</default>
+        <label>SAQUISILÍ</label>
+    </customValue>
+    <customValue>
+        <fullName>SARAGURO</fullName>
+        <default>false</default>
+        <label>SARAGURO</label>
+    </customValue>
+    <customValue>
+        <fullName>SEVILLA DE ORO</fullName>
+        <default>false</default>
+        <label>SEVILLA DE ORO</label>
+    </customValue>
+    <customValue>
+        <fullName>SHUSHUFINDI</fullName>
+        <default>false</default>
+        <label>SHUSHUFINDI</label>
+    </customValue>
+    <customValue>
+        <fullName>SIGCHOS</fullName>
+        <default>false</default>
+        <label>SIGCHOS</label>
+    </customValue>
+    <customValue>
+        <fullName>SIGSIG</fullName>
+        <default>false</default>
+        <label>SIGSIG</label>
+    </customValue>
+    <customValue>
+        <fullName>SIMÓN BOLÍVAR</fullName>
+        <default>false</default>
+        <label>SIMÓN BOLÍVAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SOZORANGA</fullName>
+        <default>false</default>
+        <label>SOZORANGA</label>
+    </customValue>
+    <customValue>
+        <fullName>SUCRE</fullName>
+        <default>false</default>
+        <label>SUCRE</label>
+    </customValue>
+    <customValue>
+        <fullName>SUCÚA</fullName>
+        <default>false</default>
+        <label>SUCÚA</label>
+    </customValue>
+    <customValue>
+        <fullName>SUCUMBÍOS</fullName>
+        <default>false</default>
+        <label>SUCUMBÍOS</label>
+    </customValue>
+    <customValue>
+        <fullName>SUSCAL</fullName>
+        <default>false</default>
+        <label>SUSCAL</label>
+    </customValue>
+    <customValue>
+        <fullName>TAISHA</fullName>
+        <default>false</default>
+        <label>TAISHA</label>
+    </customValue>
+    <customValue>
+        <fullName>TENA</fullName>
+        <default>false</default>
+        <label>TENA</label>
+    </customValue>
+    <customValue>
+        <fullName>TISALEO</fullName>
+        <default>false</default>
+        <label>TISALEO</label>
+    </customValue>
+    <customValue>
+        <fullName>TIWINTZA</fullName>
+        <default>false</default>
+        <label>TIWINTZA</label>
+    </customValue>
+    <customValue>
+        <fullName>TOSAGUA</fullName>
+        <default>false</default>
+        <label>TOSAGUA</label>
+    </customValue>
+    <customValue>
+        <fullName>TULCÁN</fullName>
+        <default>false</default>
+        <label>TULCÁN</label>
+    </customValue>
+    <customValue>
+        <fullName>URDANETA</fullName>
+        <default>false</default>
+        <label>URDANETA</label>
+    </customValue>
+    <customValue>
+        <fullName>VALENCIA</fullName>
+        <default>false</default>
+        <label>VALENCIA</label>
+    </customValue>
+    <customValue>
+        <fullName>VENTANAS</fullName>
+        <default>false</default>
+        <label>VENTANAS</label>
+    </customValue>
+    <customValue>
+        <fullName>VÍNCES</fullName>
+        <default>false</default>
+        <label>VÍNCES</label>
+    </customValue>
+    <customValue>
+        <fullName>YACUAMBI</fullName>
+        <default>false</default>
+        <label>YACUAMBI</label>
+    </customValue>
+    <customValue>
+        <fullName>YANTZAZA</fullName>
+        <default>false</default>
+        <label>YANTZAZA</label>
+    </customValue>
+    <customValue>
+        <fullName>ZAMORA</fullName>
+        <default>false</default>
+        <label>ZAMORA</label>
+    </customValue>
+    <customValue>
+        <fullName>ZAPOTILLO</fullName>
+        <default>false</default>
+        <label>ZAPOTILLO</label>
+    </customValue>
+    <customValue>
+        <fullName>ZARUMA</fullName>
+        <default>false</default>
+        <label>ZARUMA</label>
+    </customValue>
+    <customValue>
+        <fullName>DURAN</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DURAN</label>
+    </customValue>
+    <customValue>
+        <fullName>VINCES</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VINCES</label>
+    </customValue>
+    <customValue>
+        <fullName>OTRO</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>OTRO</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN JUAN DON BOSCO</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>SAN JUAN DON BOSCO</label>
+    </customValue>
+    <customValue>
+        <fullName>SAN CRISTOBAL</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>SAN CRISTOBAL</label>
+    </customValue>
+    <customValue>
+        <fullName>TULCAN</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>TULCAN</label>
+    </customValue>
+    <masterLabel>Ciudad</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

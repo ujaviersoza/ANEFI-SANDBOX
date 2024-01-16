@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>No Cliente</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>No Clientes</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Formato No Cliente</layout>
+        <sections>
+            <label></label>
+            <section>Dirección de trabajo</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Dirección tributaria</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Información adicional</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Información financiera</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Vínculos personalizados</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Crear_cliente_a_partir_de_este_registro</name>
+    </quickActions>
+</CustomObjectTranslation>

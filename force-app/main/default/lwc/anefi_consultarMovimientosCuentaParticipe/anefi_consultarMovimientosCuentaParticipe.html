@@ -1,0 +1,141 @@
+<!--
+  @description       : 
+  @author            : axel landa
+  @group             : 
+  @last modified on  : 08-19-2022
+  @last modified by  : axel landa
+-->
+<template>    
+    <div class="slds-grid slds-gutters_x-large slds-wrap slds-grid_vertical-align-center slds-grid_align-center slds-var-p-around_medium">
+        <div class="slds-col slds-size_full">
+            <template if:true={cargandoVisible}>
+                <div class="slds-col slds-grow-none slds-var-p-around_xx-large">
+                    <lightning-spinner alternative-text="Cargando" size="large" variant="brand"
+                        class="slds-var-m-around_xx-large">
+                    </lightning-spinner>
+                </div>
+            </template>
+            <lightning-card title={tituloConsulta} variant="neutral" icon-name="standard:search">
+                <div class="consulta-aportes">
+                    <div class="btn-regresar">
+                        <lightning-button label="Regresar" variant="neutral" onclick={handleRegresar}></lightning-button> 
+                    </div>
+                                    
+                    <div class="div-padre-busqueda">  
+                        <div class="div-hijo-busqueda">
+                            <lightning-input type="date" name="fechaDesde" label="Fecha desde" max={fechaHastaMax} onchange={handleFechaDesde} ></lightning-input>                    
+                            <lightning-input type="date" name="fechaHasta" label="Fecha hasta" max={fechaHastaMax} onchange={handleFechaHasta} ></lightning-input>                    
+                            <lightning-button label="Buscar" variant="neutral" onclick={handleBuscar}></lightning-button>
+                        </div>              
+                    </div>
+                    <template if:true={mostrarSeccionSaldos}>
+                        <lightning-card  title="Información Saldos" variant="neutral" class="seccion-saldos"> 
+                            <div class="btn-estado-cuenta">
+                                <lightning-button label="Generar estado de cuenta" variant="neutral" onclick={handleGenerarEstadoDeCuenta}></lightning-button> 
+                            </div>                                            
+                            <div class="slds-grid slds-wrap elementos-saldos">                    
+                                <div class="elemento-saldos"> 
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Capital:</span> 
+                                        <span class="span-valor">{saldosCuentaParticipe.capital}</span>
+                                    </p>                                    
+                                </div>
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Saldo Intéres: </span>
+                                        <span class="span-valor">{saldosCuentaParticipe.saldoInteres}</span>
+                                    </p>                                    
+                                </div>
+                                <div  class="elemento-saldos"> 
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Saldo Total:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.saldoTotal}</span>
+                                    </p>                                    
+                                </div>
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Saldo Bloqueado:</span> 
+                                        <span class="span-valor">{saldosCuentaParticipe.saldoBloqueado}</span>
+                                    </p>                                    
+                                </div>
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Saldo disponible:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.saldoDisponible}</span></p>                                    
+                                </div>
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Saldo transacciones rescate transito:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.sumaTransaccionesRescateTransito}</span></p>                                    
+                                </div>
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Saldo disponible efectivo:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.saldoDisponibleEfectivo}</span></p>                                    
+                                </div> 
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Saldo unidades:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.saldoUnidades}</span>
+                                    </p>                                    
+                                </div>
+                                <div class="elemento-saldos" >
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Valor Unidad:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.valorUnidad}</span>
+                                    </p>                                    
+                                </div>
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Porcentaje Participación:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.porcentajeParticipacion}</span>
+                                    </p>                                    
+                                </div>
+                                <div class="elemento-saldos">
+                                    <p class="slds-text-body_small">
+                                        <span class="span-titulo">Rendimiento:</span>
+                                        <span class="span-valor">{saldosCuentaParticipe.rendimiento}</span>
+                                        </p>                                    
+                                </div> 
+                                                                                                                        
+                            </div>                                                       
+                        </lightning-card>                        
+                    </template>
+                    <template if:true={mostrarMensajeSinMovimientos}>                    
+                        <div class="div-mensaje-sin-movimientos">
+                            <lightning-icon icon-name="action:close" class="icon-mensaje-sin-movimientos" alternative-text="Sin movimientos" title="Sin movimientos" size="x-small">
+                            </lightning-icon> 
+                            <span class="color-dark-blue slds-text-title_caps">{mensajeSinRegistros}
+                            </span>
+                        </div>                                     
+                    </template>                                
+                    <template if:true = {mostrarTablaMovimientos}> 
+                        <lightning-card title ={tituloLista} variant="neutral" icon-name="standard:picklist_choice" class="seccion-saldos">                        
+                            <lightning-layout multiple-rows="true">
+                                <lightning-layout-item size = "12">
+                                    <div class="slds-float_right div-padre">
+                                        <div class="div-hijo">
+                                            <span class="slds-m-vertical_medium content">Página {pageNumber} of {meta.totalPages}.</span>
+                                            <lightning-button label="Anterior" variant="neutral" icon-name="utility:back" onclick={handlePrevious} disabled={disabledPrev}></lightning-button>
+                                            <lightning-button label="Siguiente" variant="neutral" icon-name="utility:forward" onclick={handleNext} disabled={disabledNext}></lightning-button>
+                                        </div>                              
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size = "12">
+                                    <lightning-datatable key-field="numeroTransaccion"  
+                                                        data={movimientosCuenta}  
+                                                        columns={columns}
+                                                        hide-checkbox-column="true" 
+                                                        class="slds-max-medium-table_stacked">  
+                                    </lightning-datatable>
+                                </lightning-layout-item>
+                            </lightning-layout>                        
+                        </lightning-card>                       
+                    </template>  
+                </div>
+                              
+            </lightning-card>
+        </div>
+    </div>
+                
+</template>

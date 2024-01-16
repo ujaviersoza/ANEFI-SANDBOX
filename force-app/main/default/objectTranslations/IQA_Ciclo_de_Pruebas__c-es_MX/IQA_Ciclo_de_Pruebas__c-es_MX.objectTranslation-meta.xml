@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Ciclo de Pruebas</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Ciclos de Pruebas</value>
+    </caseValues>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>Ciclo de Pruebas Layout</layout>
+        <sections>
+            <label></label>
+            <section>Campos de defectos</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

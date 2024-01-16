@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>Ruta oportunidades persona jurídica</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Cliente_hizo_el_pago__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Validar si el cliente realizó el pago&lt;/li&gt;&lt;li&gt;Marcar el campo ¿Cliente realizó el pago?&lt;/li&gt;&lt;li&gt;Validar que la etapa actual sea firma de contrato&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Cerrada ganada</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Loss_Reason__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Seleccionar la razón de perdida de la oportunidad&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Cerrada perdida</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Visitar al cliente en la fecha acordada&lt;/li&gt;&lt;li&gt;Registrar el resultado de la reunión mediante la opción registrar llamada en el tab de actividades&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Cliente visitado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Producto_de_Interes__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Agendar reunión con el cliente creando un evento en el tab de actividades&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Contacto inicial</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Firmo_el_contrato__c</fieldNames>
+        <fieldNames>Cliente_hizo_el_pago__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Validar si el cliente firma o no el contrato&lt;/li&gt;&lt;li&gt;Validar que antes de pasar a firma de contrato la etapa actual sea recopilación de documentos, de esta forma se garantiza que se esta siguiendo el orden de las etapas del proceso comercial&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Firma de contrato</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Amount</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Llamar al cliente&lt;/li&gt;&lt;li&gt;Registrar la llamada en el tab de actividades&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Nueva oportunidad</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Elaborar la propuesta&lt;/li&gt;&lt;li&gt;Elaborar simulador&lt;/li&gt;&lt;li&gt;Enviar propuesta y simulador al cliente mediante un correo electrónico desde el tab de actividades&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Propuesta</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Se_recopilo_nombramiento__c</fieldNames>
+        <fieldNames>Se_recopilo_RUC__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Solicitar RUC de la empresa&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Solicitar nombramiento del representante legal&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Recopilación de documentos</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Persona_Juridica</recordTypeName>
+</PathAssistant>

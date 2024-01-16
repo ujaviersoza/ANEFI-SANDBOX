@@ -1,0 +1,54 @@
+<!--
+  @description       : 
+  @author            : axel landa
+  @group             : 
+  @last modified on  : 09-19-2022
+  @last modified by  : axel landa
+-->
+<template>
+    <template if:true={esTexto}>
+        <p class="slds-text-body_small">{etiqueta}</p>
+        <p class="underline">{valor}</p>
+    </template>
+    <template if:true={esCheckBox}>
+        <p class="slds-text-body_small">{etiqueta}</p>
+        <p class="underline">
+        <lightning-checkbox-group name="" label="" options={valor}
+        value={valueCheckBox} ></lightning-checkbox-group>
+        </p>
+    </template>
+    <template if:true={esLista}>
+        <template if:true={picklistLabel}>
+            <p class="slds-text-body_small">{etiqueta}</p>
+            <p class="underline">{picklistLabel}</p>
+        </template>
+    </template>
+    <template if:true={esEmail}>
+        <p class="slds-text-body_small">{etiqueta}</p>
+        <p class="underline">
+            <lightning-formatted-email value={valor}></lightning-formatted-email>
+        </p>
+    </template>
+    <template if:true={esTelefono}>
+        <p class="slds-text-body_small">{etiqueta}</p>
+        <p class="underline">
+            <lightning-formatted-phone value={valor}></lightning-formatted-phone>
+        </p>
+    </template>
+    <template if:true={esMoneda}>
+        <p class="slds-text-body_small">{etiqueta}</p>
+        <p class="underline">
+            <lightning-formatted-number value={valor} format-style="currency" currency-code="COP">
+            </lightning-formatted-number>
+        </p>
+    </template>
+    <template if:true={esReferencia}>
+        <p class="slds-text-body_small">{etiqueta}</p>
+        <p class="underline">
+            <template if:true={urlReference}>
+                <lightning-formatted-url value={urlReference} label={nameReference} target="_self">
+                </lightning-formatted-url>
+            </template>
+        </p>
+    </template>
+</template>

@@ -1,0 +1,3 @@
+<aura:component implements="lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,lightning:hasPageReference" access="global">
+      <c:anefi_newAccount   />
+</aura:component>

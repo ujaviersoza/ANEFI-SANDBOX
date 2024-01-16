@@ -1,0 +1,304 @@
+<!--
+  @description       : 
+  @author            : axel landa
+  @group             : 
+  @last modified on  : 02-02-2023
+  @last modified by  : Axel Landa
+-->
+<template>
+    <div
+        class="slds-grid slds-gutters_x-large slds-wrap slds-grid_vertical-align-center slds-grid_align-center slds-var-p-around_medium">
+        <template if:true={cargandoVisible}>
+            <div class="slds-col slds-grow-none slds-var-p-around_xx-large">
+                <lightning-spinner alternative-text="Cargando" size="large" variant="brand"
+                    class="slds-var-m-around_xx-large">
+                </lightning-spinner>
+            </div>
+        </template>
+        <template if:true={sincronizadoVisible}>
+            <div class="slds-col slds-grow-none">
+                <lightning-icon icon-name="action:approval" alternative-text="Error" title="Error" size="x-small">
+                </lightning-icon>
+            </div>
+            <div class="slds-col slds-var-m-left_medium">
+                <div class="color-green slds-text-title_caps">Este cliente ya está sincronizado con Gestor.
+                </div>
+            </div>            
+            <div class="slds-col slds-var-m-left_medium button-group">                
+                <lightning-button variant="brand" label="Actualizar cliente en Gestor"
+                    title="Actualizar cliente en Gestor" icon-name="utility:sync" onclick={handleUpdatePerson} class="btn-accion-gestor">
+                </lightning-button>
+                <lightning-button variant="brand" label="Crear referencia bancaria"
+                    title="Crear referencia bancaria" icon-name="utility:new" onclick={handleCrearReferenciaBancaria} class="btn-accion-gestor">
+                </lightning-button> 
+                <lightning-button variant="brand" label="Actualizar referencia bancaria"
+                    title="Actualizar referencia bancaria" ico  n-name="utility:edit" onclick={handleActualizarReferenciaBancaria} class="btn-accion-gestor">
+                </lightning-button>
+                
+                <lightning-button  variant="brand" label="Actualizar correo electronico"
+                    title="Actualizar correo electronico" icon-name="utility:edit" onclick={handleActualizarCorreoElectronico} class="btn-accion-gestor">
+                </lightning-button>
+                    
+            </div>            
+        </template>
+        <template if:true={noExisteEnGestorVisible}>
+            <div class="slds-col slds-grow-none">
+                <lightning-icon icon-name="action:reject" alternative-text="Sin información" title="Sin información"
+                    size="x-small">
+                </lightning-icon>
+            </div>
+            <div class="slds-col slds-var-m-left_medium">
+                <div class="color-green slds-text-title_caps">Este cliente no existe en Gestor
+                </div>
+            </div>
+        </template>
+        <template if:true={noSincronizadoVisible}>
+            <div class="slds-col slds-size_full">
+                <p class="slds-var-m-bottom_medium">Actualmente este <strong>cliente no se ha sincronizado con el
+                        sistema Gestor</strong>, si desea validar si el cliente existe en Gestor y consultar la información asociada por favor haga click en el
+                    siguiente botón.</p>
+            </div>
+            <div class="slds-col slds-grow-none">
+                <lightning-button variant="brand" label="Consultar información en Gestor"
+                    title="Consultar información en Gestor" icon-name="utility:search" onclick={handleSearch}>
+                </lightning-button>
+            </div>
+        </template>
+        <template if:true={informacionGestorVisible}>
+            <div class="slds-col slds-size_full">
+                <div class="slds-grid">
+                    <div class="slds-col slds-grow-none slds-col_bump-left slds-var-m-bottom_medium">
+                        <lightning-button-group>
+                            <lightning-button variant="brand" label="Sincronizar con Gestor"
+                                title="Sincronizar con Gestor" icon-name="utility:sync" onclick={handleSynchronize}>
+                            </lightning-button>
+                        </lightning-button-group>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_full slds-p-around_none">
+                <div class="slds-grid slds-wrap slds-var-p-around_small">
+                    <template for:each={informacionEnGestor} for:item="campo">
+                        <div key={campo.nombre} class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                            <c-anefi_campo-formulario tipo={campo.tipo} etiqueta={campo.nombre} valor={campo.valor}
+                                record-type-id={cliente.recordTypeId} field-api-name={campo.apiName}
+                                object-api-name={campo.objectApiName} value-check-box={campo.valueCheckBox}>
+                            </c-anefi_campo-formulario>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_full slds-p-around_none">
+                <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+                    <template if:true={esNatural}>
+                        <lightning-accordion-section name="A" label="Dirección domicilio">
+                            <div class="slds-grid slds-wrap">
+                                <template for:each={direccionDomicilioEnGestor} for:item="campo">
+                                    <div key={campo.nombre}
+                                        class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                                        <c-anefi_campo-formulario tipo={campo.tipo} etiqueta={campo.nombre}
+                                            valor={campo.valor} record-type-id={cliente.recordTypeId}
+                                            field-api-name={campo.apiName} object-api-name={campo.objectApiName}>
+                                        </c-anefi_campo-formulario>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                    <lightning-accordion-section name="B" label="Información financiera">
+                        <div class="slds-grid slds-wrap">
+                            <template for:each={informacionFinancieraEnGestor} for:item="campo">
+                                <div key={campo.nombre} class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                                    <c-anefi_campo-formulario tipo={campo.tipo} etiqueta={campo.nombre}
+                                        valor={campo.valor} record-type-id={cliente.recordTypeId}
+                                        field-api-name={campo.apiName} object-api-name={campo.objectApiName}>
+                                    </c-anefi_campo-formulario>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-accordion-section>
+                    <template if:true={esJuridico}>
+                        <lightning-accordion-section name="B1" label="Dirección trabajo">
+                            <div class="slds-grid slds-wrap">
+                                <template for:each={informacionDireccionTrabajoEnGestor} for:item="campo">
+                                    <div key={campo.nombre}
+                                        class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                                        <c-anefi_campo-formulario tipo={campo.tipo} etiqueta={campo.nombre}
+                                            valor={campo.valor} record-type-id={cliente.recordTypeId}
+                                            field-api-name={campo.apiName} object-api-name={campo.objectApiName}>
+                                        </c-anefi_campo-formulario>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="B2" label="Dirección tributaria">
+                            <div class="slds-grid slds-wrap">
+                                <template for:each={informacionDireccionTributariaEnGestor} for:item="campo">
+                                    <div key={campo.nombre}
+                                        class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                                        <c-anefi_campo-formulario tipo={campo.tipo} etiqueta={campo.nombre}
+                                            valor={campo.valor} record-type-id={cliente.recordTypeId}
+                                            field-api-name={campo.apiName} object-api-name={campo.objectApiName}>
+                                        </c-anefi_campo-formulario>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                    <lightning-accordion-section name="C" label="Información adicional">
+                        <div class="slds-grid slds-wrap">
+                            <template for:each={informacionAdicionalEnGestor} for:item="campo">
+                                <div key={campo.nombre} class="slds-col slds-size_1-of-2 slds-var-m-vertical_x-small">
+                                    <c-anefi_campo-formulario tipo={campo.tipo} etiqueta={campo.nombre}
+                                        valor={campo.valor} record-type-id={cliente.recordTypeId}
+                                        field-api-name={campo.apiName} object-api-name={campo.objectApiName}>
+                                    </c-anefi_campo-formulario>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </template>
+        <template if:true={errorVisible}>
+            <div class="slds-col slds-grow-none">
+                <lightning-icon icon-name="action:close" alternative-text="Error" title="Error" size="x-small">
+                </lightning-icon>
+            </div>
+            <div class="slds-col slds-var-m-left_medium">
+                <div class="error-titulo slds-text-title_caps">¡Algo ha salido mal!</div>
+            </div>
+            <div class="slds-col slds-size_full slds-var-m-vertical_large">
+                <p class="slds-text-align_center">Por favor, intente cargando la página de nuevo. Si el el problema
+                    persiste contacte el administrador
+                    del sistema.</p>
+                <p class="slds-text-align_center"><strong>NO OLVIDE GUARDAR LA INFORMACIÓN DEL ERROR QUE SE ENCUENTRA EN
+                        EL CUADRO DE
+                        ABAJO.</strong></p>
+            </div>
+            <div class="slds-col slds-size_full">
+                <div class="slds-box">
+                    <template if:true={error.body.statusCode}>
+                        <p><strong>Status Code:</strong>&nbsp;{error.body.statusCode}</p>
+                    </template>
+                    <template if:true={error.body.exceptionType}>
+                        <p><strong>Tipo de excepción:</strong>&nbsp;{error.body.exceptionType}</p>
+                    </template>
+                    <template if:true={error.body.errorCode}>
+                        <p><strong>Código de error:</strong>&nbsp;{error.body.errorCode}</p>
+                    </template>
+                    <template if:true={error.body.message}>
+                        <p><strong>Mensaje:</strong>&nbsp;{error.body.message}</p>
+                    </template>
+                    <template if:true={error.body.stackTrace}>
+                        <p><strong>Stack Trace:</strong>&nbsp;{error.body.stackTrace}</p>
+                    </template>
+                </div>
+            </div>
+        </template>  
+        <template if:true={crearReferenciaBancariaVisible}>
+            <div style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Cerrar" onclick={handleCerrarModal}>
+                                <lightning-icon icon-name="utility:close" size="medium" variant="inverse">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Cerrar</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Crear referencia bancaria</h2>
+                        </header>
+                        <div class="slds-modal__content slds-var-p-around_medium">                                                                  
+                            <c-anefi_crear-referencia-bancaria cliente-id={recordId} cliente-codigo-gestor={clienteCodigoGestor} accion='crearReferenciaBancaria' onfinalizar={handleFinalizarCreacionReferenciaBancaria}>                                
+                            </c-anefi_crear-referencia-bancaria>                         
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button label="Cerrar" variant="brand" onclick={handleCerrarModal}></lightning-button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </template>
+        <template if:true={actualizarReferenciaBancariaVisible}>
+            <div style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Cerrar" onclick={handleCerrarModalActualizarReferencia}>
+                                <lightning-icon icon-name="utility:close" size="medium" variant="inverse">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Cerrar</span>
+                            </button>
+                            <h2 id="modal-actualizar-referencia" class="slds-text-heading_medium slds-hyphenate">Actualizar referencia bancaria</h2>
+                        </header>
+                        <div class="slds-modal__content slds-var-p-around_medium">                                                                  
+                            <c-anefi_crear-referencia-bancaria cliente-id={recordId} cliente-codigo-gestor={clienteCodigoGestor} accion='actualizarReferenciaBancaria' numero-cuenta-bancaria-actual={numeroCuentaBancariaActual} onfinalizar={handleFinalizarCreacionReferenciaBancaria}>                                
+                            </c-anefi_crear-referencia-bancaria>                         
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button label="Cerrar" variant="brand" onclick={handleCerrarModalActualizarReferencia}></lightning-button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </template>
+        <template if:true={actualizarCorreoElectronico}>
+            <div style="height: 640px;" class ="slds-align_absolute-center">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Cerrar" onclick={handleCerrarModalActualizarCorreoElectronico}>
+                                <lightning-icon icon-name="utility:close" size="medium" variant="inverse">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Cerrar</span>
+                            </button>
+                            <h2 id="modal-actualizar-correo-electronico" class="slds-text-heading_medium slds-hyphenate">Actualizar correo electronico</h2>
+                        </header>
+                            <div class="slds-modal__content slds-var-p-around_medium  slds-grid_vertical-align-center slds-grid_align-center">
+                                <div class="slds-theme_default slds-p-around_none slds-var-m-vertical_small slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center"> 
+                                    <div class="slds-col slds-var-m-around_small">
+                                        <div class="seccion-campos-faltantes">   
+                                            <lightning-layout  multiple-rows>
+                                                <lightning-layout-item flexibility="auto" padding="around-small">
+                                                    <lightning-input required  name="CorreoElectronico"  label="Correo electrónico" id="CorreoElectronico" type='email'  onchange={handleChangeActualizarCorreo} class="hijo-campo">
+                                                    </lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"> 
+                                                    <lightning-combobox required  id="tipocorreoelectronico" label="Correo electrónico principal"    name="tipocorreoelectronico"   options={optionsCorreoElectronicoPrincipal}  onchange={handleChangeCorreoPrincipal} class="hijo-campo"></lightning-combobox>  
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small">
+                                                    <lightning-combobox required  id="tipocorreoelectronico1" label="Es direccion estado de cuenta"    name="tipocorreoelectronico"   options={optionsEsDireccionEstadoCuenta}  onchange={handleChangeEsDireccionEstadoCuenta} class="hijo-campo"></lightning-combobox>                                                                               
+                                                </lightning-layout-item>
+                                            </lightning-layout>                                                                            
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-var-m-around_small">
+                                        <lightning-button variant="brand" type="submit"
+                                                name="update" label="Guardar" onclick={handleUpdatePersonCorreo}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </div>                                                           
+                            <!--c-anefi_crear-referencia-bancaria cliente-id={recordId} cliente-codigo-gestor={clienteCodigoGestor} accion='actualizarReferenciaBancaria' numero-cuenta-bancaria-actual={numeroCuentaBancariaActual} onfinalizar={handleFinalizarCreacionReferenciaBancaria}>                                
+                            </c-anefi_crear-referencia-bancaria--> 
+                        <footer class="slds-modal__footer">
+                            <lightning-button label="Cerrar" variant="brand" onclick={handleCerrarModalActualizarCorreoElectronico}></lightning-button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </template>      
+    </div>
+</template>

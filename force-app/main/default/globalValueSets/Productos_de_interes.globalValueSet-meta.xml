@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>F001</fullName>
+        <default>false</default>
+        <label>CP-1</label>
+    </customValue>
+    <customValue>
+        <fullName>F002</fullName>
+        <default>false</default>
+        <label>FS-2</label>
+    </customValue>
+    <customValue>
+        <fullName>F004</fullName>
+        <default>false</default>
+        <label>FM-3</label>
+    </customValue>
+    <customValue>
+        <fullName>F003</fullName>
+        <default>false</default>
+        <label>FO-4</label>
+    </customValue>
+    <customValue>
+        <fullName>F005</fullName>
+        <default>false</default>
+        <label>FAS-5</label>
+    </customValue>
+    <customValue>
+        <fullName>Fideicomiso de Inversión</fullName>
+        <default>false</default>
+        <label>FID. INVERSIÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>Fideicomiso de Administración</fullName>
+        <default>false</default>
+        <label>FID. ADMINISTRACIÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>Fideicomiso de Garantía</fullName>
+        <default>false</default>
+        <label>FID.GARANTÍA</label>
+    </customValue>
+    <customValue>
+        <fullName>Fideicomiso de Titularización de Activos</fullName>
+        <default>false</default>
+        <label>FID.TITULARIZACIÓN</label>
+    </customValue>
+    <customValue>
+        <fullName>Fideicomiso Inmobiliario</fullName>
+        <default>false</default>
+        <label>FID.INMOBILIARIO</label>
+    </customValue>
+    <customValue>
+        <fullName>Encargos Fiduciarios</fullName>
+        <default>false</default>
+        <label>ENCARGOS</label>
+    </customValue>
+    <masterLabel>Productos de interes</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Lead</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Lead - Persona Jurídica</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>ANEFI_Management_reason__c</fieldNames>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos un Motivo de gestión, para poder avanzar al estado de Gestionado.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Gestionado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>ANEFI_Lead_interest__c</fieldNames>
+        <fieldNames>ANEFI_Generate_opportunity__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Marque la casilla: Prospecto manifiesta interés, para poder avanzar al estado de Interesado.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;﻿&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Marque la casilla: Genera oportunidad de venta, para poder avanzar al estado de Convertido.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Interesado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>No Gestionado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>ANEFI_Cancellation_reason__c</fieldNames>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Elija al menos un Motivo de cancelación, para poder avanzar al estado de No Interesado.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>No Interesado</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Persona_Juridica</recordTypeName>
+</PathAssistant>

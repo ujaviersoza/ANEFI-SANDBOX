@@ -1,0 +1,19 @@
+.seccion-campos-faltantes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.hijo-campo-faltante{
+    width: 32%;
+    max-width: 32%;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+@media (max-width: 600px) {
+    .hijo-campo-faltante{
+        width: 96%;
+        max-width: 96%;
+    }
+  }
