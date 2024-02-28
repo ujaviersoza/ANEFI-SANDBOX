@@ -1,0 +1,33 @@
+<template>
+    <template if:true={alertVisible}>
+        <div class="slds-col slds-grow-none slds-var-p-around_xx-large">
+            <lightning-spinner alternative-text="Cargando" size="large" variant="brand"
+                class="slds-var-m-around_xx-large">
+            </lightning-spinner>
+        </div>  
+    </template>  
+    <div if:true={camposFaltantes}>
+        <div class="slds-col slds-size_full slds-var-p-around_small">
+            <p class="slds-text-title_caps">  Información faltante del cliente</p>
+        </div>          
+            <lightning-record-edit-form
+                record-id={clienteId} 
+                object-api-name="Account"
+                onsubmit={handleSubmit}
+                onsuccess={handleSuccess}
+                onerror={handleError}>
+                <div class="slds-theme_default slds-p-around_none slds-var-m-vertical_small slds-grid slds-grid_vertical slds-gutters slds-grid_align-center slds-grid_vertical-align-center"> 
+                    <div class="slds-col slds-size_full">
+                        <div class="seccion-campos">                              
+                            <template for:each={camposFaltantes} for:item="campo">
+                                <lightning-input-field key={campo} required field-name={campo} class="hijo-campo"> </lightning-input-field>                            
+                            </template> 
+                        </div>
+                    </div>
+                    <div class="slds-col slds-var-m-around_small">
+                        <lightning-button variant="brand" type="submit" label="Guardar" ></lightning-button>
+                    </div>
+                </div>                                      
+            </lightning-record-edit-form>
+    </div>    
+</template>

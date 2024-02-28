@@ -10,6 +10,14 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>Honorario_Estructuracion__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Honorario_mensual_Administraci_n__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
@@ -43,6 +51,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Fecha_Primera_Reuni_n__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Usuario_Trader__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ANEFI_Referido__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -193,6 +209,10 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <miniLayout>
+        <fields>Honorario_Estructuracion__c</fields>
+        <fields>Honorario_mensual_Administraci_n__c</fields>
+    </miniLayout>
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>

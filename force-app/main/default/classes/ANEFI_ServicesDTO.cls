@@ -474,7 +474,9 @@ public class ANEFI_ServicesDTO {
         @AuraEnabled
         public String codigoTipoIdentificacionConyuge;
         @AuraEnabled
-        public String identificacionConyuge;
+        public String identificacionConyuge;        
+        @AuraEnabled
+        public direccionesElectronicas[] direccionesElectronicas;
     }
     
     /*DTOs para servicio de consulta de persona jurídica en Gestor*/

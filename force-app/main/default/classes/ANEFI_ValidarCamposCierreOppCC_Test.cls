@@ -8,11 +8,12 @@ public class ANEFI_ValidarCamposCierreOppCC_Test {
     @isTest
     static void obtenerCamposFaltantesOportunidadJuridicaTest(){        
         Opportunity oportunidad = null;        
-        List<Opportunity> oportunidades = [Select Id, Name from Opportunity 
+        List<Opportunity> oportunidades = [Select Id, Name, AccountId from Opportunity 
                                            where recordType.Name = 'Persona Jurídica' AND StageName = 'Propuesta' ];
         if(oportunidades.size() > 0){
             oportunidad = oportunidades.get(0);
             ANEFI_ValidarCamposCierreOportunidadCC.obtenerCamposFaltantesCierreOportunidad(oportunidad.Id);
+            ANEFI_ValidarCamposCierreOportunidadCC.CamposFaltantesAltaCliente(oportunidad.AccountId);
         }
     }
     
@@ -31,11 +32,12 @@ public class ANEFI_ValidarCamposCierreOppCC_Test {
     @isTest
     static void obtenerCamposFaltantesOportunidadNaturalTest(){        
         Opportunity oportunidad = null;        
-        List<Opportunity> oportunidades = [Select Id, Name from Opportunity 
+        List<Opportunity> oportunidades = [Select Id, Name, AccountId from Opportunity 
                                            where recordType.Name = 'Persona Natural' AND StageName = 'Propuesta' ];
         if(oportunidades.size() > 0){
             oportunidad = oportunidades.get(0);
             ANEFI_ValidarCamposCierreOportunidadCC.obtenerCamposFaltantesCierreOportunidad(oportunidad.Id);
+            ANEFI_ValidarCamposCierreOportunidadCC.CamposFaltantesAltaCliente(oportunidad.AccountId);
         }
     }
     

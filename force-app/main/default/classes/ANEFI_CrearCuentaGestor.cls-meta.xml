@@ -3,3 +3,34 @@
     <apiVersion>49.0</apiVersion>
     <status>Active</status>
 </ApexClass>
+
+        <members>ANEFI_TG_LeadHelper</members>
+        <members>ANEFI_TG_LeadHandler</members>
+        <members>ANEFI_TG_Lead_Test</members>
+
+        <members>ANEFI_TG_AccountHelper</members>
+        <members>ANEFI_CuentaTrigger_Test</members>
+        <members>ANEFI_GestionarParticipeGestor</members>
+        <members>ANEFI_GestionarParticipeGestor_Test</members>
+        <members>ANEFI_ConsultarClienteEnGestorController</members>
+        <members>ANEFI_ConsultarClienteEnGestorCtrl_Test</members>
+        <members>ANEFI_MockupBuilderForTests</members>
+        <members>ANEFI_GestorHttpCalloutMock</members>
+        
+
+        
+        <members>ANEFI_CrearCuentaGestorQueueable_Test</members>
+        <members>ANEFI_CrearCuentaGestorQueueable</members>
+
+        <members>ANEFI_ServicesDTO</members>
+        <members>ANEFI_ServicesDTOTest</members>
+        <members>ANEFI_Utilitarios</members>
+
+        
+        <members>ANEFI_ValidarCamposCierreOppCC_Test</members>
+        <members>ANEFI_ValidarCamposCierreOportunidadCC</members>
+        <members>ANEFI_SerializadorService</members>
+        <members>ANEFI_OportunidadTrigger_Test</members>
+        <members>ANEFI_UT_DataFactory</members>
+        <members>ToDoListController_Test</members>
+        <members>ToDoListController</members>

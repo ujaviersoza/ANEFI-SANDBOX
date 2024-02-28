@@ -6,11 +6,15 @@ import { NavigationMixin } from 'lightning/navigation';
 import consultarInformacionPersonaNaturalEnGestor from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.consultarInformacionPersonaNaturalEnGestor';
 import consultarInformacionPersonaJuridicaEnGestor from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.consultarInformacionPersonaJuridicaEnGestor';
 import consultarInformacionPersonaJuridicaEnGestorJson from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.consultarInformacionPersonaJuridicaEnGestorJson';
+import parseInformacionPersonaJuridicaEnGestorJson from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.parseInformacionPersonaJuridicaEnGestorJson';
+import parseInformacionPersonaNaturalEnGestorJson from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.parseInformacionPersonaNaturalEnGestorJson';
 
 import consultarRelacion from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.consultarRelacion';
 import actualizarPersonaEnGestor from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.actualizarPersonaEnGestor';
 import registrarReferenciaBancariaEnGestor from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.registrarReferenciaBancariaEnGestor';
 import actualizarPersonaEnGestorCorreo from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.actualizarPersonaEnGestorCorreo';
+import getStatusFromGestor from '@salesforce/apex/ANEFI_ConsultarClienteEnGestorController.markUpdatedOrNot';
+
 
 
 import COD_GESTOR from '@salesforce/schema/Account.Codigo_persona_en_Gestor__c';
@@ -66,6 +70,7 @@ import ID_REPRESENTANTE_FIELD from '@salesforce/schema/Account.Identificacion_re
 import CARGO_REPRESENTANTE_FIELD from '@salesforce/schema/Account.Cargo_representante_legal__c';
 import PAIS_DIRECCION_TRABAJO_FIELD from '@salesforce/schema/Account.Pais_direccion_trabajo__c';
 import PAIS_DIRECCION_TRIBUTARIA_FIELD from '@salesforce/schema/Account.Pais_direccion_tributaria__c';
+import SINCRONIZADO_GESTOR_FIELD from '@salesforce/schema/Account.ANEFI_actualizado_en_Gestor__c';
 import SystemModstamp from '@salesforce/schema/Account.SystemModstamp';
 
 const CLIENTE_FIELDS = [COD_GESTOR,NUMERO_CUENTA_BANCARIA_FIELD];
@@ -114,8 +119,22 @@ export default class Anefi_consultarClienteEnGestor extends NavigationMixin(Ligh
     @track valorCorreoElectronicoPrincipal = '';
     cliente;
     clienteGestor;
+    
     activeSections = ['A', 'B', 'B1', 'B2', 'C'];   
     
+    connectedCallback() {
+        console.log('In connected call back function....');
+        getStatusFromGestor({clienteId: this.recordId})
+            .then((data) => {                
+                console.log('REVISION CORRECTA '+data);
+
+            })
+            .catch((error) => {
+                console.log('In connected call back error....');
+
+                console.log('Error is', error); 
+            });
+    }
 
     @wire(getRecord, { recordId: '$recordId', fields: CLIENTE_FIELDS })
     wiredRecord({ error, data }) {
@@ -145,6 +164,15 @@ export default class Anefi_consultarClienteEnGestor extends NavigationMixin(Ligh
             this.cambiarEstado(estadosComponente.error);
         }
     }
+
+
+    @wire(getRecord, { recordId: "$recordId", fields: [SINCRONIZADO_GESTOR_FIELD] })
+    accountStatusGestor;
+  
+    get isUpdated() {
+        console.log('REVISION value '+getFieldValue(this.accountStatusGestor.data, SINCRONIZADO_GESTOR_FIELD));
+        return getFieldValue(this.accountStatusGestor.data, SINCRONIZADO_GESTOR_FIELD);
+      }
 
     get esJuridico() {
         let resp = false;
@@ -565,6 +593,72 @@ export default class Anefi_consultarClienteEnGestor extends NavigationMixin(Ligh
             this.consultarInformacionPersonaNatural();
         }
     }
+    
+    consultarInformacionPersonaJuridicaACRM() {
+        parseInformacionPersonaJuridicaEnGestorJson({ clienteId: this.recordId })
+            .then((data) => {
+                
+                console.log(data);
+                //const jsonStringResult =  JSON.stringify(data);
+                const jsonResult = JSON.parse(data);
+                //console.log('.object  ->>' + Object.values(data.personaJuridicaOut.direccionesElectronicas) );
+                this.clienteGestor = jsonResult;
+                console.log('DATA RETURN '+jsonResult);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Confirmación',
+                        message: 'Cliente actualizado desde Gestor',
+                        variant: 'success'
+                    })
+                );
+                this.cambiarEstado(estadosComponente.sincronizado);
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+                this.error = error;
+                this.cambiarEstado(estadosComponente.error);
+            });
+    }
+
+
+    consultarInformacionPersonaNaturalACRM() {
+        parseInformacionPersonaNaturalEnGestorJson({ clienteId: this.recordId })
+            .then((data) => {
+                
+                console.log(data);
+                //const jsonStringResult =  JSON.stringify(data);
+                const jsonResult = JSON.parse(data);
+                //console.log('.object  ->>' + Object.values(data.personaJuridicaOut.direccionesElectronicas) );
+                this.clienteGestor = jsonResult;
+                console.log('DATA RETURN '+jsonResult);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Confirmación',
+                        message: 'Cliente actualizado desde Gestor',
+                        variant: 'success'
+                    })
+                );
+                this.cambiarEstado(estadosComponente.sincronizado);
+                 window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+                this.error = error;
+                this.cambiarEstado(estadosComponente.error);
+            });
+    }
+
+    handleConsultarActualizarHaciaCRM() {
+        this.cambiarEstado(estadosComponente.cargando);
+        let clienteRecordTypeName = this.cliente.recordTypeInfo.name;
+        if (clienteRecordTypeName == 'Persona Jurídica') {
+            this.consultarInformacionPersonaJuridicaACRM();
+        }
+         else if (clienteRecordTypeName == 'Persona Natural') {
+            this.consultarInformacionPersonaNaturalACRM();
+        }
+    }
 
     /**
      * Cambia el estado actual del componente
@@ -665,7 +759,7 @@ export default class Anefi_consultarClienteEnGestor extends NavigationMixin(Ligh
         }
     }
 
-    
+
 
     handleUpdatePerson(){
         this.cambiarEstado(estadosComponente.cargando);

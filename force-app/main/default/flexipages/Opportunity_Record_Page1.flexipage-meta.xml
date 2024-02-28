@@ -132,6 +132,25 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>anefi_validarCamposCierreOportunidad</componentName>
+                <identifier>c_anefi_validarCamposCierreOportunidad</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>En proceso</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Sincronizado_en_Gestor__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>hideUpdateButton</name>
                     <value>false</value>

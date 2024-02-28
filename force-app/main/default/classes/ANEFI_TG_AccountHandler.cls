@@ -13,11 +13,16 @@ public class ANEFI_TG_AccountHandler extends TriggerHandler {
     }
     
     protected override void beforeUpdate() {
-    	ANEFI_TG_AccountHelper.validateDuplicates(Trigger.new, (Map<Id,Account>)Trigger.oldMap);       
-    }
+    	ANEFI_TG_AccountHelper.validateDuplicates(Trigger.new, (Map<Id,Account>)Trigger.oldMap);     
+            }
     
     protected override void beforeDelete() {
         ANEFI_TG_AccountHelper.syncInGestor(Trigger.new, (Map<Id,Account>)Trigger.oldMap);
-    }    
+    } 
+    
+    protected override void afterUpdate(){
+        ANEFI_TG_AccountHelper.markUpdatedOrNot(Trigger.new, (Map<Id,Account>)Trigger.oldMap);
+
+    }
     
 }

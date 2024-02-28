@@ -16,18 +16,35 @@
             </div>
         </template>
         <template if:true={sincronizadoVisible}>
-            <div class="slds-col slds-grow-none">
-                <lightning-icon icon-name="action:approval" alternative-text="Error" title="Error" size="x-small">
-                </lightning-icon>
-            </div>
-            <div class="slds-col slds-var-m-left_medium">
-                <div class="color-green slds-text-title_caps">Este cliente ya está sincronizado con Gestor.
+            
+            <template if:true={isUpdated}>
+                <div class="slds-col slds-grow-none">
+                    <lightning-icon icon-name="action:approval" alternative-text="Error" title="Error" size="x-small">
+                    </lightning-icon>
                 </div>
-            </div>            
-            <div class="slds-col slds-var-m-left_medium button-group">                
-                <lightning-button variant="brand" label="Actualizar cliente en Gestor"
-                    title="Actualizar cliente en Gestor" icon-name="utility:sync" onclick={handleUpdatePerson} class="btn-accion-gestor">
-                </lightning-button>
+                <div class="slds-col slds-var-m-left_medium">
+                    <div class="color-green slds-text-title_caps">Este cliente ya está sincronizado con Gestor.
+                    </div>
+                </div>   
+            </template>
+            <template if:false={isUpdated}>
+                <div class="slds-col slds-grow-none">
+                    <lightning-icon icon-name="action:close" alternative-text="Error" title="Error" size="x-small">
+                    </lightning-icon>
+                </div>
+                <div class="slds-col slds-var-m-left_medium">
+                    <div class="error-titulo slds-text-title_caps">Este cliente no está sincronizado con Gestor.
+                    </div>
+                </div>   
+            </template>
+                   
+            <div class="slds-col slds-var-m-left_medium button-group">        
+                <lightning-button variant="brand"   label="Actualizar cliente desde Gestor"
+                    title="Actualizar cliente en Gestor" icon-name="utility:download" onclick={handleConsultarActualizarHaciaCRM} class="btn-accion-gestor sync-variant-button">
+                </lightning-button>        
+               <!--  <lightning-button variant="brand" label="Actualizar cliente en Gestor"
+                    title="Actualizar cliente en Gestor" icon-name="utility:upload" onclick={handleUpdatePerson} class="btn-accion-gestor">
+                </lightning-button> -->
                 <lightning-button variant="brand" label="Crear referencia bancaria"
                     title="Crear referencia bancaria" icon-name="utility:new" onclick={handleCrearReferenciaBancaria} class="btn-accion-gestor">
                 </lightning-button> 

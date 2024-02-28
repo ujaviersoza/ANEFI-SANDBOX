@@ -8,6 +8,10 @@
     color:#54698D;
 }
 
+.sync-variant-button {
+    --slds-c-button-brand-color-background: orange;
+}
+
 .color-green{
     color:#1c5c4f;
 }

@@ -10,6 +10,14 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>Honorario_Estructuracion__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Honorario_mensual_Administraci_n__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
@@ -39,6 +47,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Fecha_Primera_Reuni_n__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ANEFI_Referido__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -101,6 +113,10 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Usuario_Trader__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Complementarios__c</field>
@@ -189,6 +205,10 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <miniLayout>
+        <fields>Honorario_Estructuracion__c</fields>
+        <fields>Honorario_mensual_Administraci_n__c</fields>
+    </miniLayout>
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
@@ -274,6 +294,10 @@
         </quickActionListItems>
     </quickActionList>
     <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Accion_Oportunidad__c.Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>ContactName</fields>
         <fields>Role</fields>
         <fields>IsPrimary</fields>
@@ -295,7 +319,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1h0000010Qps</masterLabel>
+        <masterLabel>00h6g000000q6ly</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

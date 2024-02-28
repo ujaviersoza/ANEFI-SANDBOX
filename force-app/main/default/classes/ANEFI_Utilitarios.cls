@@ -580,7 +580,57 @@ global class ANEFI_Utilitarios {
                
     }
     
-   
+       /**
+     * Método que envía petición de validación de persona en registros de clientes de Gestor
+     */
+    
+    
+    
+    public static ANEFI_ServicesDTO.RegistroClienteOut validarEnRegistrosDeClientesPorIdentificacion(String identificacion, String tipoIdentificacion, ANEFI_RequestsHandler requestHandler,  ANEFI_ServicesDTO.LoginOUT loginOUTDTO, ANEFI_Configuracion_Gestor_Web__c configuracionGestorWeb){
+        String URLServicio = ANEFI_Utilitarios.obtenerURLServicioPorNombre('validacionRegistrosCliente'); 
+        ANEFI_ServicesDTO.RegistroClienteOut registroClienteOutDTO = null;  
+        if(!String.isBlank(URLServicio) && !String.isEmpty(URLServicio)){
+            String endpoint = configuracionGestorWeb.URL__c + URLServicio;
+            Map<String,String> headers = ANEFI_Utilitarios.obtenerHeadersGenerales(configuracionGestorWeb, loginOUTDTO);
+            ANEFI_PostRequestData postRequestData = null;
+            
+            ANEFI_ServicesDTO.RegistroClienteInput registroClienteInput = new ANEFI_ServicesDTO.RegistroClienteInput();
+            registroClienteInput.identificacion = identificacion;
+            registroClienteInput.codigoTipoIdentificacion = tipoIdentificacion;
+            
+            postRequestData = new ANEFI_PostRequestData(registroClienteInput);            
+            String body = JSON.serialize(postRequestData);
+            ANEFI_ServicesDTO.RequestsHandlerResponse requestHandlerResponse = null;
+            HttpResponse response = null;
+            
+            try {
+                requestHandlerResponse = requestHandler.processRequest(endpoint, body, headers, 'POST',null,null); 
+                response = requestHandlerResponse.response; 
+                
+            } catch (Exception e) {
+                system.debug('No se pudo realizar la petición: ' + e.getMessage());
+            } 
+            system.debug('requestHandlerResponse body '+requestHandlerResponse);
+            system.debug('response body '+response);
+            String responseBody = response != null ? response.getBody() : null;     
+            Integer responseStatusCode = response != null ? response.getStatusCode() : null;   
+            if(responseStatusCode == 200){   
+                if(requestHandlerResponse.loginOUT != null){
+                    loginOUTDTO = requestHandlerResponse.loginOUT;
+                }
+                ANEFI_ServicesDTO.ResponseDataRegistroClienteOut responseDataRegistroClienteOUT = (ANEFI_ServicesDTO.ResponseDataRegistroClienteOut)JSON.deserialize(responseBody,ANEFI_ServicesDTO.ResponseDataRegistroClienteOut.class);
+                registroClienteOutDTO = responseDataRegistroClienteOUT.data;         
+            }
+            
+            system.debug('cliente utilitario result '+registroClienteOutDTO);
+        }
+        
+        return registroClienteOutDTO;
+        
+               
+    }
+    
+    
     /*Método que envía petición de actualización de persona en Gestor*/
     public static String actualizarPersonaEnGestor(ANEFI_RequestsHandler requestHandler, String clienteId, String codigoPersonaGestor, String relatedObjectId, ANEFI_ServicesDTO.LoginOUT loginOUTDTO, ANEFI_Configuracion_Gestor_Web__c configuracionGestorWeb){
         String URLServicio = ''; 

@@ -53,7 +53,7 @@
                 <field>Politicamente_expuesto__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Nacionalidad__c</field>
             </layoutItems>
             <layoutItems>
@@ -91,7 +91,7 @@
                 <field>Numero_de_identificacion__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Telefono_celular__c</field>
             </layoutItems>
             <layoutItems>
@@ -177,7 +177,7 @@
                 <field>Capital_social__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Tipo_de_cuenta_bancaria__c</field>
             </layoutItems>
             <layoutItems>
@@ -211,11 +211,11 @@
                 <field>Total_gastos__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Entidad_financiera__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Numero_de_cuenta_bancaria__c</field>
             </layoutItems>
             <layoutItems>
@@ -248,7 +248,7 @@
         <label>Dirección trabajo</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Pais_direccion_trabajo__c</field>
             </layoutItems>
             <layoutItems>
@@ -256,21 +256,21 @@
                 <field>Provincia_direccion_trabajo__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Calle_principal_direccion_trabajo__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Canton_direccion_de_trabajo__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Numero_direccion_trabajo__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Interseccion_direccion_trabajo__c</field>
             </layoutItems>
         </layoutColumns>
@@ -574,6 +574,12 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>Opportunity.ANEFI_Referido__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

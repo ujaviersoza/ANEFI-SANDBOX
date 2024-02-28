@@ -12,6 +12,11 @@ public class ANEFI_TG_OpportunityHelper {
     public static MDT_ANEFI_Validations__mdt[] listMDT = [SELECT Id,DeveloperName, MasterLabel, ANEFI_Object_validation__c, ANEFI_Custom_message__c 
                                                   FROM MDT_ANEFI_Validations__mdt];
     
+    public static Id FONDOS_DE_INVERSION =  Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get('Fondos_de_Inversion').getRecordTypeId();
+    public static Id APORTE_PERSONA_JURIDICA =  Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get('Aporte_Persona_Juridica').getRecordTypeId();
+    public static Id APORTE_PERSONA_NATURAL =  Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get('Aporte_Persona_Natural').getRecordTypeId();
+
+    
     //Assign recordtype Opportunity in the Lead Conversion according the custom field: Línea de negocio.
     public static void assignRecordtypeLeadConversion(List<Opportunity> opps) {
         
@@ -83,6 +88,22 @@ public class ANEFI_TG_OpportunityHelper {
                 	mapOldOpps.get(key).addError(m.get('X007'));    
                 }    
             }
+        }
+    }
+    
+    public static void incompleteClient(List<Opportunity> opps) {       
+        for(Opportunity itemOpp : opps){
+            if(itemOpp.StageName == 'Cerrada ganada' &&
+               (itemOpp.RecordtypeId == FONDOS_DE_INVERSION ||
+                itemOpp.RecordtypeId == APORTE_PERSONA_JURIDICA ||
+                itemOpp.RecordtypeId == APORTE_PERSONA_NATURAL)){
+                    list<String> missingFields = ANEFI_ValidarCamposCierreOportunidadCC.CamposFaltantesAltaCliente(itemOpp.AccountId);
+                    if(missingFields.size() > 0){
+                        itemOpp.addError('No se puede marcar esta oportunidad como Cerrada Ganada porque la información del cliente está incompleta');
+                    }
+                    
+                }
+            
         }
     }
 }

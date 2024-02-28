@@ -3,7 +3,7 @@
 *Description: Clase Handler para el trigger ANEFI_TG_Lead.
 *Created Date: 7/6/2023, 16:18 PM.
 *Created By: Intellect Systems.   
-*Last Modified by: Intellect Systems 4/08/2023, 11:06 AM.
+*Last Modified by: Intellect Systems 2/05/2024, 11:06 AM.
 */
 public class ANEFI_TG_LeadHandler extends TriggerHandler {
     

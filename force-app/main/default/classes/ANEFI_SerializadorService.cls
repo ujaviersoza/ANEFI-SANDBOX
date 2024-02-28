@@ -11,7 +11,7 @@ public class ANEFI_SerializadorService {
         oportunidadDTO.codigoPersonaEnGestor = oportunidad.Codigo_persona_en_Gestor__c != null ? Integer.valueOf(oportunidad.Codigo_persona_en_Gestor__c) : null;
         oportunidadDTO.numeroCuentaParticipe = oportunidad.Numero_cuenta_de_participe__c;
         oportunidadDTO.codigoProducto = oportunidad.Producto_de_Interes__c;
-        oportunidadDTO.codigoTrader = oportunidad.Trader__c;
+        oportunidadDTO.codigoTrader = (oportunidad.Usuario_Trader__c) != null ? getUserEmployeeNumber( oportunidad ) : oportunidad.Trader__c ;
         oportunidadDTO.complementarios = oportunidad.Complementarios__c;
         oportunidadDTO.transaccionCooparticipe = oportunidad.Transaccion_cooparticipe__c;
         oportunidadDTO.codigoCuentaContable = ANEFI_Utilitarios.CODIGO_CUENTA_CONTABLE;
@@ -22,13 +22,18 @@ public class ANEFI_SerializadorService {
         oportunidadDTO.numeroDocumento = oportunidad.Numero_documento_deposito__c;
         oportunidadDTO.codigoTipoFormaPago = oportunidad.Forma_de_Pago__c;
         oportunidadDTO.codigoMoneda = oportunidad.Moneda__c;
-        oportunidadDTO.monto = oportunidad.Amount;
+        oportunidadDTO.monto = Integer.valueOf(oportunidad.Amount);
         oportunidadDTO.codigoTipoEntidadFondo = oportunidad.Codigo_tipo_entidad_financiera__c != null ? String.valueOf(oportunidad.Codigo_tipo_entidad_financiera__c.intValue()) : null;
         oportunidadDTO.codigoEntidadFondo = oportunidad.Codigo_entidad_financiera__c;
         oportunidadDTO.numeroCuentaFondo = oportunidad.Numero_de_cuenta_fondo__c;
         oportunidadSerializada = JSON.serialize(oportunidadDTO);
-        
+        system.debug('oportunidadSerializada_ '+oportunidadSerializada);
+        system.debug('oportunidad_ '+oportunidad);
         return oportunidadSerializada;
+    }
+
+    public static String getUserEmployeeNumber(Opportunity oportunidad){
+        return ((oportunidad.Usuario_Trader__r.EmployeeNumber != null)? oportunidad.Usuario_Trader__r.EmployeeNumber : ([Select Id, EmployeeNumber FROM User Where Id =:oportunidad.Usuario_Trader__c]).EmployeeNumber);
     }
 
 	/**Método para obtener el input del servicio de validación en listas negras de una persona jurídica*/
@@ -138,7 +143,6 @@ public class ANEFI_SerializadorService {
         }
         return null;
     }
-
 
     
 	/**Método para obtener el input del servicio de creación de persona Natural*/

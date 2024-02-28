@@ -44,7 +44,7 @@
                 <field>Politicamente_expuesto__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Paga_impuestos__c</field>
             </layoutItems>
             <layoutItems>
@@ -110,7 +110,7 @@
                 <field>Telefono_celular__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Estado_civil__c</field>
             </layoutItems>
             <layoutItems>
@@ -118,7 +118,7 @@
                 <field>Pais_de_nacimiento__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Nacionalidad__c</field>
             </layoutItems>
             <layoutItems>
@@ -126,7 +126,7 @@
                 <field>Codigo_persona_en_Gestor__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Fecha_de_nacimiento__c</field>
             </layoutItems>
             <layoutItems>
@@ -146,7 +146,7 @@
                 <field>ANEFI_Interest_product__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Genero__c</field>
             </layoutItems>
             <layoutItems>
@@ -192,7 +192,7 @@
                 <field>AnnualRevenue</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Total_pasivos__c</field>
             </layoutItems>
             <layoutItems>
@@ -200,7 +200,7 @@
                 <field>Capital_social__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Tipo_de_cuenta_bancaria__c</field>
             </layoutItems>
             <layoutItems>
@@ -226,7 +226,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Total_activos__c</field>
             </layoutItems>
             <layoutItems>
@@ -234,11 +234,11 @@
                 <field>Total_gastos__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Entidad_financiera__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Numero_de_cuenta_bancaria__c</field>
             </layoutItems>
             <layoutItems>
@@ -246,7 +246,7 @@
                 <field>ANEFI_Monthly_expenses__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Total_patrimonio__c</field>
             </layoutItems>
             <layoutItems>
@@ -279,11 +279,11 @@
                 <field>Nombre_canton_direccion_domicilio__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Calle_principal_direccion_domicilio__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Es_direccion_fiscal_direccion_domicilio__c</field>
             </layoutItems>
         </layoutColumns>
@@ -301,7 +301,7 @@
                 <field>Referencia_direccion_domicilio__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Telefono_domicilio__c</field>
             </layoutItems>
         </layoutColumns>
@@ -444,6 +444,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
@@ -452,11 +457,6 @@
             <actionName>LogACall</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>NewTask</actionName>
@@ -588,6 +588,12 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>Opportunity.ANEFI_Referido__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

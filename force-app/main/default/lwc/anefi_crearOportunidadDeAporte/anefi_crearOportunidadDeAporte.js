@@ -4,6 +4,7 @@ import { NavigationMixin } from 'lightning/navigation';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity';
 import LightningAlert  from 'lightning/alert';
+import getCamposFaltantes  from '@salesforce/apex/ANEFI_ValidarCamposCierreOportunidadCC.CamposFaltantesAltaCliente';
 
 export default class Anefi_crearOportunidadDeAporte extends NavigationMixin(LightningElement) {
 
@@ -24,11 +25,43 @@ export default class Anefi_crearOportunidadDeAporte extends NavigationMixin(Ligh
     @track buttonDisabled =false;
     @track alertVisible = false;
 
+    @track camposFaltantes;
+    @track error;
+    @track showOportunityForm;
+
     connectedCallback(){
         this.codigoProductoSeleccionado = this.codigoProducto;           
         this.mostrarSeccionPago = false;
         this.esAporteConfirmado = false;
-         
+        this.alertVisible= true;
+        this.loadCamposFaltantes();         
+    }
+
+    loadCamposFaltantes() {
+        getCamposFaltantes({ AccountID: this.clienteId })
+            .then(result => {
+                this.camposFaltantes = result;
+                this.showOportunityForm = this.camposFaltantes.length == 0 ? true : false;
+                this.alertVisible= false;
+                
+            })
+            .catch(error => {
+                this.error = error.message || 'Unknown error';
+                this.alertVisible= false;
+            });
+    }
+
+
+    handleClientCompleted(event) {
+
+        this.showOportunityForm = event.detail.proceedNexForm;
+        const alert = new ShowToastEvent({
+            title: 'Éxito',
+            message: 'Se ha actualizado el cliente correctamente',
+            variant: 'success',
+        });
+        this.dispatchEvent(alert);           
+  
     }
 
     @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT })    

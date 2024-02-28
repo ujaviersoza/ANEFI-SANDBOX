@@ -38,6 +38,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>anefi_consultarClienteEnGestor</componentName>
+                <identifier>anefi_consultarClienteEnGestor</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
             </componentInstance>
@@ -92,16 +98,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>anefi_consultarClienteEnGestor</componentName>
-                <identifier>anefi_consultarClienteEnGestor</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-25172e9e-4c17-4b99-bd06-66c8ca7c0572</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
@@ -134,20 +130,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>relatedListsTab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-25172e9e-4c17-4b99-bd06-66c8ca7c0572</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Información en Gestor</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>customTab</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

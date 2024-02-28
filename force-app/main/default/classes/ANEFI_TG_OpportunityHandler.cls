@@ -7,7 +7,8 @@
 */
 public class ANEFI_TG_OpportunityHandler extends TriggerHandler {
     
-    protected override void beforeInsert() {        
+    protected override void beforeInsert() {  
+        ANEFI_TG_OpportunityHelper.incompleteClient(Trigger.new);
         ANEFI_TG_OpportunityHelper.assignRecordtypeLeadConversion(Trigger.new);
         ANEFI_TG_OpportunityHelper.validateOpportunities(Trigger.New);      
     }
@@ -19,6 +20,10 @@ public class ANEFI_TG_OpportunityHandler extends TriggerHandler {
     protected override void afterUpdate() {
         ANEFI_OpportunityHandler.createFileContractCPOpportunity(Trigger.new,Trigger.old); 
     	ANEFI_OpportunityHandler.createFilesOpportunity(Trigger.new,Trigger.old);  
+    }
+
+    protected override void beforeUpdate(){
+        ANEFI_TG_OpportunityHelper.incompleteClient(Trigger.new);
     }
         
 }

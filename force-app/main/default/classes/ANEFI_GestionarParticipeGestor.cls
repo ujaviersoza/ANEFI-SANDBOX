@@ -73,6 +73,82 @@ global without sharing class ANEFI_GestionarParticipeGestor {
         return consultaPersonaJuridica;
     }
     
+    public static ANEFI_ServicesDTO.ConsultaPersonaJuridica consultarClienteNumeroIdentificacionJuridico(String numeroIdentificacion, string tipoIdentificacion){
+        
+        String response = '';
+        ANEFI_RequestsHandler requestHandler = new ANEFI_RequestsHandler();
+        ANEFI_ServicesDTO.ConsultaPersonaJuridica consultaPersonaJuridica = new ANEFI_ServicesDTO.ConsultaPersonaJuridica();
+               
+        configuracionGestorWeb = ANEFI_Utilitarios.obtenerConfiguracionGestorWeb();
+        loginOUTDTO = ANEFI_Utilitarios.autenticarEnGestor(requestHandler, null, configuracionGestorWeb);	
+         system.debug(' loginOUTDTO '+loginOUTDTO);
+        if(loginOUTDTO != null ){//El servicio de autenticación en Gestor retornó el token de autenticación
+            ANEFI_ServicesDTO.RegistroClienteOut registroClienteOut = ANEFI_Utilitarios.validarEnRegistrosDeClientesPorIdentificacion(numeroIdentificacion, tipoIdentificacion, requestHandler,loginOUTDTO, configuracionGestorWeb);
+            
+            system.debug(' cliente  participe gestor'+registroClienteOut);
+            if(registroClienteOut != null){//El servicio de validación en registros de clientes se ejecutó correctamente
+                /*if(!registroClienteOut.tipoRelacion.equals('NO_REGISTRADA')){//Cliente existe como persona en Gestor
+                    List<ANEFI_ServicesDTO.ItemOcurrenciaRegistroCliente> ocurrencias = registroClienteOut.ocurrencias;
+                    if(ocurrencias.size() > 0){
+                        ANEFI_ServicesDTO.ItemOcurrenciaRegistroCliente itemOcurrenciaRegistroCliente = ocurrencias.get(0); 
+                        response = itemOcurrenciaRegistroCliente !=  null ? String.valueOf(itemOcurrenciaRegistroCliente.codigoPersona) : '';
+                                                	
+                    }    
+                    
+                } */
+                
+                if(!registroClienteOut.tipoRelacion.equals('NO_REGISTRADA')){//Cliente existe como persona en Gestor
+                    //24 de Agosto: Se realiza modificación para procesar la lista de ocurrencias que retorna el servicio de Gestor
+                    List<ANEFI_ServicesDTO.ItemOcurrenciaRegistroCliente> ocurrencias = registroClienteOut.ocurrencias;
+                    if(ocurrencias.size() > 0){
+                        ANEFI_ServicesDTO.ItemOcurrenciaRegistroCliente itemOcurrenciaRegistroCliente = ocurrencias.get(0);
+                        consultaPersonaJuridica.codigoPersonaEnGestor = String.valueOf(itemOcurrenciaRegistroCliente.codigoPersona);
+                        consultaPersonaJuridica.personaJuridicaOut = obtenerInformacionPersonaJuridicaEnGestor(requestHandler, null, String.valueOf(itemOcurrenciaRegistroCliente.codigoPersona));                    
+                    }
+                    
+                }else{
+                    return null;
+                }
+            }
+        }
+        //insertar los logs
+        requestHandler.insertRequestLogs();    
+
+        return consultaPersonaJuridica;
+    } 
+    
+    public static ANEFI_ServicesDTO.ConsultaPersonaNatural consultarClienteNumeroIdentificacionNatural(String numeroIdentificacion, string tipoIdentificacion){
+        
+        ANEFI_RequestsHandler requestHandler = new ANEFI_RequestsHandler();
+        ANEFI_ServicesDTO.ConsultaPersonaNatural consultaPersonaNatural = new ANEFI_ServicesDTO.ConsultaPersonaNatural();
+        consultaPersonaNatural.clienteExisteEnGestor = false;
+              
+        configuracionGestorWeb = ANEFI_Utilitarios.obtenerConfiguracionGestorWeb();
+        loginOUTDTO = ANEFI_Utilitarios.autenticarEnGestor(requestHandler, null, configuracionGestorWeb);	
+        System.debug('loginOUTDTO ' + loginOUTDTO);
+        System.debug('configuracionGestorWeb' +configuracionGestorWeb);
+        if(loginOUTDTO != null){//El servicio de autenticación en Gestor retornó el token de autenticación
+            ANEFI_ServicesDTO.RegistroClienteOut registroClienteOut = ANEFI_Utilitarios.validarEnRegistrosDeClientesPorIdentificacion(numeroIdentificacion, tipoIdentificacion, requestHandler, loginOUTDTO, configuracionGestorWeb);
+            if(registroClienteOut != null){//El servicio de validación en registros de clientes se ejecutó correctamente
+                if(!registroClienteOut.tipoRelacion.equals('NO_REGISTRADA')){//Cliente existe como persona en Gestor
+                    consultaPersonaNatural.clienteExisteEnGestor = true;
+                    //24 de Agosto: Se realiza modificación para procesar la lista de ocurrencias que retorna el servicio de Gestor
+                    List<ANEFI_ServicesDTO.ItemOcurrenciaRegistroCliente> ocurrencias = registroClienteOut.ocurrencias;
+                    if(ocurrencias.size() > 0){
+                        ANEFI_ServicesDTO.ItemOcurrenciaRegistroCliente itemOcurrenciaRegistroCliente = ocurrencias.get(0);
+                        consultaPersonaNatural.codigoPersonaEnGestor = String.valueOf(itemOcurrenciaRegistroCliente.codigoPersona);
+                        consultaPersonaNatural.personaNaturalOut = obtenerInformacionPersonaNaturalEnGestor(requestHandler, null, String.valueOf(itemOcurrenciaRegistroCliente.codigoPersona));       
+                    }
+                    
+                }
+            }
+        }
+        //insertar los logs
+        requestHandler.insertRequestLogs();
+        return consultaPersonaNatural;
+    } 
+                   
+    
     /*Método para consultar la información de un participe de tipo persona natural*/
     public static ANEFI_ServicesDTO.PersonaNaturalOut obtenerInformacionPersonaNaturalEnGestor(ANEFI_RequestsHandler requestHandler, String clienteID, String codigoPersonaEnGestor){
         try{
@@ -826,8 +902,8 @@ return porcentajeRendimientoProductoOut;
             actualizarPersonaJuridicaInput.codigoPaisDireccionTrabajo = cliente.Codigo_pais_direccion_trabajo__c;
             actualizarPersonaJuridicaInput.codigoPaisNacionalidad = cliente.Codigo_pais_nacionalidad__c;
             actualizarPersonaJuridicaInput.codigoTipoActividadEconomica = cliente.Codigo_actividad_economica__c;            
-            Datetime fechaDateTime = cliente.Fecha_de_constitucion__c;            
-            actualizarPersonaJuridicaInput.fechaConstitucion = fechaDateTime != null ? fechaDateTime.format('yyyy-MM-dd') : '';
+            String fechaDateTime =  String.valueOf(cliente.Fecha_de_constitucion__c.year()) + '-' + String.valueOf(cliente.Fecha_de_constitucion__c.month()) + '-' + String.valueOf(cliente.Fecha_de_constitucion__c.day()) ;           
+            actualizarPersonaJuridicaInput.fechaConstitucion = fechaDateTime;
             actualizarPersonaJuridicaInput.codigoTipoIdentificacion = cliente.Tipo_de_identificacion__c;
             actualizarPersonaJuridicaInput.identificacion = cliente.Numero_de_identificacion__c;
             actualizarPersonaJuridicaInput.interseccionDireccionResidenciaTributaria = cliente.Interseccion_direccion_tributaria__c;

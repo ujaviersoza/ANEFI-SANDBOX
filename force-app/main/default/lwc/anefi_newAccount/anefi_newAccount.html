@@ -5,42 +5,83 @@
         <div class="slds-modal__container">
             <!-- MODAL HEADER -->
             <header class="slds-modal__header">
-                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Nueva cuenta</h2>
+
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Nueva cuenta (Bajo desarrollo, puede
+                    generar errores)</h2>
             </header> <!-- MODAL HEADER -->
 
             <!-- MODAL BODY -->
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <template if:true={mostrarSpinner}>                 
+                <lightning-spinner alternative-text="Consultando" size="large"></lightning-spinner>                        
+            </template>
 
                 <!-- SEARCH FORM -->
-                <div class="slds-grid slds-wrap">
 
-                    <!-- NEW LINE INPUT-->
-                    <div class="slds-col slds-size_3-of-12"></div>
+
+                <template if:true={mostrarBusqueda}>
+                                
+                    <div class="slds-grid slds-wrap">
+
+                        <div class="slds-col slds-size_12-of-12">
+                            <!-- Centered content -->
+                            <lightning-record-edit-form object-api-name="Account"     record-type-id={tipoRegistro} onsubmit ={handleSearch}>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_6-of-12"> 
+                                        <lightning-input-field required field-name="Tipo_de_identificacion__c">
+                                        </lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12"> 
+                                        <lightning-input-field required field-name="Numero_de_identificacion__c">
+                                        </lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-align_absolute-center">
+                                        <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Consultar en gestor">
+                                        </lightning-button>
+                                    </div> 
+                                </div>                                                           
+                            </lightning-record-edit-form>
+                        </div>
+                    </div>
+                </template>
+
+
+                <template if:false={mostrarBusqueda}>
+
+
                     <div class="slds-col slds-size_6-of-12">
                         <lightning-radio-group name="tipoRegistro" label="Seleccionar un tipo de registro"
                             options={opcionesNuevaCuenta} value={tipoRegistro} type="radio"
                             onchange={onchangeTipoRegistro}>
                         </lightning-radio-group>
                     </div>
-                    <div class="slds-col slds-size_3-of-12"></div>
 
-                    <!-- NEW LINE RECORD TYPE-->
-                    <div class="slds-col slds-size_3-of-12"></div>
-                    <div class="slds-col slds-size_6-of-12">
-                        <br></br>
-                    </div>
-                    <div class="slds-col slds-size_3-of-12"></div>
+                </template>
 
-                </div> <!-- SEARCH FORM -->
+            </div> <!-- SEARCH FORM -->
 
-            </div> <!-- MODAL BODY -->
 
             <!-- MODAL FOOTER -->
             <footer class="slds-modal__footer">
+
+
+                <template if:false={mostrarBusqueda}>
+                 <!--    <lightning-button label="Siguiente" class="slds-m-left_x-small" variant="brand"
+                        onclick={formularioNuevaCuenta}></lightning-button> -->
+
+                        <lightning-button label="Siguiente" class="slds-m-left_x-small" variant="brand"
+                        onclick={onChangemostrarBusqueda}></lightning-button> 
+                </template>
+                <template if:true={mostrarBusqueda}>
+                    <!--    <lightning-button label="Siguiente" class="slds-m-left_x-small" variant="brand"
+                           onclick={formularioNuevaCuenta}></lightning-button> -->
+   
+                           <lightning-button label="Anterior" class="slds-m-left_x-small" variant="brand"
+                           onclick={onChangemostrarBusqueda}></lightning-button> 
+                   </template>
                 <lightning-button label="Cancelar" onclick={cancelar} title="Cancelar"
                     class="slds-m-left_x-small"></lightning-button>
-                <lightning-button label="Siguiente" class="slds-m-left_x-small" variant="brand"
-                    onclick={formularioNuevaCuenta}></lightning-button>
+
 
             </footer> <!-- MODAL FOOTER -->
 

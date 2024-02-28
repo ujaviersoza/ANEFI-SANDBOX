@@ -65,7 +65,8 @@ global class ANEFI_MockupBuilderForTests {
 
         cuenta.Pais_direccion_domicilio__c = crearPais(true).id;
         cuenta.Canton_direccion_domicilio__c = crearCanton(true).id;
-
+        
+        cuenta.Calle_principal_direccion_trabajo__c = 'primera';
         if(insertar){
             System.debug('cuenta' + cuenta);
             insert cuenta;
@@ -94,6 +95,10 @@ global class ANEFI_MockupBuilderForTests {
         cuenta.Total_activos__c = 1250;
         cuenta.Total_pasivos__c = 520;
         cuenta.Total_gastos__c = 30;
+        
+        
+        cuenta.Calle_principal_direccion_trabajo__c = 'primera';
+        
         if(insertar){
             insert cuenta;
         }
@@ -258,7 +263,15 @@ global class ANEFI_MockupBuilderForTests {
         cuenta.Pais_direccion_domicilio__c = crearPais(true).id;
         cuenta.Canton_direccion_domicilio__c = crearCanton(true).id;
         cuenta.Codigo_persona_en_Gestor__c = '1028437'; 
-        cuenta.Fecha_de_nacimiento__c = Date.today();
+        cuenta.Fecha_de_nacimiento__c = Date.today() -600;
+
+        
+        cuenta.PrimerNombre__c = 'Cliente';
+        cuenta.SegundoNombre__c = 'Existente';
+        cuenta.PrimerApellido__c = 'En';
+        cuenta.SegundoApellido__c = 'Gestor';
+
+        system.debug('cuenta '+cuenta);
               
         insert cuenta;
         
@@ -299,6 +312,15 @@ global class ANEFI_MockupBuilderForTests {
         cuenta.Codigo_persona_en_Gestor__c = '1028437';
         cuenta.Fecha_de_constitucion__c = Date.today();
 
+        
+        cuenta.PrimerNombre__c = 'Cliente';
+        cuenta.SegundoNombre__c = 'Existente';
+        cuenta.PrimerApellido__c = 'En';
+        cuenta.SegundoApellido__c = 'Gestor';
+        
+        
+        cuenta.Calle_principal_direccion_trabajo__c = 'primera';
+
         if(insertar){
             insert cuenta;
         }
@@ -329,6 +351,13 @@ global class ANEFI_MockupBuilderForTests {
         cuenta.Canton_direccion_domicilio__c = crearCanton(true).id;
 
         if(insertar){
+            System.debug('Detalles de cuenta cuenta: '+ JSON.serialize(cuenta));
+        	cuenta.Name = 'ClientePrueba';
+            cuenta.PrimerNombre__c = 'cliente';
+            cuenta.SegundoNombre__c = 'prueba';
+            cuenta.PrimerApellido__c = 'CLIENTE';
+            cuenta.SegundoApellido__c = 'PRUEBA';
+        	system.debug('cuenta '+cuenta);
             insert cuenta;
         }
 
@@ -394,6 +423,8 @@ global class ANEFI_MockupBuilderForTests {
         oportunidad.Complementarios__c = 'N';
         oportunidad.Trader__c = '692212';
         oportunidad.Moneda__c = '1';
+        oportunidad.Honorario_mensual_Administracion__c = 10000;
+        oportunidad.Honorario_Estructuracion__c = 10000;
         oportunidad.Estado_sincronizacion_Gestor__c = 'ERROR SINCRONIZACIÓN';
         oportunidad.Tipo_de_registro_candidato__c = 'Persona Jurídica';
         insert oportunidad;        

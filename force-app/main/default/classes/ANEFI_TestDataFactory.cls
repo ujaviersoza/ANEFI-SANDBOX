@@ -86,6 +86,8 @@ public class ANEFI_TestDataFactory {
         /*Se crea cliente natural*/
         Account clienteNatural = new Account();
         clienteNatural.Name = 'Julian Rendón';
+        clienteNatural.PrimerNombre__c = 'Julian';
+        clienteNatural.SegundoNombre__c = 'Rendón';
         clienteNatural.Nacionalidad__c = pais.Id;
         clienteNatural.Paga_impuestos__c = 'S';
         clienteNatural.Fecha_de_nacimiento__c = system.Date.today();
@@ -136,6 +138,8 @@ public class ANEFI_TestDataFactory {
         /*Se crea cliente sincronizado en Gestor*/
         Account clienteSincronizadoEnGestor = new Account();
         clienteSincronizadoEnGestor.Name = 'Coomeva S.A';
+        clienteSincronizadoEnGestor.PrimerNombre__c = 'Coomeva';
+        clienteSincronizadoEnGestor.SegundoNombre__c = 'S.A';
         clienteSincronizadoEnGestor.Codigo_persona_en_Gestor__c = '1028437';
         clienteSincronizadoEnGestor.Tipo_de_identificacion__c = '1';
         clienteSincronizadoEnGestor.Numero_de_identificacion__c = '1058741478';       
@@ -186,6 +190,8 @@ public class ANEFI_TestDataFactory {
         /*Se crea cliente natural con contacto asociado*/
         Account clienteNaturalConContacto = new Account();
         clienteNaturalConContacto.Name = 'Olivia Jimenez';
+        clienteNaturalConContacto.PrimerNombre__c = 'Olivia';
+        clienteNaturalConContacto.SegundoNombre__c = 'Jimenez';
         clienteNaturalConContacto.Nacionalidad__c = pais.Id;
           clienteNaturalConContacto.Paga_impuestos__c = 'S';
         clienteNaturalConContacto.Fecha_de_nacimiento__c = system.Date.today();
@@ -249,6 +255,8 @@ public class ANEFI_TestDataFactory {
         /*Se crea cliente natural con el nombre completo asociado*/
         Account clienteNaturalNombreCompleto = new Account();
         clienteNaturalNombreCompleto.Name = 'Ricardo Andres Salazar Moreno';
+        clienteNaturalNombreCompleto.PrimerNombre__c = 'Ricardo Andres';
+        clienteNaturalNombreCompleto.SegundoNombre__c = 'Salazar Moreno';
         clienteNaturalNombreCompleto.Nacionalidad__c = pais.Id;
         clienteNaturalNombreCompleto.Paga_impuestos__c = 'S';
         clienteNaturalNombreCompleto.Fecha_de_nacimiento__c = system.Date.today();
@@ -299,6 +307,8 @@ public class ANEFI_TestDataFactory {
         /*Se crea cliente natural con código de persona en Gestor*/
         Account clienteNaturalCodigoPersona = new Account();
         clienteNaturalCodigoPersona.Name = 'Cliente con código en Gestor';
+        clienteNaturalCodigoPersona.PrimerNombre__c = 'Cliente';
+        clienteNaturalCodigoPersona.SegundoNombre__c = 'con código en Gestor';
         clienteNaturalCodigoPersona.Nacionalidad__c = pais.Id;
         clienteNaturalCodigoPersona.Paga_impuestos__c = 'S';
         clienteNaturalCodigoPersona.Fecha_de_nacimiento__c = system.Date.today();
